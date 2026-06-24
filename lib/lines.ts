@@ -4,6 +4,8 @@
  * Groundswell Offering Kit, Business Command Center one-pager) + the GTM Clarity Map.
  */
 
+import { BOOKING_CTA } from "./content";
+
 export type Tier = {
   name: string;
   price: string;
@@ -176,7 +178,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     cta: {
       heading: "Selling five things to everyone and nothing's landing?",
       sub: "In two hours we'll find your one sentence and your one wedge. That's the Jam.",
-      button: "Book a GTM Clarity Jam",
+      button: BOOKING_CTA,
     },
   },
 

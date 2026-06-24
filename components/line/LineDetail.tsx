@@ -55,14 +55,12 @@ export function LineDetail({ line }: { line: LineDetailData }) {
               >
                 See pricing →
               </a>
-              <a
+              <Link
                 href={SITE.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] transition-colors hover:decoration-chartreuse-deep"
               >
                 {line.cta.button}
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -322,16 +320,14 @@ export function LineDetail({ line }: { line: LineDetailData }) {
                     </li>
                   ))}
                 </ul>
-                <a
+                <Link
                   href={SITE.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={`mt-8 inline-block font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] ${
                     tier.featured ? "hover:text-marker" : "hover:text-chartreuse-deep"
                   }`}
                 >
                   Start here →
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -426,14 +422,12 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             <p className="mt-6 max-w-2xl text-lead text-paper/75">
               {line.cta.sub}
             </p>
-            <a
+            <Link
               href={SITE.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-marker px-7 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-chartreuse"
             >
               {line.cta.button} →
-            </a>
+            </Link>
           </div>
         </section>
       </main>

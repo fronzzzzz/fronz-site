@@ -32,14 +32,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href={HERO.ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
             className="hidden rounded-[2px] bg-ink px-4 py-2.5 font-mono text-xs tracking-wide text-paper transition-colors hover:bg-chartreuse-deep sm:inline-block"
           >
-            Book a Jam
-          </a>
+            {HERO.cta}
+          </Link>
 
           <button
             type="button"
@@ -77,15 +75,13 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <a
+          <Link
             href={HERO.ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-4 inline-block rounded-[2px] bg-ink px-5 py-3 font-mono text-sm tracking-wide text-paper"
           >
-            Book a Jam
-          </a>
+            {HERO.cta}
+          </Link>
         </nav>
       )}
     </header>

@@ -93,7 +93,7 @@ export default function Home() {
             {LINES.lead}
           </Reveal>
           {LINES.approach.map((para) => (
-            <Reveal as="p" key={para} className="mt-4 max-w-2xl text-ink-muted">
+            <Reveal as="p" key={para} className="mt-4 max-w-2xl text-lead text-ink-muted">
               {para}
             </Reveal>
           ))}
@@ -254,10 +254,8 @@ export default function Home() {
                 >
                   {tier.detail}
                 </p>
-                <a
+                <Link
                   href={SITE.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={`mt-6 inline-block font-mono text-sm underline decoration-2 underline-offset-[6px] ${
                     tier.featured
                       ? "decoration-marker hover:text-marker"
@@ -265,7 +263,7 @@ export default function Home() {
                   }`}
                 >
                   Start here →
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -299,14 +297,12 @@ export default function Home() {
             <p className="mt-6 max-w-2xl text-lead text-paper/75">
               {FINAL_CTA.sub}
             </p>
-            <a
+            <Link
               href={FINAL_CTA.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-marker px-7 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-chartreuse"
             >
               {FINAL_CTA.cta} →
-            </a>
+            </Link>
           </div>
         </section>
       </main>

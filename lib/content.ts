@@ -8,18 +8,29 @@ export const SITE = {
   url: "https://shesthefronz.com",
   tagline: "Build the system. Own the growth.",
   description:
-    "Fronz helps founders get understood by their customers and found by the AI those customers ask — lean systems you own, not agencies you rent.",
+    "Be clearly understood by your customers and found by the AI those customers ask — lean systems you own, not agencies you rent.",
   email: "stacey@shesthefronz.com",
-  // TODO: replace with the live Calendly link once the booking page is published.
-  bookingUrl: "https://calendly.com/shesthefronz",
+  /** On-site booking page — keeps the customer on shesthefronz.com. */
+  bookingUrl: "/book",
 } as const;
+
+/** Calendly inline embed URL (override in Vercel via NEXT_PUBLIC_CALENDLY_URL). */
+const CALENDLY_EMBED_URL =
+  "https://calendly.com/fronzz/initial-consult?background_color=f3efe4&text_color=1c1e17&primary_color=1c1e17";
+
+/** Calendly event URL for the inline embed on /book. */
+export function calendlyUrl(): string {
+  return process.env.NEXT_PUBLIC_CALENDLY_URL ?? CALENDLY_EMBED_URL;
+}
+
+export const BOOKING_CTA = "Book a Pre-Jam Consult";
 
 export const HERO = {
   kicker: "Fronz — growth systems for lean founders",
   lead: "Skip the agency retainers.",
   highlight: "Build the system. Own the growth.",
-  sub: "Fronz helps founders get understood by their customers and found by the AI those customers ask — lean systems you own, not agencies you rent.",
-  cta: "Start with a GTM Clarity Jam",
+  sub: "Be clearly understood by your customers and found by the AI those customers ask — lean systems you own, not agencies you rent.",
+  cta: BOOKING_CTA,
   ctaHref: SITE.bookingUrl,
   secondaryCta: "See how it works",
   secondaryHref: "#lines",
@@ -31,11 +42,11 @@ export const PROBLEM = {
   pains: [
     {
       head: "Nobody gets what you do.",
-      body: "You can describe it five ways and none of them land. Customers bounce before they understand the value — because the gap isn't your words, it's the position underneath them. Nearly every early B2B founder mispositions; they rewrite the headline instead of deciding the position.",
+      body: "You can describe it five ways and none of them land. Customers bounce before they understand your value. The gap isn't your words; it's the position underneath them. We help you get clear on your position and build out your value prop, ideal customer profile, and marketing channels. You leave with clear tactics and systems that are built and running.",
     },
     {
       head: "AI doesn't mention you.",
-      body: "Buyers now ask ChatGPT, Perplexity, and Google's AI for a recommendation — and your competitor is the answer. Over half of B2B software buyers start in an AI chatbot, and you're not even in the room when the decision gets made.",
+      body: "Buyers now ask ChatGPT, Perplexity, and Google's AI for a recommendation — and your competitor might be the answer. Over half of B2B software buyers start in an AI chatbot. We help ensure that you're in the room when the decision gets made.",
     },
   ],
 } as const;
@@ -99,7 +110,7 @@ export const PROOF = {
 
 export const SUPPORT = {
   kicker: "[06] The support model",
-  heading: "I make my money building — not babysitting.",
+  heading: "I build it. You own it.",
   promise:
     "My job is to make your team self-sufficient, then be there when the world changes — not bill you while it doesn't.",
   rows: [
@@ -152,11 +163,18 @@ export const LEAD = {
   button: "Send it to me",
 } as const;
 
+export const BOOK = {
+  kicker: "Book a consult",
+  heading: "Pick a time for your initial call.",
+  sub: "Choose a slot below — you'll stay on this site the whole way through. The GTM Clarity Jam is a 2-hour working session; we'll find your one sentence and your one wedge.",
+  note: "You'll get a confirmation email with everything you need. Reschedule anytime from that email.",
+} as const;
+
 export const FINAL_CTA = {
   kicker: "[09] One next step",
   heading: "Selling five things to everyone and nothing's landing?",
   sub: "In two hours we'll find your one sentence and your one wedge. That's the Jam.",
-  cta: "Book a GTM Clarity Jam",
+  cta: BOOKING_CTA,
   href: SITE.bookingUrl,
 } as const;
 
