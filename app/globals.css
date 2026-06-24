@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/* Fronz — "Legible" design system                                     */
+/* Warm editorial + a systems edge. Discipline over decoration.        */
+/* ------------------------------------------------------------------ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color */
+  --paper: #f3efe4; /* warm bone background */
+  --paper-sink: #ece7d8; /* alternating section bg */
+  --ink: #1c1e17; /* warm near-black, olive undertone */
+  --ink-muted: #5a5c50; /* secondary text */
+  --line: #d9d3c4; /* hairline rules */
+  --chartreuse: #a8b560; /* sage-pear accent + highlighter */
+  --chartreuse-deep: #6f7d33; /* AA links / interactive on paper */
+  --marker: #b9c766; /* highlighter swipe fill */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-sink: var(--paper-sink);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-chartreuse: var(--chartreuse);
+  --color-chartreuse-deep: var(--chartreuse-deep);
+  --color-marker: var(--marker);
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-figtree);
+  --font-mono: var(--font-space-mono);
+
+  /* Fluid type scale (clamp) */
+  --text-kicker: 0.78rem;
+  --text-display: clamp(2.75rem, 7vw, 6.5rem);
+  --text-h2: clamp(2rem, 4.5vw, 3.5rem);
+  --text-h3: clamp(1.35rem, 2vw, 1.75rem);
+  --text-lead: clamp(1.15rem, 1.6vw, 1.5rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings default to the editorial serif */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 540;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+/* Monospace utility for labels, indices, prices, metrics */
+.font-mono,
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Kicker / eyebrow label */
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* Links — layered so Tailwind color utilities (e.g. text-paper) win */
+@layer base {
+  a {
+    color: inherit;
+  }
+}
+
+/* Branded selection — the highlighter, literally */
+::selection {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+/* Friendlier paragraph wrapping */
+p {
+  text-wrap: pretty;
+}
+
+/* Accessible focus ring */
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--chartreuse-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Paper grain — "sovereign human texture" (anti-AI-slop)             */
+/* ------------------------------------------------------------------ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------ */
+/* Signature motion: blur -> sharp on reveal ("fog -> legible")       */
+/* Content is visible by default; hidden only once JS adds            */
+/* html.reveal-ready (progressive enhancement).                       */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+html.reveal-ready .reveal:not(.is-visible) {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Hairline divider */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
 }
