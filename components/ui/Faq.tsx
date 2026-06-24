@@ -33,7 +33,7 @@ export function Faq({ items }: { items: { q: string; a: string }[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-2xl text-ink-muted">{item.a}</p>
+                <p className="text-ink-muted">{item.a}</p>
               </div>
             </div>
           </div>

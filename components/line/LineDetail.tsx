@@ -45,7 +45,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
               {line.name}.{" "}
               <Highlight>{line.promise}</Highlight>
             </h1>
-            <p className="mt-8 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
+            <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
               {line.heroSub}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -68,7 +68,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
         {/* PROBLEM */}
         <Section sink={sink.problem}>
           <Kicker>The problem</Kicker>
-          <Reveal as="h2" className="max-w-[20ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {line.problem.heading}
           </Reveal>
           <div className="mt-12 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
@@ -85,7 +85,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
           {line.problem.punch && (
             <Reveal
               as="p"
-              className="mt-10 max-w-2xl font-serif text-[length:var(--text-h3)] leading-snug"
+              className="mt-10 font-serif text-[length:var(--text-h3)] leading-snug"
             >
               {line.problem.punch}
             </Reveal>
@@ -121,7 +121,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
               {line.domains.heading}
             </Reveal>
             {line.domains.sub && (
-              <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+              <Reveal as="p" className="mt-5 text-lead text-ink-muted">
                 {line.domains.sub}
               </Reveal>
             )}
@@ -162,7 +162,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
               ))}
             </div>
             {line.domains.note && (
-              <Reveal as="p" className="mt-8 max-w-3xl font-mono text-sm text-ink-muted">
+              <Reveal as="p" className="mt-8 font-mono text-sm text-ink-muted">
                 {line.domains.note}
               </Reveal>
             )}
@@ -196,7 +196,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             {line.method.heading}
           </Reveal>
           {line.method.sub && (
-            <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+            <Reveal as="p" className="mt-5 text-lead text-ink-muted">
               {line.method.sub}
             </Reveal>
           )}
@@ -248,7 +248,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             {line.tiers.heading}
           </Reveal>
           {line.tiers.sub && (
-            <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+            <Reveal as="p" className="mt-5 text-lead text-ink-muted">
               {line.tiers.sub}
             </Reveal>
           )}
@@ -389,10 +389,10 @@ export function LineDetail({ line }: { line: LineDetailData }) {
         {/* WHERE IT FITS (intersections) */}
         <Section sink={sink.whereFits}>
           <Kicker>Where it fits</Kicker>
-          <Reveal as="h2" className="max-w-[22ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             One arc: clarify, get found, get command.
           </Reveal>
-          <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+          <Reveal as="p" className="mt-5 text-lead text-ink-muted">
             Each line stands alone, and each makes the next one work harder.
             Start where you're stuck; grow into the rest.
           </Reveal>
@@ -416,10 +416,10 @@ export function LineDetail({ line }: { line: LineDetailData }) {
         <section id="book" className="bg-ink text-paper">
           <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
             <p className="kicker mb-6 text-paper/60">One next step</p>
-            <h2 className="max-w-[20ch] text-[length:var(--text-h2)] text-paper">
+            <h2 className="text-[length:var(--text-h2)] text-paper">
               {line.cta.heading}
             </h2>
-            <p className="mt-6 max-w-2xl text-lead text-paper/75">
+            <p className="mt-6 text-lead text-paper/75">
               {line.cta.sub}
             </p>
             <Link

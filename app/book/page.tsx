@@ -30,10 +30,10 @@ export default function BookPage() {
               <span className="text-ink">Book</span>
             </nav>
             <p className="kicker mb-6">{BOOK.kicker}</p>
-            <h1 className="max-w-[20ch] text-[length:var(--text-h2)]">
+            <h1 className="text-[length:var(--text-h2)]">
               {BOOK.heading}
             </h1>
-            <p className="mt-6 max-w-2xl text-lead text-ink-muted">{BOOK.sub}</p>
+            <p className="mt-6 text-lead text-ink-muted">{BOOK.sub}</p>
           </div>
         </section>
 

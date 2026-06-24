@@ -33,7 +33,7 @@ export default function Home() {
               {HERO.lead}{" "}
               <Highlight>{HERO.highlight}</Highlight>
             </h1>
-            <p className="mt-8 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
+            <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
               {HERO.sub}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -43,7 +43,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-16 grid max-w-3xl grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-2">
+            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-2">
               {LINES.items.map((line) => (
                 <div key={line.id} className="bg-paper px-1 py-4 sm:px-0">
                   <p className="font-serif text-lg">{line.name}</p>
@@ -59,7 +59,7 @@ export default function Home() {
         {/* [02] PROBLEM -------------------------------------------- */}
         <Section id="problem" sink>
           <Kicker>{PROBLEM.kicker}</Kicker>
-          <Reveal as="h2" className="max-w-[18ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {PROBLEM.heading}
           </Reveal>
           <div className="mt-14 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
@@ -84,17 +84,17 @@ export default function Home() {
         {/* [03] THE PLAYBOOK (the three lines) -------------------- */}
         <Section id="lines">
           <Kicker>{LINES.kicker}</Kicker>
-          <Reveal as="h2" className="max-w-[18ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {LINES.heading}
           </Reveal>
           <Reveal className="mt-6 font-serif text-[length:var(--text-h3)] leading-snug">
             {LINES.calloutPre} <Highlight>{LINES.calloutHighlight}</Highlight>
           </Reveal>
-          <Reveal as="p" className="mt-8 max-w-2xl text-lead text-ink-muted">
+          <Reveal as="p" className="mt-8 text-lead text-ink-muted">
             {LINES.lead}
           </Reveal>
           {LINES.approach.map((para) => (
-            <Reveal as="p" key={para} className="mt-4 max-w-2xl text-lead text-ink-muted">
+            <Reveal as="p" key={para} className="mt-4 text-lead text-ink-muted">
               {para}
             </Reveal>
           ))}
@@ -173,16 +173,28 @@ export default function Home() {
               </span>
             ))}
           </div>
-          <p className="mt-10 font-mono text-sm text-ink-muted">{PROOF.note}</p>
+          <p className="mt-10 font-mono text-sm text-ink-muted">
+            {PROOF.note}{" "}
+            {PROOF.portfolio.lead}{" "}
+            <a
+              href={PROOF.portfolio.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-marker underline-offset-2 transition-colors hover:text-ink"
+            >
+              {PROOF.portfolio.label}
+            </a>
+            .
+          </p>
         </Section>
 
         {/* [06] SUPPORT MODEL ------------------------------------- */}
         <Section id="support" sink>
           <Kicker>{SUPPORT.kicker}</Kicker>
-          <Reveal as="h2" className="max-w-[20ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {SUPPORT.heading}
           </Reveal>
-          <Reveal as="p" className="mt-6 max-w-2xl text-lead text-ink-muted">
+          <Reveal as="p" className="mt-6 text-lead text-ink-muted">
             {SUPPORT.promise}
           </Reveal>
 
@@ -224,7 +236,7 @@ export default function Home() {
           <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {PRICING.heading}
           </Reveal>
-          <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+          <Reveal as="p" className="mt-5 text-lead text-ink-muted">
             {PRICING.sub}
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -279,7 +291,7 @@ export default function Home() {
               <Reveal as="h2" className="text-[length:var(--text-h2)]">
                 {LEAD.heading}
               </Reveal>
-              <Reveal as="p" className="mt-5 max-w-xl text-ink-muted">
+              <Reveal as="p" className="mt-5 text-ink-muted">
                 {LEAD.body}
               </Reveal>
             </div>
@@ -293,10 +305,10 @@ export default function Home() {
         <section id="book" className="bg-ink text-paper">
           <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
             <p className="kicker mb-6 text-paper/60">{FINAL_CTA.kicker}</p>
-            <h2 className="max-w-[20ch] text-[length:var(--text-h2)] text-paper">
+            <h2 className="text-[length:var(--text-h2)] text-paper">
               {FINAL_CTA.heading}
             </h2>
-            <p className="mt-6 max-w-2xl text-lead text-paper/75">
+            <p className="mt-6 text-lead text-paper/75">
               {FINAL_CTA.sub}
             </p>
             <Link

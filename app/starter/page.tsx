@@ -56,10 +56,10 @@ export default function StarterPage() {
               See your whole business{" "}
               <Highlight>{STARTER.highlight}</Highlight>
             </h1>
-            <p className="mt-8 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
+            <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
               {STARTER.sub}
             </p>
-            <p className="mt-6 max-w-2xl font-serif text-xl">
+            <p className="mt-6 font-serif text-xl">
               {STARTER.instruction}
             </p>
           </div>
@@ -98,7 +98,7 @@ export default function StarterPage() {
             <Reveal as="h2" className="text-[length:var(--text-h3)]">
               {STARTER.templatesHeading}
             </Reveal>
-            <p className="mt-3 max-w-2xl text-ink-muted">
+            <p className="mt-3 text-ink-muted">
               {STARTER.templatesNote}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -128,10 +128,10 @@ export default function StarterPage() {
 
         {/* The wall ---------------------------------------------- */}
         <Section sink>
-          <Reveal as="h2" className="max-w-[22ch] text-[length:var(--text-h2)]">
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {STARTER.wall.heading}
           </Reveal>
-          <p className="mt-6 max-w-2xl text-ink-muted">{STARTER.wall.body}</p>
+          <p className="mt-6 text-ink-muted">{STARTER.wall.body}</p>
           <ul className="mt-8 grid gap-3 md:grid-cols-2">
             {STARTER.wall.quotes.map((quote) => (
               <li
@@ -168,7 +168,7 @@ export default function StarterPage() {
               <h2 className="text-[length:var(--text-h2)]">
                 {STARTER.ctaHeading}
               </h2>
-              <p className="mt-6 max-w-xl text-lead text-ink-muted">
+              <p className="mt-6 text-lead text-ink-muted">
                 {STARTER.ctaBody}
               </p>
               <Link

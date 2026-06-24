@@ -5,12 +5,13 @@
 
 export const SITE = {
   name: "Fronz",
-  url: "https://shesthefronz.com",
+  url: "https://fronzz.com",
   tagline: "Build the system. Own the growth.",
   description:
     "Be clearly understood by your customers and found by the AI those customers ask — lean systems you own, not agencies you rent.",
+  // Email intentionally stays on the shesthefronz.com domain (mail DNS lives there).
   email: "stacey@shesthefronz.com",
-  /** On-site booking page — keeps the customer on shesthefronz.com. */
+  /** On-site booking page — keeps the customer on fronzz.com. */
   bookingUrl: "/book",
 } as const;
 
@@ -104,6 +105,12 @@ export const PROOF = {
     "Moxa",
   ],
   note: "You get a system I've built for myself, not a deck of theory.",
+  /** Quiet credibility link to the prior portfolio — understated on purpose. */
+  portfolio: {
+    lead: "The work behind these names lives on my",
+    label: "portfolio",
+    href: "https://www.shesthefronz.com",
+  },
 } as const;
 
 export const SUPPORT = {
