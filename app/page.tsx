@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, Kicker } from "@/components/ui/Section";
@@ -128,11 +129,15 @@ export default function Home() {
         {/* [04] THE GUIDE ----------------------------------------- */}
         <Section id="guide" sink>
           <div className="grid gap-12 md:grid-cols-[1fr_1.3fr] md:items-center">
-            <Reveal className="aspect-[4/5] border border-line bg-paper">
-              {/* Real photo of Stacey goes here — editorial crop, honest light. */}
-              <div className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-widest text-ink-muted">
-                Photo: Stacey, building live
-              </div>
+            <Reveal className="relative aspect-[4/5] overflow-hidden border border-line bg-paper">
+              <Image
+                src="/stacey-fronek.jpg"
+                alt="Portrait of Stacey Fronek sitting at an outdoor cafe holding a coffee cup, smiling at the camera"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 40vw"
+                priority
+              />
             </Reveal>
             <div>
               <Kicker>{GUIDE.kicker}</Kicker>
@@ -147,9 +152,6 @@ export default function Home() {
               </Reveal>
               <Reveal as="p" className="mt-4 text-ink-muted">
                 {GUIDE.authority}
-              </Reveal>
-              <Reveal as="p" className="mt-4 text-ink-muted">
-                {GUIDE.proof}
               </Reveal>
             </div>
           </div>

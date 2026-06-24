@@ -38,7 +38,7 @@ export const HERO = {
 
 export const PROBLEM = {
   kicker: "[02] The problem",
-  heading: "Most founders don't have a marketing problem. They have a clarity problem.",
+  heading: "Most founders don't have a marketing problem. They have a clarity and visibility problem.",
   pains: [
     {
       head: "Nobody gets what you do.",
@@ -85,13 +85,11 @@ export const LINES = {
 
 export const GUIDE = {
   kicker: "[04] Who you're working with",
-  name: "Stacey Fronek",
+  name: "Stacey Fronek (aka, Fronz)",
   empathy:
-    "I'm bootstrapping Moxa with my husband — I know what it's like to need results without overhead.",
+    "I'm a serial founder — from tech startups to marketing agencies. I know what it's like to need results without overhead.",
   authority:
-    "A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs — now productized so a lean team can actually use it.",
-  proof:
-    "I build all of it at my own company, Moxa, first. You get a system I've built for myself, not a deck of theory.",
+    "I've been producing marketing deliverables for over a decade for companies such as PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs — my stress-tested systems are now productized so a lean team can actually use it.",
 } as const;
 
 export const PROOF = {
@@ -105,7 +103,7 @@ export const PROOF = {
     "Protocol Labs",
     "Moxa",
   ],
-  note: "Every method I sell, I build into my own company first.",
+  note: "You get a system I've built for myself, not a deck of theory.",
 } as const;
 
 export const SUPPORT = {
