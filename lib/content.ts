@@ -141,7 +141,7 @@ export const PRICING = {
       line: "GTM Clarity",
       entry: "GTM Clarity Jam",
       price: "$1,500",
-      detail: "2-hour 1:1, recorded. Your one sentence + your one wedge, with a recap artifact.",
+      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a sentence, a 90-day plan, and a recap you act on Monday.",
       featured: true,
     },
     {
@@ -191,11 +191,8 @@ export const STARTER = {
   heading: "See your whole business on one page.",
   highlight: "on one page.",
   sub: "A 20-minute exercise to get your offers, your people, and how you reach them in front of you — so the gaps become obvious. The warm-up for the GTM Clarity Jam.",
-  intro:
-    "You know what you do. Putting it into words that land is the hard part. This isn't about clever copy — it's about seeing your offers, your people, and how you reach them all in one place, so the gaps become obvious.",
   instruction:
     "Do this honestly and roughly. Messy is fine — messy is the point. Keep your first-instinct answers; don't polish them yet.",
-  tip: "Work in a visual board (FigJam, Miro, even sticky notes) or grab a template below. Make a node for each item — you'll connect them at the end.",
   parts: [
     {
       n: "01",
@@ -231,7 +228,7 @@ export const STARTER = {
     },
   ],
   wall: {
-    heading: "You'll probably hit a wall here — that's expected.",
+    heading: "You might hit a wall here — that's expected.",
     body: "Most founders get to Part 4 and feel one of these:",
     quotes: [
       "“I'm describing the same thing five different ways.”",
@@ -239,15 +236,18 @@ export const STARTER = {
       "“I have way more offers and audiences than I can focus on.”",
       "“My best customers and my best channels don't line up.”",
     ],
-    punch:
-      "That wall is the most valuable part. It's not a copywriting problem — it's a positioning decision waiting to be made. Pushing through it is exactly what the GTM Clarity Jam does: in two hours we turn this map into one clear sentence and one decided wedge — the single offer, customer, and channel to focus on next.",
+    punchHead: "That wall is the most valuable part.",
+    punchLine:
+      "It's not a copywriting problem. It's a positioning decision waiting to be made.",
+    sellHighlight: "That's the whole job of the GTM Clarity Jam.",
+    sell: "In two hours of live, senior work we make the calls the Starter surfaces: we separate what you actually sell from how people find it, decide your position, cut your customer list to the one that's urgent, and map why your best-fit buyers aren't converting. You leave with a decided wedge, a sentence you can say out loud, and a 90-day plan you own.",
   },
-  templatesHeading: "Want a head start? Grab a template.",
+  templatesHeading: "Grab a template.",
   templatesNote:
     "Make your own copy and work in it — it's yours to keep. Or use any board you like.",
   ctaHeading: "Bring this with you.",
   ctaBody:
-    "Finished, or stuck? Book a GTM Clarity Jam and send your map ahead. We'll start from it — no wasted time — and you'll leave with a sentence you can say out loud and a 90-day focus.",
+    "Finished, or stuck? Book a GTM Clarity Jam and send your map ahead so we start from it, not from scratch. In two hours we make the calls the Starter surfaces: what you actually sell, who it's urgently for, and the one wedge to run. You leave with a decided position and a 90-day plan you own.",
   cta: "Book your GTM Clarity Jam",
   footnote: "Fronz · clarity, not clever.",
 } as const;
@@ -270,14 +270,13 @@ export const STARTER_FORM = {
 export const BOOK = {
   kicker: "Book a consult",
   heading: "Pick a time for your initial call.",
-  sub: "Choose a slot below — you'll stay on this site the whole way through. The GTM Clarity Jam is a 2-hour working session; we'll find your one sentence and your one wedge.",
-  note: "You'll get a confirmation email with everything you need. Reschedule anytime from that email.",
+  sub: "Choose a slot below.",
 } as const;
 
 export const FINAL_CTA = {
   kicker: "[09] One next step",
   heading: "Selling five things to everyone and nothing's landing?",
-  sub: "In two hours we'll find your one sentence and your one wedge. That's the Jam.",
+  sub: "In two hours we separate what you sell from how people find it, decide your position, and pick the one wedge to run for 90 days. Decisions, not a deck. That's the Jam.",
   cta: BOOKING_CTA,
   href: SITE.bookingUrl,
 } as const;

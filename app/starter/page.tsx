@@ -59,15 +59,38 @@ export default function StarterPage() {
             <p className="mt-8 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
               {STARTER.sub}
             </p>
-            <p className="mt-6 max-w-2xl text-ink-muted">{STARTER.intro}</p>
-            <p className="mt-4 max-w-2xl font-serif text-xl">
+            <p className="mt-6 max-w-2xl font-serif text-xl">
               {STARTER.instruction}
-            </p>
-            <p className="mt-6 max-w-2xl border-l-2 border-marker pl-4 text-sm text-ink-muted">
-              {STARTER.tip}
             </p>
           </div>
         </section>
+
+        {/* The exercise ------------------------------------------ */}
+        <Section>
+          <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+            {STARTER.parts.map((part, i) => (
+              <Reveal key={part.n} delay={i * 90} className="bg-paper p-8">
+                <span className="font-mono text-xs text-chartreuse-deep">
+                  {part.n}
+                </span>
+                <h3 className="mt-4 text-[length:var(--text-h3)]">
+                  {part.title}
+                </h3>
+                <p className="mt-3 text-ink-muted">{part.body}</p>
+                <ul className="mt-5 space-y-2">
+                  {part.prompts.map((prompt) => (
+                    <li
+                      key={prompt}
+                      className="border-l-2 border-line pl-3 font-mono text-sm text-ink-muted"
+                    >
+                      {prompt}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
 
         {/* Templates --------------------------------------------- */}
         {hasTemplates && (
@@ -103,33 +126,6 @@ export default function StarterPage() {
           </Section>
         )}
 
-        {/* The exercise ------------------------------------------ */}
-        <Section>
-          <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-            {STARTER.parts.map((part, i) => (
-              <Reveal key={part.n} delay={i * 90} className="bg-paper p-8">
-                <span className="font-mono text-xs text-chartreuse-deep">
-                  {part.n}
-                </span>
-                <h3 className="mt-4 text-[length:var(--text-h3)]">
-                  {part.title}
-                </h3>
-                <p className="mt-3 text-ink-muted">{part.body}</p>
-                <ul className="mt-5 space-y-2">
-                  {part.prompts.map((prompt) => (
-                    <li
-                      key={prompt}
-                      className="border-l-2 border-line pl-3 font-mono text-sm text-ink-muted"
-                    >
-                      {prompt}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
         {/* The wall ---------------------------------------------- */}
         <Section sink>
           <Reveal as="h2" className="max-w-[22ch] text-[length:var(--text-h2)]">
@@ -146,8 +142,22 @@ export default function StarterPage() {
               </li>
             ))}
           </ul>
-          <Reveal as="p" className="mt-10 max-w-2xl text-lead">
-            {STARTER.wall.punch}
+
+          <Reveal className="mt-14 border-t border-line pt-10">
+            <p className="font-serif text-[length:var(--text-h2)] leading-tight">
+              <Highlight>{STARTER.wall.punchHead}</Highlight>
+            </p>
+            <div className="mt-8 grid gap-x-12 gap-y-6 md:grid-cols-2">
+              <p className="text-lead text-ink-muted">
+                {STARTER.wall.punchLine}
+              </p>
+              <p className="text-lead">
+                <span className="font-semibold text-ink">
+                  {STARTER.wall.sellHighlight}
+                </span>{" "}
+                {STARTER.wall.sell}
+              </p>
+            </div>
           </Reveal>
         </Section>
 

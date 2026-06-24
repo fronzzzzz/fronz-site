@@ -14,6 +14,10 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://assets.calendly.com/assets/external/widget.css"
+      />
       <Header />
       <main>
         <section className="border-b border-line">
@@ -30,7 +34,6 @@ export default function BookPage() {
               {BOOK.heading}
             </h1>
             <p className="mt-6 max-w-2xl text-lead text-ink-muted">{BOOK.sub}</p>
-            <p className="mt-4 max-w-2xl text-sm text-ink-muted">{BOOK.note}</p>
           </div>
         </section>
 

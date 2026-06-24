@@ -116,7 +116,7 @@ export const schemaGraph = {
           "@type": "Offer",
           name: "GTM Clarity Jam",
           description:
-            "A 2-hour 1:1 workshop that produces your core positioning sentence and launch wedge.",
+            "A 2-hour 1:1 working session that separates product from channel from monetization model, decides your positioning, and produces your core sentence, your focus wedge, and a 90-day plan.",
           price: "1500",
           priceCurrency: "USD",
           category: "GTM Clarity",
