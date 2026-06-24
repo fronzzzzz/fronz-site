@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
     { url: SITE.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE.url}/starter`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE.url}/book`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     ...LINE_SLUGS.map((slug) => ({
       url: `${SITE.url}/${slug}`,

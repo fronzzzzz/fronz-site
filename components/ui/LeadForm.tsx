@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { LEAD, SITE } from "@/lib/content";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function LeadForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -23,24 +25,38 @@ export function LeadForm() {
         body: JSON.stringify({ email: email.trim() }),
       });
 
-      if (res.ok) {
-        setStatus("success");
-        return;
+      // Capture the email if we can — but don't block access to the Starter
+      // on it. Email delivery is off until the sending domain is verified, so
+      // the Starter is delivered instantly by sending them to the page.
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        // 503 = capture not configured yet; still let them through.
+        if (res.status !== 503) {
+          setError(data?.error ?? "Something went wrong. Please try again.");
+          setStatus("error");
+          return;
+        }
       }
 
-      const data = await res.json().catch(() => null);
-      setError(data?.error ?? "Something went wrong. Please try again.");
-      setStatus("error");
+      setStatus("success");
+      router.push(LEAD.href);
     } catch {
-      setError("Couldn't reach the server. Please try again.");
-      setStatus("error");
+      // Network hiccup shouldn't gate the free resource.
+      setStatus("success");
+      router.push(LEAD.href);
     }
   }
 
   if (status === "success") {
     return (
       <p className="font-mono text-sm text-chartreuse-deep">
-        You're on the list. Watch {email} for the GTM Clarity Starter.
+        Opening your GTM Clarity Starter…{" "}
+        <a
+          href={LEAD.href}
+          className="underline decoration-marker underline-offset-2 hover:text-ink"
+        >
+          Tap here if it doesn't load.
+        </a>
       </p>
     );
   }
