@@ -254,7 +254,7 @@ export const STARTER = {
   ctaBody:
     "Finished, or stuck? Book a GTM Clarity Jam and send your map ahead so we start from it, not from scratch. In two hours we make the calls the Starter surfaces: what you actually sell, who it's urgently for, and the one wedge to run. You leave with a decided position and a 90-day plan you own.",
   cta: "Book your GTM Clarity Jam",
-  footnote: "Fronz · clarity, not clever.",
+  footnote: "Fronz · building systems to give lean teams an outsized presence.",
 } as const;
 
 /** Optional "send your map ahead of the Jam" capture on /starter. */

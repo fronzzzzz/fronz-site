@@ -12,8 +12,7 @@ export function Footer() {
               <span className="text-chartreuse-deep">.</span>
             </p>
             <p className="mt-3 text-ink-muted">
-              Lean systems you own, not agencies you rent. Built live at Moxa,
-              first.
+              Building systems to give lean teams an outsized presence.
             </p>
           </div>
 
