@@ -4,6 +4,7 @@ import "./globals.css";
 import { RevealReady } from "@/components/ui/RevealReady";
 import { SITE } from "@/lib/content";
 import { schemaGraph } from "@/lib/schema";
+import { Analytics } from "@vercel/analytics/next";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -74,6 +75,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
