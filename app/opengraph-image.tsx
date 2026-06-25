@@ -6,19 +6,19 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const PAPER = "#f3efe4";
-const PAPER_SINK = "#ece7d8";
 const INK = "#1c1e17";
 const INK_MUTED = "#5a5c50";
 const LINE = "#d9d3c4";
 const MARKER = "#b9c766";
 const CHARTREUSE_DEEP = "#6f7d33";
 
+const [HIGHLIGHT_FIRST, HIGHLIGHT_SECOND] = HERO.highlight.split(/(?<=\.)\s+/);
+
 async function loadGoogleFont(family: string, weight: number) {
   const css = await fetch(
     `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}`,
     {
       headers: {
-        // Google serves woff2 to modern clients.
         "User-Agent":
           "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
       },
@@ -36,6 +36,46 @@ async function loadGoogleFont(family: string, weight: number) {
   return fetch(resource).then((res) => res.arrayBuffer());
 }
 
+function HeadlineLine({
+  children,
+  highlighted = false,
+}: {
+  children: string;
+  highlighted?: boolean;
+}) {
+  return (
+    <div style={{ position: "relative", display: "flex" }}>
+      {highlighted && (
+        <div
+          style={{
+            position: "absolute",
+            left: -8,
+            right: -8,
+            bottom: 6,
+            height: 48,
+            background: MARKER,
+            opacity: 0.85,
+            borderRadius: 2,
+          }}
+        />
+      )}
+      <p
+        style={{
+          margin: 0,
+          fontSize: 56,
+          fontWeight: 600,
+          lineHeight: 1.15,
+          letterSpacing: "-0.02em",
+          color: INK,
+          position: "relative",
+        }}
+      >
+        {children}
+      </p>
+    </div>
+  );
+}
+
 export default async function Image() {
   const [fraunces, spaceMono] = await Promise.all([
     loadGoogleFont("Fraunces", 600),
@@ -49,104 +89,54 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           background: PAPER,
           fontFamily: "Fraunces",
         }}
       >
-        {/* Left editorial band — mirrors alternating section rhythm */}
         <div
           style={{
-            width: 12,
-            height: "100%",
-            background: PAPER_SINK,
-            borderRight: `1px solid ${LINE}`,
-          }}
-        />
-
-        <div
-          style={{
-            flex: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "56px 64px 52px",
+            alignItems: "flex-start",
+            width: 920,
+            gap: 8,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {/* Kicker */}
-            <p
-              style={{
-                margin: 0,
-                fontFamily: "Space Mono",
-                fontSize: 13,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: INK_MUTED,
-              }}
-            >
-              {HERO.kicker}
-            </p>
+          <p
+            style={{
+              margin: "0 0 12px",
+              fontFamily: "Space Mono",
+              fontSize: 13,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: INK_MUTED,
+            }}
+          >
+            {HERO.kicker}
+          </p>
 
-            {/* Hero headline */}
-            <p
-              style={{
-                margin: "28px 0 0",
-                fontSize: 62,
-                fontWeight: 600,
-                lineHeight: 1.02,
-                letterSpacing: "-0.02em",
-                color: INK,
-                maxWidth: 900,
-              }}
-            >
-              {HERO.lead}
-            </p>
+          <HeadlineLine>{HERO.lead}</HeadlineLine>
+          <HeadlineLine highlighted>{HIGHLIGHT_FIRST}</HeadlineLine>
+          <HeadlineLine>{HIGHLIGHT_SECOND}</HeadlineLine>
 
-            {/* Highlighted tagline — marker swipe + brand phrase */}
-            <div
-              style={{
-                marginTop: 8,
-                position: "relative",
-                display: "flex",
-                maxWidth: 920,
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  left: -8,
-                  right: -8,
-                  bottom: 6,
-                  height: 52,
-                  background: MARKER,
-                  opacity: 0.85,
-                  borderRadius: 2,
-                }}
-              />
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 62,
-                  fontWeight: 600,
-                  lineHeight: 1.02,
-                  letterSpacing: "-0.02em",
-                  color: INK,
-                  position: "relative",
-                }}
-              >
-                {HERO.highlight}
-              </p>
-            </div>
-          </div>
-
-          {/* Footer rule + wordmark */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div
+            style={{
+              marginTop: 28,
+              display: "flex",
+              flexDirection: "column",
+              gap: 20,
+              width: "100%",
+            }}
+          >
             <div style={{ height: 1, background: LINE, width: "100%" }} />
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "flex-end",
+                width: "100%",
               }}
             >
               <p
