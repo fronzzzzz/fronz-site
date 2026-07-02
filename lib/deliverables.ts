@@ -439,7 +439,7 @@ const sanctuary: CaseStudy = {
     kicker: "Questions?",
     heading: "You've got the map. Let's turn it into a running system.",
     sub:
-      "The natural next step is Map + Playbook: the fastest path from the roadmap above to a locked pitch sentence, a mid-tier offer, and an outreach engine your team can run. Book a 20-minute call and we'll scope it against your Option A/B choice.",
+      "The natural next step is the Outreach Playbook: the fastest path from the roadmap above to a locked pitch sentence, a mid-tier offer, and the outreach system your team can run. Book a 20-minute call and we'll scope it against your Option A/B choice.",
     button: "Book a call to discuss",
     href: "/book",
   },

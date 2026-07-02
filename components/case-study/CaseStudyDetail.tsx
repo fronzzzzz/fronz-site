@@ -743,38 +743,41 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
             Rung 02 &middot; The next natural step
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)] text-paper">
-            Map + Playbook
+            Outreach Playbook
           </h3>
-          <p className="mt-4 font-mono text-4xl">$5,000</p>
+          <p className="mt-4 font-mono text-4xl">$7,500</p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-widest text-marker">
+            Founder · from $6,000 after a Jam
+          </p>
           <p className="mt-4 font-serif text-lg text-paper/85">
-            Turn the plan into a runnable system: messaging, ICPs, the full
-            map, and the first-wedge outreach playbook.
+            Turn the decision into the running outreach system a team can
+            operate: messaging, ICP, channels, cadence, metrics.
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-paper/75">
             <li className="flex gap-3">
               <span className="text-marker" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Productized messaging + refined ICP profiles</span>
+              <span>Productized messaging set + one formalized ICP</span>
             </li>
             <li className="flex gap-3">
               <span className="text-marker" aria-hidden="true">
                 &mdash;
               </span>
-              <span>The full GTM map with the wedge locked</span>
+              <span>Channel selection with cadence templates and metrics</span>
             </li>
             <li className="flex gap-3">
               <span className="text-marker" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Sequenced 90-day plan &amp; outreach cadence</span>
+              <span>Team enablement in a working handoff session</span>
             </li>
           </ul>
           <Link
             href="/gtm-clarity#pricing"
             className="mt-8 inline-block font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] hover:text-marker"
           >
-            See Map + Playbook &rarr;
+            See Outreach Playbook &rarr;
           </Link>
         </Reveal>
 
@@ -786,10 +789,13 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
             Rung 03 &middot; The full execution
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)]">GTM Build</h3>
-          <p className="mt-4 font-mono text-4xl">$15k&ndash;$25k</p>
+          <p className="mt-4 font-mono text-4xl">$30,000</p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
+            Founder · 12 weeks embedded
+          </p>
           <p className="mt-4 font-serif text-lg text-ink">
-            We build the machine and get it running. Every &ldquo;next
-            step&rdquo; in this case study, executed.
+            12 weeks embedded with your team. We run the system live, and
+            progressively hand it off so your team owns it by week 12.
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-ink-muted">
             <li className="flex gap-3">
@@ -802,13 +808,13 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
               <span className="text-chartreuse-deep" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Channel + content infrastructure stood up</span>
+              <span>Channel + content infrastructure stood up and running</span>
             </li>
             <li className="flex gap-3">
               <span className="text-chartreuse-deep" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Team trained to operate it without us</span>
+              <span>Progressive team ownership, complete by week 12</span>
             </li>
           </ul>
           <Link
@@ -901,13 +907,16 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             </span>
           </div>
           <h3 className="mt-3 text-[length:var(--text-h3)] text-paper">
-            Map + Playbook
+            Outreach Playbook
           </h3>
-          <p className="mt-4 font-mono text-4xl">$5,000</p>
+          <p className="mt-4 font-mono text-4xl">$7,500</p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-widest text-marker">
+            Founder · net $6,000 after your Jam
+          </p>
           <p className="mt-4 font-serif text-lg text-paper/85">
-            Turn the roadmap above into a runnable system. This is the fastest,
-            cleanest path from &ldquo;we decided&rdquo; to &ldquo;we&rsquo;re
-            selling.&rdquo;
+            Turn the roadmap above into a running outreach system your team
+            can operate. The fastest, cleanest path from &ldquo;we
+            decided&rdquo; to &ldquo;we&rsquo;re selling.&rdquo;
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-paper/75">
             <li className="flex gap-3">
@@ -957,10 +966,13 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             Rung 03 &middot; If you want it built
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)]">GTM Build</h3>
-          <p className="mt-4 font-mono text-4xl">$15k&ndash;$25k</p>
+          <p className="mt-4 font-mono text-4xl">$30,000</p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
+            Founder · 12 weeks embedded
+          </p>
           <p className="mt-4 font-serif text-lg text-ink">
-            Every &ldquo;next step&rdquo; in this document, executed
-            done-with-you.
+            12 weeks embedded. Every &ldquo;next step&rdquo; in this document,
+            run live with your team until you own it.
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-ink-muted">
             <li className="flex gap-3">
@@ -991,8 +1003,8 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             </li>
           </ul>
           <p className="mt-6 border-l-2 border-line pl-3 text-xs italic text-ink-muted">
-            Best fit after Map + Playbook. Consider this once the wedge is
-            proven.
+            Best fit after Outreach Playbook. Consider this once the
+            wedge is proven.
           </p>
         </Reveal>
       </div>

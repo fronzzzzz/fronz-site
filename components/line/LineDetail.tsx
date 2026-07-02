@@ -280,21 +280,70 @@ export function LineDetail({ line }: { line: LineDetailData }) {
                     : "border-line bg-paper"
                 }`}
               >
-                {tier.meta && (
-                  <p
-                    className={`font-mono text-xs uppercase tracking-widest ${
-                      tier.featured ? "text-marker" : "text-chartreuse-deep"
-                    }`}
-                  >
-                    {tier.meta}
-                  </p>
-                )}
                 <h3
-                  className={`mt-3 text-[length:var(--text-h3)] ${tier.featured ? "text-paper" : ""}`}
+                  className={`text-[length:var(--text-h3)] ${tier.featured ? "text-paper" : ""}`}
                 >
                   {tier.name}
                 </h3>
-                <p className="mt-4 font-mono text-4xl">{tier.price}</p>
+                {tier.teamPrice ? (
+                  <div
+                    className={`mt-5 grid grid-cols-2 divide-x ${
+                      tier.featured ? "divide-paper/25" : "divide-line"
+                    }`}
+                  >
+                    <div className="pr-4">
+                      <p
+                        className={`font-mono text-[0.65rem] uppercase tracking-widest ${
+                          tier.featured ? "text-marker" : "text-chartreuse-deep"
+                        }`}
+                      >
+                        Founder
+                      </p>
+                      <p className="mt-2 font-mono text-3xl">{tier.price}</p>
+                      {tier.meta && (
+                        <p
+                          className={`mt-2 text-[0.7rem] leading-snug ${
+                            tier.featured ? "text-paper/70" : "text-ink-muted"
+                          }`}
+                        >
+                          {tier.meta}
+                        </p>
+                      )}
+                    </div>
+                    <div className="pl-4">
+                      <p
+                        className={`font-mono text-[0.65rem] uppercase tracking-widest ${
+                          tier.featured ? "text-marker" : "text-chartreuse-deep"
+                        }`}
+                      >
+                        Team
+                      </p>
+                      <p className="mt-2 font-mono text-3xl">{tier.teamPrice}</p>
+                      {tier.teamMeta && (
+                        <p
+                          className={`mt-2 text-[0.7rem] leading-snug ${
+                            tier.featured ? "text-paper/70" : "text-ink-muted"
+                          }`}
+                        >
+                          {tier.teamMeta}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mt-5">
+                    <p className="font-mono text-4xl">{tier.price}</p>
+                    {tier.meta && (
+                      <p
+                        className={`mt-1 font-mono text-xs uppercase tracking-widest ${
+                          tier.featured ? "text-marker" : "text-chartreuse-deep"
+                        }`}
+                      >
+                        {tier.meta}
+                      </p>
+                    )}
+                  </div>
+                )}
                 {tier.tagline && (
                   <p
                     className={`mt-4 font-serif text-lg ${tier.featured ? "text-paper/85" : "text-ink"}`}

@@ -105,7 +105,7 @@ export const schemaGraph = {
       founder: { "@id": personId },
       email: `mailto:${SITE.email}`,
       areaServed: "Worldwide",
-      priceRange: "$1,500–$30,000+",
+      priceRange: "$1,500–$45,000+",
       knowsAbout: [
         "Go-to-market consulting",
         "Positioning workshops",

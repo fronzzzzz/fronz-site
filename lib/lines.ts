@@ -8,8 +8,14 @@ import { BOOKING_CTA } from "./content";
 
 export type Tier = {
   name: string;
+  /** Founder / entry price. */
   price: string;
+  /** Founder-tier meta line (format, duration, recording notes, etc.). */
   meta?: string;
+  /** Optional team-tier price shown alongside the founder price. */
+  teamPrice?: string;
+  /** Optional team-tier meta line. Rendered when teamPrice is present. */
+  teamMeta?: string;
   tagline?: string;
   points: string[];
   featured?: boolean;
@@ -71,7 +77,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     arcLabel: "Get clear",
     promise: "Know what to say.",
     heroSub:
-      "Get clear on what to say, to whom, and how to reach them, then build the go-to-market system that does it. GTM Clarity spans the whole arc: from deciding your one sentence and your wedge, to a formalized playbook, to a running go-to-market machine your team owns.",
+      "Get clear on what to say, to whom, and how to reach them, then build the go-to-market system that does it. GTM Clarity spans the whole arc: from deciding your one sentence and your wedge, to a formalized outreach system, to a running go-to-market your team owns by the end.",
     problem: {
       heading: "It isn't a marketing problem. It's a clarity problem.",
       points: [
@@ -91,68 +97,74 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       punch: "Nod at one of these? That's the deal you're leaving on the table.",
     },
     method: {
-      heading: "From blur to the words that land",
-      sub: "Clarity is a decision, not copy. We decide it, document it, then build the system that runs it, and you own every layer.",
+      heading: "From blur to a running system, in three moves",
+      sub: "Clarity is a decision, not copy. We decide it, document it, then run it with you until your team owns it. Each move is a complete step you can stop at.",
       steps: [
-        { n: "01", name: "Decide the position", body: "Separate product from channel from model, choose your one wedge, and land the one sentence. Positioning before tactics, every time. (This is the Jam.)" },
-        { n: "02", name: "Productize the message", body: "Turn the decision into a reusable messaging set and real, specific ICPs your whole team can use." },
-        { n: "03", name: "Map the go-to-market", body: "The full offer × customer × channel map, wedge highlighted, gaps named, plus the outreach playbook to run it." },
-        { n: "04", name: "Build & run the machine", body: "Stand up the channel and content infrastructure across multiple wedges, with your team trained to operate it without you." },
+        { n: "01", name: "Decide", body: "Separate product from channel from model, choose your one wedge, and land the one sentence. Positioning before tactics, every time. (This is the Jam.)" },
+        { n: "02", name: "Productize", body: "Turn the decision into a running outreach system: messaging set, formalized ICP, channel selection, cadence templates, and metrics. Your team can pitch, target, and reach out consistently without you in the room. (This is the Outreach Playbook.)" },
+        { n: "03", name: "Run & hand off", body: "12 weeks embedded with your team. We stand up the system, run it live, and progressively transition ownership to your team by week 12. You leave with the machine running and your team operating it. (This is the Build.)" },
       ],
     },
     tiers: {
-      heading: "Three ways in",
-      sub: "Each tier is a complete step you own. Start where you are. The Jam credits 100% toward the Map + Playbook or a Build within 30 days.",
+      heading: "Three tiers. Stop at the one that gets you where you need to go.",
+      sub: "Each tier is a complete step you own.",
       items: [
         {
           name: "GTM Clarity Jam",
           price: "$1,500",
-          meta: "2-hour 1:1 · recorded",
-          tagline: "Walk in with a blur. Walk out with a decision, a wedge, and a 90-day plan you own.",
+          meta: "1×2hr · 1:1 · recorded",
+          teamPrice: "$3,000",
+          teamMeta: "2×90min · up to 5 · recorded",
+          tagline: "Walk out with a clear customer profile, a defined product offering, and the one-sentence pitch that connects with them.",
           featured: true,
           points: [
-            "A live, recorded working session: we make the decisions together, you don't wait for a deck",
             "The core untangle: what you actually sell vs. how people find it vs. how you make money",
-            "A real positioning decision → one sentence (the alternative you beat, the value only you give)",
-            "Five customer profiles cut to the one that's urgent",
-            "A gap map that shows why your best-fit buyers aren't converting yet",
-            "Your decided wedge (offer × customer × channel) plus the one next move for 90 days",
-            "Leave-behind: a recap artifact and your Sentence one-pager, both yours to act on Monday",
-            "A diagnosis of your biggest remaining gap (reach, measurement, or deeper GTM) and what to do next",
-            "Credits 100% toward the Map + Playbook or a Build within 30 days",
+            "One positioning decision made in the room, expressed as one sentence you can say out loud",
+            "Your customer list cut to the one buyer that's urgent, with the reason why",
+            "Your wedge decided: offer × customer × channel, plus the one move to run for 90 days",
+            "A leave-behind recap and Sentence one-pager, both yours to act on Monday",
+            "Credits 100% toward the Outreach Playbook within 30 days",
           ],
         },
         {
-          name: "Map + Playbook",
-          price: "$5,000",
-          meta: "~2–3 weeks · workshop + async build",
-          tagline: "Walk out with the system to run your wedge.",
+          name: "Outreach Playbook",
+          price: "$7,500",
+          meta: "~3 weeks · net $6,000 after a Jam",
+          teamPrice: "$10,000",
+          teamMeta: "~3–4 weeks · up to 5 · net $7,000 after a Team Jam",
+          tagline: "The outreach system your team can run without you in the room.",
           points: [
-            "Productized messaging set: tagline, one-liner, elevator, audience variants, objection reframes",
-            "Refined ICP profiles (JTBD, pains, watering holes, triggers)",
-            "The full GTM map, formalized, with the wedge highlighted",
-            "First-wedge outreach playbook: channel, message, cadence, CTAs, metrics",
-            "A sequenced 90-day plan",
+            "Messaging set: sentence, audience variants, objection reframes, hooks",
+            "One formalized ICP with jobs-to-be-done, triggers, watering holes, disqualifiers",
+            "Channel selection (1–2 owned channels) with cadence templates and personalization variables",
+            "Content anchors: the two or three pieces your outreach hooks into",
+            "A metrics spec so you know what's working and what to change",
+            "Team enablement in a working handoff session so your team owns the system",
           ],
         },
         {
           name: "GTM Build",
-          price: "$15k–$25k",
-          meta: "scoped per engagement",
-          tagline: "We don't just hand you the plan. We build the machine and get it running.",
+          price: "$30,000",
+          meta: "12 weeks · founder + up to 2 collaborators",
+          teamPrice: "$45,000",
+          teamMeta: "12 weeks · up to 5 team members",
+          tagline: "The outreach system running live. Your team owning it by week 12.",
           points: [
-            "2–3 wedges fully built, not just documented",
-            "Channel infrastructure stood up (email, content engine, lead capture + follow-up)",
-            "A repeatable content engine running",
-          "Done-with-you execution with your team trained to run it",
-          "A measurement spec your team can run to see what's actually working",
-        ],
+            "The Playbook rebuilt fresh as part of the engagement (no re-buy needed)",
+            "Two wedges built and one running live during the engagement",
+            "Channel infrastructure stood up (email platform, content engine, lead capture, measurement)",
+            "Weekly 60–90 min working session for 12 weeks, plus async review and adjustment",
+            "Progressive team ownership: Fronz-led weeks 1–4, co-run weeks 5–8, team-run weeks 9–12",
+            "Exit review with an on-call path for post-engagement support",
+          ],
         },
       ],
     },
     entryPoints: [
-      { who: "Early / blurry founder", start: "Start with the Jam: decide your wedge and sentence." },
-      { who: "Past PMF, tactics feel hit-or-miss", start: "Start with Map + Playbook or a Build: install the system." },
+      { who: "Solo founder, message won't land", start: "Start with the Founder Jam: one decision, one sentence, in two hours." },
+      { who: "Founding team, not aligned on the pitch", start: "Start with the Team Jam: two 90-min sessions get the team to one message." },
+      { who: "Decision is made, need the system", start: "Start with the Outreach Playbook: the running outreach your team can operate." },
+      { who: "Ready to build it and prove it out", start: "Start with the Build: 12 weeks embedded, your team owning it by the end." },
     ],
     whoFor: {
       fit: [
@@ -172,11 +184,23 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "I can't afford a big engagement. Where do I start?",
-        a: "Start at $1,500 with the Jam. It pays for itself in clarity, and it credits 100% toward the Map + Playbook or a Build within 30 days.",
+        a: "Start at $1,500 with the Founder Jam. It pays for itself in clarity, and it credits 100% toward the Outreach Playbook within 30 days (net $6,000 after the credit).",
       },
       {
-        q: "What's the difference between the Jam and the Map + Playbook?",
-        a: "The Jam is where the decisions get made in two hours: what you sell vs. how people find it, your position, the one urgent customer, and the wedge to run, plus a diagnosis of your biggest gap. The Map + Playbook turns those decisions into a formalized, runnable system: messaging, ICPs, the full map, and an outreach playbook.",
+        q: "What's the difference between Founder and Team pricing?",
+        a: "Founder pricing is for a solo founder in a 1:1 session. Team pricing brings up to five collaborators into the room, with the format calibrated for group decisions. Team Jams run as two 90-minute sessions so the team can sit with the fork between them before deciding.",
+      },
+      {
+        q: "What's the difference between the Jam and the Outreach Playbook?",
+        a: "The Jam is where the decision gets made: what you sell vs. how people find it, your position, the one urgent customer, the wedge to run. The Playbook turns that decision into the running outreach system your team can operate: messaging, ICP, channel selection, cadence, metrics, and a working handoff.",
+      },
+      {
+        q: "What's the difference between the Playbook and the Build?",
+        a: "The Playbook documents the system and hands it to your team. The Build runs the system with you for 12 weeks. In the Build, your team learns by doing while I sit alongside, reviewing metrics weekly, adjusting the cadence, and progressively transitioning ownership until you're operating it without me.",
+      },
+      {
+        q: "How does the Jam credit work?",
+        a: "Full Jam price credits toward the Outreach Playbook in the same tier, if booked within 30 days. Founder Jam → Founder Playbook. Team Jam → Team Playbook. If you skip the Playbook and go straight to the Build, the Jam credit still applies to the Build price.",
       },
     ],
     cta: {

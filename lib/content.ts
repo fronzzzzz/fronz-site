@@ -68,9 +68,9 @@ export const LINES = {
       name: "GTM Clarity",
       legibleTo: "Legible to your customers",
       promise: "Know what to say.",
-      body: "Positioning, messaging, and the go-to-market system to deliver it. From your one sentence to a running machine your team owns.",
-      span: "$1,500 → $25,000",
-      start: "Way in: GTM Clarity Jam · $1,500",
+      body: "Positioning, messaging, and the outreach system to deliver it. From your one sentence to a running go-to-market your team owns by the end.",
+      span: "$1,500 → $45,000",
+      start: "Way in: GTM Clarity Jam · from $1,500",
     },
     {
       id: "groundswell",
@@ -144,9 +144,9 @@ export const PRICING = {
   tiers: [
     {
       line: "GTM Clarity",
-      entry: "GTM Clarity Jam",
+      entry: "GTM Clarity Jam · Founder",
       price: "$1,500",
-      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a sentence, a 90-day plan, and a recap you act on Monday.",
+      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a sentence, a 90-day plan, and a recap you act on Monday. Team version: $3,000, two 90-min sessions, up to four collaborators.",
       featured: true,
     },
     {
