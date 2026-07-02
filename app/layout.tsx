@@ -33,11 +33,12 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   keywords: [
+    "go-to-market consulting",
     "GTM consulting",
     "positioning workshop",
     "answer engine optimization",
     "AEO",
-    "AI visibility",
+    "AI customer discoverability",
     "business intelligence dashboards",
     "fractional growth",
     "no retainer consulting",

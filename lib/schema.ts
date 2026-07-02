@@ -81,11 +81,11 @@ export const schemaGraph = {
       "@type": "Person",
       "@id": personId,
       name: "Stacey Fronek",
-      jobTitle: "Founder & GTM Systems Consultant",
+      jobTitle: "Founder & Go-to-Market Systems Consultant",
       worksFor: { "@id": orgId },
       email: `mailto:${SITE.email}`,
       description:
-        "GTM and growth-systems consultant who helps founders get understood by their customers and found by the AI those customers ask. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
+        "Go-to-market and growth-systems consultant who helps founders get understood by their customers and found by the AI those customers ask. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
       knowsAbout: [
         "Go-to-market strategy",
         "Positioning",
@@ -107,9 +107,9 @@ export const schemaGraph = {
       areaServed: "Worldwide",
       priceRange: "$1,500–$30,000+",
       knowsAbout: [
-        "GTM consulting",
+        "Go-to-market consulting",
         "Positioning workshops",
-        "AI visibility / AEO",
+        "AI customer discoverability / AEO",
       ],
       makesOffer: [
         {

@@ -60,7 +60,7 @@ export type LineDetail = {
 
 export const ARC = [
   { slug: "gtm-clarity", label: "Get clear", line: "GTM Clarity", legibleTo: "your customers" },
-  { slug: "groundswell", label: "Get found", line: "Groundswell AI Discoverability", legibleTo: "AI" },
+  { slug: "groundswell", label: "Get found", line: "Groundswell AI Customer Discoverability", legibleTo: "AI" },
 ] as const;
 
 export const LINES_DETAIL: Record<string, LineDetail> = {
@@ -142,7 +142,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           tagline: "We don't just hand you the plan. We build the machine and get it running.",
           points: [
             "2–3 wedges fully built, not just documented",
-            "Channel infrastructure stood up (email, content engine, lead capture + nurture)",
+            "Channel infrastructure stood up (email, content engine, lead capture + follow-up)",
             "A repeatable content engine running",
           "Done-with-you execution with your team trained to run it",
           "A measurement spec your team can run to see what's actually working",
@@ -188,18 +188,18 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
 
   groundswell: {
     slug: "groundswell",
-    name: "Groundswell AI Discoverability",
+    name: "Groundswell AI Customer Discoverability",
     eyebrow: "Legible to AI",
     arcLabel: "Get found",
     promise: "Get found & cited.",
     heroSub:
-      "Become the brand AI recommends when your buyers ask, by earning genuine community consensus across the sources models trust, not by buying placements. Groundswell spans the whole arc: see where you stand, earn authority through your own distribution, then run the system that sustains it as models change.",
+      "Become the brand AI recommends when your buyers ask, by earning genuine community consensus across the sources models trust, not by buying placements. Groundswell spans the whole arc: see where you stand, earn authority through the channels you already own, then run the system that sustains it as models change.",
     problem: {
       heading: "Buyers ask AI for a recommendation. Your competitor is the answer.",
       points: [
         {
           head: "You're invisible in ChatGPT, Perplexity, Gemini, and AI Overviews.",
-          body: "51% of B2B software buyers now start their research in an AI chatbot more often than Google — and you're not in the answer they read.",
+          body: "51% of B2B software buyers now start their research in an AI chatbot more often than Google, and you're not in the answer they read.",
         },
         {
           head: "AI describes you wrong, or not at all.",
@@ -258,7 +258,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           featured: true,
           points: [
             "Owned foundation: schema, llms.txt, entity association, answer-first content",
-            "A consensus-seeding strategy built on your existing distribution channels",
+            "A consensus-seeding strategy built on the channels you already own",
             "The campaign run in your priority category's trusted communities",
             "Third-party verifiability signals the models weight",
             "Baseline → re-measure shows what moved, with your team trained to continue",
@@ -285,15 +285,15 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     support: {
       heading: "Keeping it fresh, on your terms, not a retainer",
       points: [
-        "Refresh on demand · $1,200: a re-measure across the engines plus a seeding refresh, taken when a decision warrants it — no cadence, no retainer.",
+        "Refresh on demand · $1,200: a re-measure across the engines plus a seeding refresh, taken when a decision warrants it. No cadence, no retainer.",
         "Want always-on tracking between refreshes? I'll set you up in an off-the-shelf visibility tracker you own and run yourself. Live watching is a cheap commodity; the strategy is the part you hire me for.",
-        "Proactive check-ins: I can re-run a focused visibility snapshot to flag when models start dropping you — so a refresh is a decision, not a surprise.",
+        "Proactive check-ins: I can re-run a focused visibility snapshot to flag when models start dropping you, so a refresh is a decision, not a surprise.",
       ],
     },
     whoFor: {
       fit: [
         "AI omits you while a competitor gets cited",
-        "You have real distribution to build authentic presence on",
+        "You have real reach to build authentic presence on",
         "You want earned visibility, not bought placements",
       ],
       notFit: [
@@ -312,7 +312,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "How do you keep it current as models change?",
-        a: "Book a Refresh anytime for $1,200 — a re-measure across the engines plus a seeding refresh, taken when a decision warrants it. Want always-on watching in between? I'll set you up in a visibility tracker you own and run yourself. Either way, no monthly retainer.",
+        a: "Book a Refresh anytime for $1,200: a re-measure across the engines plus a seeding refresh, taken when a decision warrants it. Want always-on watching in between? I'll set you up in a visibility tracker you own and run yourself. Either way, no monthly retainer.",
       },
     ],
     cta: {
