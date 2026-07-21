@@ -25,6 +25,13 @@ export type ForkOption = {
   attributes: { label: string; value: string }[];
   strengths: string[];
   weaknesses: string[];
+  /** Visual emphasis — the path the leave-behind runs with */
+  recommended?: boolean;
+  /**
+   * Render as a short secondary card (promise + why-not).
+   * Use for the path-not-taken so the doc doesn't create equal-choice fatigue.
+   */
+  compact?: boolean;
 };
 
 export type PitchGroup = {
@@ -122,6 +129,12 @@ export type CaseStudy = {
       headline: string;
       reasons: { head: string; body: string }[];
       close?: string;
+      /** The one pitch sentence the leave-behind commits to */
+      pitch?: {
+        label: string;
+        sentence: string;
+        note?: string;
+      };
     };
   };
 
@@ -174,6 +187,13 @@ export type CaseStudy = {
     button: string;
     href: string;
   };
+
+  /**
+   * Deliverable-only: skip the shared Jam → Playbook → Build ladder block.
+   * Use when the leave-behind should end on the client's next steps + CTA
+   * without a productized upsell section.
+   */
+  hideWhereFits?: boolean;
 };
 
 /* ------------------------------------------------------------------ */

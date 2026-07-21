@@ -7,6 +7,7 @@
  */
 
 import type { CaseStudy } from "./case-studies";
+import { sanctuaryV2 } from "./deliverables/sanctuary-v2";
 
 const sanctuary: CaseStudy = {
   slug: "sanctuary",
@@ -447,6 +448,7 @@ const sanctuary: CaseStudy = {
 
 export const DELIVERABLES: Record<string, CaseStudy> = {
   sanctuary,
+  "sanctuary-v2": sanctuaryV2,
 };
 
 export function getDeliverable(slug: string): CaseStudy | undefined {

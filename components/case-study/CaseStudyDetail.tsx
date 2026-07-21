@@ -49,7 +49,7 @@ export function CaseStudyDetail({
     ...(study.pitchOptions ? ["pitch"] : []),
     ...(study.mapFindings ? ["map"] : []),
     ...(study.nextSteps ? ["steps"] : []),
-    "whereFits",
+    ...(!study.hideWhereFits ? ["whereFits"] : []),
   ];
   const sink: Record<string, boolean> = {};
   order
@@ -172,70 +172,121 @@ export function CaseStudyDetail({
             {study.fork.body}
           </Reveal>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {study.fork.options.map((opt, i) => (
-              <Reveal
-                key={opt.label}
-                delay={i * 90}
-                className="flex flex-col border border-line bg-paper p-8"
-              >
-                <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-                  {opt.label}
-                </p>
-                <h3 className="mt-2 text-[length:var(--text-h3)]">{opt.name}</h3>
-                <p className="mt-1 font-mono text-xs italic text-ink-muted">
-                  {opt.tagline}
-                </p>
-                <p className="mt-5 font-serif text-lg leading-snug">
-                  {opt.promise}
-                </p>
+          <div
+            className={`mt-14 grid gap-6 ${
+              study.fork.options.some((o) => o.compact)
+                ? "lg:grid-cols-[1.4fr_1fr]"
+                : "lg:grid-cols-2"
+            }`}
+          >
+            {study.fork.options.map((opt, i) =>
+              opt.compact ? (
+                <Reveal
+                  key={opt.label}
+                  delay={i * 90}
+                  className="flex flex-col border border-line bg-paper-sink/60 p-7 text-ink-muted"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-mono text-xs uppercase tracking-widest">
+                      {opt.label}
+                    </p>
+                    <span className="whitespace-nowrap font-mono text-[0.65rem] uppercase tracking-widest">
+                      Path not taken
+                    </span>
+                  </div>
+                  <h3 className="mt-2 text-[length:var(--text-h3)] text-ink">
+                    {opt.name}
+                  </h3>
+                  <p className="mt-1 font-mono text-xs italic">{opt.tagline}</p>
+                  <p className="mt-5 font-serif text-base leading-snug text-ink">
+                    {opt.promise}
+                  </p>
+                  {opt.weaknesses[0] && (
+                    <p className="mt-6 border-t border-line pt-5 text-sm">
+                      <span className="font-mono text-[0.7rem] uppercase tracking-widest">
+                        Why not
+                      </span>
+                      <span className="mt-2 block">{opt.weaknesses[0]}</span>
+                    </p>
+                  )}
+                </Reveal>
+              ) : (
+                <Reveal
+                  key={opt.label}
+                  delay={i * 90}
+                  className={`flex flex-col border bg-paper p-8 ${
+                    opt.recommended
+                      ? "border-ink border-l-4 border-l-marker"
+                      : "border-line"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
+                      {opt.label}
+                    </p>
+                    {opt.recommended && (
+                      <span className="whitespace-nowrap bg-marker px-2 py-1 font-mono text-[0.65rem] uppercase tracking-widest text-ink">
+                        Recommended
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-2 text-[length:var(--text-h3)]">
+                    {opt.name}
+                  </h3>
+                  <p className="mt-1 font-mono text-xs italic text-ink-muted">
+                    {opt.tagline}
+                  </p>
+                  <p className="mt-5 font-serif text-lg leading-snug">
+                    {opt.promise}
+                  </p>
 
-                <dl className="mt-6 space-y-4 border-t border-line pt-6">
-                  {opt.attributes.map((a) => (
-                    <div key={a.label}>
-                      <dt className="font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
-                        {a.label}
-                      </dt>
-                      <dd className="mt-1 text-sm">{a.value}</dd>
+                  <dl className="mt-6 space-y-4 border-t border-line pt-6">
+                    {opt.attributes.map((a) => (
+                      <div key={a.label}>
+                        <dt className="font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
+                          {a.label}
+                        </dt>
+                        <dd className="mt-1 text-sm">{a.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <div className="mt-6 grid gap-6 border-t border-line pt-6 md:grid-cols-2">
+                    <div>
+                      <p className="font-mono text-[0.7rem] uppercase tracking-widest text-chartreuse-deep">
+                        Strongest at
+                      </p>
+                      <ul className="mt-3 space-y-2 text-sm">
+                        {opt.strengths.map((s) => (
+                          <li key={s} className="flex gap-2">
+                            <span
+                              className="text-chartreuse-deep"
+                              aria-hidden="true"
+                            >
+                              +
+                            </span>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  ))}
-                </dl>
-
-                <div className="mt-6 grid gap-6 border-t border-line pt-6 md:grid-cols-2">
-                  <div>
-                    <p className="font-mono text-[0.7rem] uppercase tracking-widest text-chartreuse-deep">
-                      Strongest at
-                    </p>
-                    <ul className="mt-3 space-y-2 text-sm">
-                      {opt.strengths.map((s) => (
-                        <li key={s} className="flex gap-2">
-                          <span
-                            className="text-chartreuse-deep"
-                            aria-hidden="true"
-                          >
-                            +
-                          </span>
-                          <span>{s}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div>
+                      <p className="font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
+                        Weakest at
+                      </p>
+                      <ul className="mt-3 space-y-2 text-sm text-ink-muted">
+                        {opt.weaknesses.map((w) => (
+                          <li key={w} className="flex gap-2">
+                            <span aria-hidden="true">–</span>
+                            <span>{w}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
-                      Weakest at
-                    </p>
-                    <ul className="mt-3 space-y-2 text-sm text-ink-muted">
-                      {opt.weaknesses.map((w) => (
-                        <li key={w} className="flex gap-2">
-                          <span aria-hidden="true">–</span>
-                          <span>{w}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ),
+            )}
           </div>
 
           {/* Trap */}
@@ -307,6 +358,21 @@ export function CaseStudyDetail({
                 className="mt-14 max-w-[62ch] font-serif text-lg leading-snug text-paper/85"
               >
                 {study.fork.recommendation.close}
+              </Reveal>
+            )}
+            {study.fork.recommendation.pitch && (
+              <Reveal className="mt-14 border-t border-paper/20 pt-10">
+                <p className="font-mono text-xs uppercase tracking-widest text-marker">
+                  {study.fork.recommendation.pitch.label}
+                </p>
+                <blockquote className="mt-5 max-w-[42ch] font-serif text-[length:var(--text-h3)] leading-snug text-paper">
+                  {study.fork.recommendation.pitch.sentence}
+                </blockquote>
+                {study.fork.recommendation.pitch.note && (
+                  <p className="mt-5 max-w-[62ch] text-sm text-paper/65">
+                    {study.fork.recommendation.pitch.note}
+                  </p>
+                )}
               </Reveal>
             )}
           </div>
@@ -419,7 +485,13 @@ export function CaseStudyDetail({
             <Reveal as="p" className="mt-6 max-w-[62ch] text-lead text-ink-muted">
               {study.icp.intro}
             </Reveal>
-            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            <div
+              className={`mt-12 grid gap-6 ${
+                study.icp.personas.length > 1
+                  ? "lg:grid-cols-2"
+                  : "max-w-[40rem]"
+              }`}
+            >
               {study.icp.personas.map((p, i) => (
                 <Reveal
                   key={p.name}
@@ -655,12 +727,13 @@ export function CaseStudyDetail({
           </Section>
         )}
 
-        {/* WHERE IT FITS — variant-switched */}
-        {isDeliverable ? (
-          <DeliverableNextSteps sink={sink.whereFits} />
-        ) : (
-          <CaseStudyLadder sink={sink.whereFits} />
-        )}
+        {/* WHERE IT FITS — variant-switched; deliverables may omit */}
+        {!study.hideWhereFits &&
+          (isDeliverable ? (
+            <DeliverableNextSteps sink={sink.whereFits} />
+          ) : (
+            <CaseStudyLadder sink={sink.whereFits} />
+          ))}
 
         {/* CTA ------------------------------------------------------ */}
         {study.cta && (
@@ -855,19 +928,19 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
 }
 
 /** Client deliverable version: addresses the reader directly, marks the Jam
- *  as done, and frames Map + Playbook as their specific recommended next step. */
+ *  as done, and frames Outreach Playbook as their specific recommended next step. */
 function DeliverableNextSteps({ sink }: { sink: boolean }) {
   return (
     <Section sink={sink}>
-      <Kicker>Your recommended next step with Fronz</Kicker>
+      <Kicker>Your path with Fronz</Kicker>
       <Reveal as="h2" className="text-[length:var(--text-h2)]">
-        You&rsquo;ve made the decisions. Here&rsquo;s what turns them into a
-        running system.
+        You&rsquo;re here. Here&rsquo;s what comes next.
       </Reveal>
       <Reveal as="p" className="mt-6 max-w-[62ch] text-lead text-ink-muted">
-        The Jam gave you the map, the fork, and the roadmap above. The next
-        rung is where those decisions become productized messaging, a
-        formalized ICP, and an outreach playbook your team can actually run.
+        The Jam gave you the map, the recommendation, and the five steps above.
+        The next engagement is where those decisions become a pitch you can
+        say, a mid-tier offer you can sell, and an outreach system your team
+        can run.
       </Reveal>
 
       <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -875,7 +948,7 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
         <Reveal className="flex flex-col border border-line bg-paper p-8 opacity-90">
           <div className="flex items-start justify-between gap-4">
             <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
-              Rung 01 &middot; The decision
+              Step 01 &middot; Where you are
             </p>
             <span className="whitespace-nowrap border border-chartreuse-deep px-2 py-1 font-mono text-[0.65rem] uppercase tracking-widest text-chartreuse-deep">
               Done ✓
@@ -887,9 +960,10 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             You did this. This document is the artifact.
           </p>
           <p className="mt-6 flex-1 text-sm text-ink-muted">
-            The map is drawn, the fork is named, the wedge is recommended, and
-            the roadmap above is yours. The remaining decisions live in Steps
-            01&ndash;05.
+            Board cleared, fork named, Option A recommended, pitch drafted,
+            next steps sequenced. What&rsquo;s left is confirming A and
+            executing Steps 01&ndash;05 — alone, or with Fronz on the next
+            engagement.
           </p>
         </Reveal>
 
@@ -900,7 +974,7 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
         >
           <div className="flex items-start justify-between gap-4">
             <p className="font-mono text-xs uppercase tracking-widest text-marker">
-              Rung 02 &middot; Your next step
+              Step 02 &middot; Your next step
             </p>
             <span className="whitespace-nowrap bg-marker px-2 py-1 font-mono text-[0.65rem] uppercase tracking-widest text-ink">
               Recommended for you
@@ -914,9 +988,9 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             Founder · net $6,000 after your Jam
           </p>
           <p className="mt-4 font-serif text-lg text-paper/85">
-            Turn the roadmap above into a running outreach system your team
-            can operate. The fastest, cleanest path from &ldquo;we
-            decided&rdquo; to &ldquo;we&rsquo;re selling.&rdquo;
+            Turn the roadmap above into a running outreach system — the
+            shortest path from &ldquo;we decided&rdquo; to &ldquo;we&rsquo;re
+            selling.&rdquo;
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-paper/75">
             <li className="flex gap-3">
@@ -924,29 +998,32 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
                 &mdash;
               </span>
               <span>
-                The one sentence, locked, plus the audience variants
-                you&rsquo;ll actually use
+                Pitch sentence locked, plus the variants you&rsquo;ll actually
+                use
               </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-marker" aria-hidden="true">
-                &mdash;
-              </span>
-              <span>The missing rung designed, priced, ready to sell</span>
             </li>
             <li className="flex gap-3">
               <span className="text-marker" aria-hidden="true">
                 &mdash;
               </span>
               <span>
-                Formalized ICP + outreach playbook for your ~20-founder list
+                Mid-tier offer designed, priced, and ready to sell
               </span>
             </li>
             <li className="flex gap-3">
               <span className="text-marker" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Sequenced 90-day plan you and Anna can execute</span>
+              <span>
+                Clear buyer profile + outreach playbook for your ~20-founder
+                list
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-marker" aria-hidden="true">
+                &mdash;
+              </span>
+              <span>90-day plan you and Anna can execute</span>
             </li>
           </ul>
           <Link
@@ -963,7 +1040,7 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
           className="flex flex-col border border-line bg-paper p-8"
         >
           <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-            Rung 03 &middot; If you want it built
+            Step 03 &middot; If you want it built
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)]">GTM Build</h3>
           <p className="mt-4 font-mono text-4xl">$30,000</p>
@@ -971,15 +1048,15 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             Founder · 12 weeks embedded
           </p>
           <p className="mt-4 font-serif text-lg text-ink">
-            12 weeks embedded. Every &ldquo;next step&rdquo; in this document,
-            run live with your team until you own it.
+            12 weeks embedded. Every next step in this document, run live with
+            your team until you own it.
           </p>
           <ul className="mt-6 flex-1 space-y-2 text-sm text-ink-muted">
             <li className="flex gap-3">
               <span className="text-chartreuse-deep" aria-hidden="true">
                 &mdash;
               </span>
-              <span>Missing rung launched, priced, converting</span>
+              <span>Mid-tier offer launched, priced, converting</span>
             </li>
             <li className="flex gap-3">
               <span className="text-chartreuse-deep" aria-hidden="true">
@@ -992,7 +1069,7 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
                 &mdash;
               </span>
               <span>
-                Warm-up outreach system running against your ~20-founder list
+                Warm-up system running against your ~20-founder list
               </span>
             </li>
             <li className="flex gap-3">
@@ -1003,8 +1080,7 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             </li>
           </ul>
           <p className="mt-6 border-l-2 border-line pl-3 text-xs italic text-ink-muted">
-            Best fit after Outreach Playbook. Consider this once the
-            wedge is proven.
+            Best after Outreach Playbook — once the mid-tier offer is proven.
           </p>
         </Reveal>
       </div>
@@ -1014,15 +1090,14 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
           <p className="kicker">Once your go-to-market is running</p>
           <div>
             <h3 className="text-[length:var(--text-h3)] leading-snug">
-              When reach becomes your constraint, Groundswell is where we come
+              When reach becomes the constraint, Groundswell is where we come
               back in.
             </h3>
             <p className="mt-4 text-ink-muted">
-              Groundswell AI Customer Discoverability is the second Fronz line:
-              how you become the answer AI recommends once your positioning,
-              offer, and audience are dialed. Not urgent yet. It becomes the
-              natural continuation after your go-to-market is landing customers
-              and you want to widen the path to purchase.
+              Groundswell is Fronz&rsquo;s second line: becoming the answer AI
+              recommends once your positioning, offer, and audience are dialed.
+              Not urgent yet. It follows once go-to-market is landing customers
+              and you want a wider path to purchase.
             </p>
             <Link
               href="/groundswell"
