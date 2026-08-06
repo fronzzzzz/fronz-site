@@ -98,13 +98,13 @@ export const MOXA = {
   org: "Moxa Money · fintech startup · co-founder",
   headline: "Two seats, one build: product and marketing from zero.",
   narrative:
-    "I co-founded Moxa Money — a personal finance app unifying traditional bank accounts, self-custodial crypto wallets, and centralized exchanges in a single budgeting experience — and held the CMO and CPO seats together. They weren't separate jobs. It was one build, and each function came online as the product developed.",
+    "I co-founded Moxa Money — a finance app for entrepreneurs and small business owners, unifying traditional bank accounts, self-custodial crypto wallets, and centralized exchanges in a single budgeting experience — and held the CMO and CPO seats together. They weren't separate jobs. It was one build, and each function came online as the product developed.",
   sequenceKicker: "The build, in order",
   sequence: [
     {
       n: "01",
       name: "Research & strategy",
-      body: "Market research, segmentation, and the product thesis: who this serves, and why now.",
+      body: "Market research, segmentation, and the product thesis: entrepreneurs and small business owners running money across traditional and crypto rails — and why now.",
     },
     {
       n: "02",
