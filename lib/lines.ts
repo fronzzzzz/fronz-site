@@ -128,10 +128,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
         },
         {
           name: "Outreach Playbook",
-          price: "$7,500",
-          meta: "~3 weeks · net $6,000 after a Jam",
-          teamPrice: "$10,000",
-          teamMeta: "~3–4 weeks · up to 5 · net $7,000 after a Team Jam",
+          price: "from $7,500",
+          meta: "~3–4 weeks · Jam fee credits 100%",
           tagline: "The outreach system your team can run without you in the room.",
           points: [
             "Messaging set: sentence, audience variants, objection reframes, hooks",
@@ -144,10 +142,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
         },
         {
           name: "GTM Build",
-          price: "$30,000",
-          meta: "12 weeks · founder + up to 2 collaborators",
-          teamPrice: "$45,000",
-          teamMeta: "12 weeks · up to 5 team members",
+          price: "Custom scope",
+          meta: "12 weeks · scoped to your team, timeline & goals",
           tagline: "The outreach system running live. Your team owning it by week 12.",
           points: [
             "The Playbook rebuilt fresh as part of the engagement (no re-buy needed)",
@@ -168,7 +164,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     ],
     whoFor: {
       fit: [
-        "You're selling multiple things and need to focus",
+        "You're a seed–Series B founder or lean team selling multiple things and need to focus",
         "Pre- or post-PMF, but the message isn't landing",
         "You want to run the system yourself, not rent it forever",
       ],
@@ -184,11 +180,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "I can't afford a big engagement. Where do I start?",
-        a: "Start at $1,500 with the Founder Jam. It pays for itself in clarity, and it credits 100% toward the Outreach Playbook within 30 days (net $6,000 after the credit).",
+        a: "Start at $1,500 with the Founder Jam. It pays for itself in clarity, and the full Jam fee credits toward the Outreach Playbook within 30 days.",
       },
       {
-        q: "What's the difference between Founder and Team pricing?",
-        a: "Founder pricing is for a solo founder in a 1:1 session. Team pricing brings up to five collaborators into the room, with the format calibrated for group decisions. Team Jams run as two 90-minute sessions so the team can sit with the fork between them before deciding.",
+        q: "What's the difference between Founder and Team pricing on the Jam?",
+        a: "Founder pricing is for a solo founder in a 1:1 session. Team pricing brings up to five collaborators into the room, with the format calibrated for group decisions. Team Jams run as two 90-minute sessions so the team can sit with the fork between them before deciding. Beyond the Jam, engagements are scoped to your team and goals.",
       },
       {
         q: "What's the difference between the Jam and the Outreach Playbook?",
@@ -276,7 +272,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
         },
         {
           name: "Groundswell Authority Build",
-          price: "$15,000",
+          price: "from $15,000",
           meta: "~90 days · the hero",
           tagline: "Become the answer because the web genuinely agrees you are.",
           featured: true,
@@ -290,8 +286,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
         },
         {
           name: "Groundswell Authority Engine",
-          price: "from $30,000",
-          meta: "the system",
+          price: "Custom scope",
+          meta: "scoped to your categories & platforms",
           tagline: "The system that keeps you the answer as models change.",
           points: [
             "Everything in the Build, extended across multiple categories and platforms",
@@ -341,8 +337,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     ],
     cta: {
       heading: "When buyers ask AI, is your competitor the answer?",
-      sub: "Start with a $1,500 Visibility Audit: the map of exactly where and how to become the answer.",
-      button: "Book a Visibility Audit",
+      sub: "The way in is the $1,500 Visibility Audit — the map of exactly where and how to become the answer. It starts with a free intro call to make sure it's the right move.",
+      button: BOOKING_CTA,
     },
   },
 };

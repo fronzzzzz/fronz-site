@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TierPrice } from "@/components/ui/TierPrice";
 import { Fragment } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -818,9 +819,9 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
           <h3 className="mt-3 text-[length:var(--text-h3)] text-paper">
             Outreach Playbook
           </h3>
-          <p className="mt-4 font-mono text-4xl">$7,500</p>
+          <TierPrice price="from $7,500" featured className="mt-4" />
           <p className="mt-1 font-mono text-xs uppercase tracking-widest text-marker">
-            Founder · from $6,000 after a Jam
+            Jam fee credits 100%
           </p>
           <p className="mt-4 font-serif text-lg text-paper/85">
             Turn the decision into the running outreach system a team can
@@ -862,9 +863,9 @@ function CaseStudyLadder({ sink }: { sink: boolean }) {
             Rung 03 &middot; The full execution
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)]">GTM Build</h3>
-          <p className="mt-4 font-mono text-4xl">$30,000</p>
+          <TierPrice price="Custom scope" className="mt-4" />
           <p className="mt-1 font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-            Founder · 12 weeks embedded
+            12 weeks embedded
           </p>
           <p className="mt-4 font-serif text-lg text-ink">
             12 weeks embedded with your team. We run the system live, and
@@ -983,9 +984,9 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
           <h3 className="mt-3 text-[length:var(--text-h3)] text-paper">
             Outreach Playbook
           </h3>
-          <p className="mt-4 font-mono text-4xl">$7,500</p>
+          <TierPrice price="from $7,500" featured className="mt-4" />
           <p className="mt-1 font-mono text-xs uppercase tracking-widest text-marker">
-            Founder · net $6,000 after your Jam
+            Your Jam fee credits 100%
           </p>
           <p className="mt-4 font-serif text-lg text-paper/85">
             Turn the roadmap above into a running outreach system — the
@@ -1043,9 +1044,9 @@ function DeliverableNextSteps({ sink }: { sink: boolean }) {
             Step 03 &middot; If you want it built
           </p>
           <h3 className="mt-3 text-[length:var(--text-h3)]">GTM Build</h3>
-          <p className="mt-4 font-mono text-4xl">$30,000</p>
+          <TierPrice price="Custom scope" className="mt-4" />
           <p className="mt-1 font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-            Founder · 12 weeks embedded
+            12 weeks embedded
           </p>
           <p className="mt-4 font-serif text-lg text-ink">
             12 weeks embedded. Every next step in this document, run live with

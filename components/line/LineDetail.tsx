@@ -5,6 +5,7 @@ import { Section, Kicker } from "@/components/ui/Section";
 import { Highlight } from "@/components/ui/Highlight";
 import { Reveal } from "@/components/ui/Reveal";
 import { Faq } from "@/components/ui/Faq";
+import { TierPrice } from "@/components/ui/TierPrice";
 import { PortfolioArc } from "@/components/line/PortfolioArc";
 import { SITE } from "@/lib/content";
 import type { LineDetail as LineDetailData } from "@/lib/lines";
@@ -332,7 +333,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
                   </div>
                 ) : (
                   <div className="mt-5">
-                    <p className="font-mono text-4xl">{tier.price}</p>
+                    <TierPrice price={tier.price} featured={tier.featured} />
                     {tier.meta && (
                       <p
                         className={`mt-1 font-mono text-xs uppercase tracking-widest ${
@@ -375,7 +376,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
                     tier.featured ? "hover:text-marker" : "hover:text-chartreuse-deep"
                   }`}
                 >
-                  Start here →
+                  Book a free intro call →
                 </Link>
               </Reveal>
             ))}

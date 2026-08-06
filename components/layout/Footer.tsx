@@ -37,6 +37,12 @@ export function Footer() {
               >
                 {SITE.email}
               </a>
+              <Link
+                href="/resume"
+                className="text-sm text-ink-muted underline decoration-marker decoration-2 underline-offset-4 transition-colors hover:text-ink"
+              >
+                Hiring? See the resume →
+              </Link>
             </div>
           </div>
         </div>

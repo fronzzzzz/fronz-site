@@ -43,14 +43,20 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-2">
+            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-3">
               {LINES.items.map((line) => (
-                <div key={line.id} className="bg-paper px-1 py-4 sm:px-0">
-                  <p className="font-serif text-lg">{line.name}</p>
+                <Link
+                  key={line.id}
+                  href="/#lines"
+                  className="group bg-paper px-1 py-4 transition-colors hover:bg-paper-sink sm:px-0 sm:pr-6"
+                >
+                  <p className="font-serif text-lg group-hover:underline group-hover:decoration-marker group-hover:decoration-2 group-hover:underline-offset-4">
+                    {line.name}
+                  </p>
                   <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
                     {line.legibleTo}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -98,11 +104,11 @@ export default function Home() {
               {para}
             </Reveal>
           ))}
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
             {LINES.items.map((line, i) => (
               <Reveal key={line.id} delay={i * 90}>
                 <Link
-                  href={`/${line.id}`}
+                  href={"href" in line ? line.href : `/${line.id}`}
                   className="group flex h-full flex-col border border-line bg-paper p-8 transition-colors hover:border-ink"
                 >
                   <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
@@ -118,7 +124,7 @@ export default function Home() {
                     {line.start}
                   </p>
                   <span className="mt-6 inline-block font-mono text-sm text-ink-muted underline decoration-marker decoration-2 underline-offset-[6px] group-hover:text-ink">
-                    Explore {line.name} →
+                    {"cta" in line ? line.cta : `Explore ${line.name}`} →
                   </span>
                 </Link>
               </Reveal>
@@ -276,7 +282,7 @@ export default function Home() {
                       : "decoration-marker hover:text-chartreuse-deep"
                   }`}
                 >
-                  Start here →
+                  Book a free intro call →
                 </Link>
               </Reveal>
             ))}

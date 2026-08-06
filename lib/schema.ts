@@ -81,8 +81,10 @@ export const schemaGraph = {
       "@type": "Person",
       "@id": personId,
       name: "Stacey Fronek",
-      jobTitle: "Founder & Go-to-Market Systems Consultant",
+      jobTitle: "Fractional CMO & Go-to-Market Systems Consultant",
+      url: `${SITE.url}/resume`,
       worksFor: { "@id": orgId },
+      alumniOf: "Berry College",
       email: `mailto:${SITE.email}`,
       description:
         "Go-to-market and growth-systems consultant who helps founders get understood by their customers and found by the AI those customers ask. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
@@ -105,9 +107,10 @@ export const schemaGraph = {
       founder: { "@id": personId },
       email: `mailto:${SITE.email}`,
       areaServed: "Worldwide",
-      priceRange: "$1,500–$45,000+",
+      priceRange: "$1,500+",
       knowsAbout: [
         "Go-to-market consulting",
+        "Fractional CMO leadership",
         "Positioning workshops",
         "AI customer discoverability / AEO",
       ],

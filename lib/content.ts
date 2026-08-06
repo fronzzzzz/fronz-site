@@ -24,10 +24,10 @@ export function calendlyUrl(): string {
   return process.env.NEXT_PUBLIC_CALENDLY_URL ?? CALENDLY_EMBED_URL;
 }
 
-export const BOOKING_CTA = "Book a Pre-Jam Consult";
+export const BOOKING_CTA = "Book a Free Intro Call";
 
 export const HERO = {
-  kicker: "Fronz · growth systems for lean founders",
+  kicker: "[01] Growth systems for seed–Series B founders & lean teams",
   lead: "Skip the agency retainers.",
   highlight: "Build the system. Own the growth.",
   sub: "Be clearly understood by your customers and found by the AI those customers ask. Lean systems you own, not agencies you rent.",
@@ -69,7 +69,7 @@ export const LINES = {
       legibleTo: "Legible to your customers",
       promise: "Know what to say.",
       body: "Positioning, messaging, and the outreach system to deliver it. From your one sentence to a running go-to-market your team owns by the end.",
-      span: "$1,500 → $45,000",
+      span: "From $1,500 → custom builds",
       start: "Way in: GTM Clarity Jam · from $1,500",
     },
     {
@@ -78,8 +78,19 @@ export const LINES = {
       legibleTo: "Legible to AI",
       promise: "Get found & cited.",
       body: "AI visibility through earned community consensus. Become the brand models recommend in your category, measured in a system you own.",
-      span: "$1,500 → $30,000+",
+      span: "From $1,500 → custom builds",
       start: "Way in: Visibility Audit · $1,500",
+    },
+    {
+      id: "fractional-cmo",
+      name: "Fractional CMO",
+      legibleTo: "Embedded with your team",
+      promise: "Own the growth.",
+      body: "When you need the leader, not just the build. Senior marketing leadership inside your company — positioning, systems, channels, and team direction — without the full-time overhead. Two to three clients at a time.",
+      span: "Scoped monthly engagement",
+      start: "Way in: an initial consult · limited seats",
+      href: "/book",
+      cta: "Talk through the fit",
     },
   ],
 } as const;
@@ -139,8 +150,8 @@ export const SUPPORT = {
 
 export const PRICING = {
   kicker: "[07] Pricing",
-  heading: "Real prices. No “contact us.”",
-  sub: "Transparent entry points for every line. Each starter credits 100% toward the bigger builds in its own line.",
+  heading: "A real price to start. A real scope for the rest.",
+  sub: "Both product lines have a transparent entry point, and each starter credits 100% toward the bigger builds in its line. Larger builds and fractional engagements are scoped to your team, timeline, and goals.",
   tiers: [
     {
       line: "GTM Clarity",
@@ -252,8 +263,8 @@ export const STARTER = {
     "Make your own copy and work in it. It's yours to keep. Or use any board you like.",
   ctaHeading: "Bring this with you.",
   ctaBody:
-    "Finished, or stuck? Book a GTM Clarity Jam and send your map ahead so we start from it, not from scratch. In two hours we make the calls the Starter surfaces: what you actually sell, who it's urgently for, and the one wedge to run. You leave with a decided position and a 90-day plan you own.",
-  cta: "Book your GTM Clarity Jam",
+    "Finished, or stuck? Book a free intro call and send your map ahead so we start from it, not from scratch. If the Jam is the right next step, we'll scope it on the call — two hours of live, senior work that makes the calls the Starter surfaces: what you actually sell, who it's urgently for, and the one wedge to run.",
+  cta: "Book a Free Intro Call",
   footnote: "Fronz · building systems to give lean teams an outsized presence.",
 } as const;
 
@@ -273,9 +284,9 @@ export const STARTER_FORM = {
 } as const;
 
 export const BOOK = {
-  kicker: "Book a consult",
-  heading: "Pick a time for your initial call.",
-  sub: "Choose a slot below.",
+  kicker: "Book a call",
+  heading: "Book a free intro call.",
+  sub: "Twenty minutes to talk through where you are and what fits — a Jam, an Audit, fractional support, or none of the above. Working sessions are scoped and invoiced after we've talked, so there's nothing to buy here.",
 } as const;
 
 export const FINAL_CTA = {
@@ -290,4 +301,5 @@ export const NAV = [
   { label: "Playbook", href: "/#lines" },
   { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#guide" },
+  { label: "Resume", href: "/resume" },
 ] as const;
