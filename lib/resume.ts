@@ -124,7 +124,7 @@ export const MOXA = {
     {
       n: "05",
       name: "The app",
-      body: "Developed and shipped working demos to the App Store and Play Store.",
+      body: "Built hands-on in React Native, in Cursor; shipped working demos to the App Store and Play Store.",
     },
     {
       n: "06",
@@ -155,7 +155,28 @@ export const NOW = {
   org: "Fronz",
   headline: "Every chapter started from zero. That's the skill I sell.",
   narrative:
-    "Fronz is the newest build: a fractional CMO practice and scoped consulting engagements for founders and lean teams. The work draws on everything before it — positioning, brand storytelling, lifecycle systems, and executive-level operating experience — now delivered as complete marketing systems designed to be handed off to the teams that own them. Alongside the core practice, I'm building out AI-powered customer discovery offerings as the search landscape shifts.",
+    "Fronz is the newest build: a fractional CMO practice and scoped consulting engagements for founders and lean teams. The work draws on everything before it — positioning, brand storytelling, lifecycle systems, and executive-level operating experience — now delivered as complete marketing systems designed to be handed off to the teams that own them. The practice is AI-native end to end. AI multiplies the craft; human taste finishes it.",
+  howIWork: {
+    kicker: "How I work",
+    pairs: [
+      {
+        ai: "AI runs the market research, trend analysis, and social and ad performance analysis.",
+        human: "I make the calls.",
+      },
+      {
+        ai: "AI drafts the content schedules and outlines.",
+        human: "I build everything out and finish it with human taste.",
+      },
+      {
+        ai: "Live-data KPI dashboards, with automated Notion reporting keeping executive views current.",
+        human: "Raw data becomes decisions, fast.",
+      },
+      {
+        ai: "The tools are hands-on: Cursor and Claude Code, Git, React and React Native.",
+        human: "I ship the product myself, not just the strategy.",
+      },
+    ],
+  },
   skills: [
     {
       group: "Marketing",
@@ -170,8 +191,12 @@ export const NOW = {
       items: "Building functions from zero, recruiting and mentoring teams of 30+, cross-cultural and remote team management, client and stakeholder relations",
     },
     {
+      group: "AI-Native & Technical",
+      items: "1,500+ hours in Cursor and Claude Code; Gemini, ChatGPT, Claude; Git, CLIs, and IDE-based development; React, React Native, and Next.js (multiple shipped apps and sites); Cloudflare; live-data KPI dashboards with automated Notion reporting",
+    },
+    {
       group: "Tools",
-      items: "Customer.io, PostHog, Cursor, Notion, Figma, Google Workspace, and modern marketing and collaboration stacks",
+      items: "Customer.io, PostHog, Notion, Figma, Google Workspace, and modern marketing and collaboration stacks",
     },
   ],
   education: "Berry College — B.A., Government · 2013",

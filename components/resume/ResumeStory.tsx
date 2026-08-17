@@ -376,7 +376,19 @@ function NowChapter() {
         {NOW.narrative}
       </E>
 
-      <E i={3} className="mt-12 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+      <E i={3} className="mt-12">
+        <p className="kicker">{NOW.howIWork.kicker}</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {NOW.howIWork.pairs.map((pair) => (
+            <div key={pair.ai} className="border border-line bg-paper p-5">
+              <p className="text-sm text-ink-muted">{pair.ai}</p>
+              <p className="mt-2 font-serif text-lg">{pair.human}</p>
+            </div>
+          ))}
+        </div>
+      </E>
+
+      <E i={4} className="mt-12 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
         {NOW.skills.map((skill) => (
           <div key={skill.group} className="bg-paper p-6">
             <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
@@ -387,11 +399,11 @@ function NowChapter() {
         ))}
       </E>
 
-      <E i={4} className="mt-6 font-mono text-xs uppercase tracking-widest text-ink-muted">
+      <E i={5} className="mt-6 font-mono text-xs uppercase tracking-widest text-ink-muted">
         {NOW.education}
       </E>
 
-      <E i={5} className="mt-14 border border-ink bg-ink p-8 text-paper md:p-10">
+      <E i={6} className="mt-14 border border-ink bg-ink p-8 text-paper md:p-10">
         <h3 className="text-[length:var(--text-h3)] text-paper">
           {NOW.closing.heading}
         </h3>

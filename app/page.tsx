@@ -159,6 +159,9 @@ export default function Home() {
               <Reveal as="p" className="mt-4 text-ink-muted">
                 {GUIDE.authority}
               </Reveal>
+              <Reveal as="p" className="mt-4 text-ink-muted">
+                {GUIDE.aiNative}
+              </Reveal>
             </div>
           </div>
         </Section>

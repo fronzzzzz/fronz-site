@@ -102,6 +102,8 @@ export const GUIDE = {
     "I'm a serial founder, from tech startups to marketing agencies. I know what it's like to need results without overhead.",
   authority:
     "I've been producing marketing deliverables for over a decade for companies such as PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs. Those stress-tested systems are now productized so a lean team can actually use them.",
+  aiNative:
+    "The practice is AI-native: I build the dashboards, the sites, and the systems myself — which is why one senior operator can deliver what used to take a team.",
 } as const;
 
 export const PROOF = {
