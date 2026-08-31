@@ -151,11 +151,11 @@ export const MOXA = {
 
 export const NOW = {
   era: "2026 – today",
-  role: "Fractional CMO & Marketing Consultant / Founder",
+  role: "Founder",
   org: "Fronz",
   headline: "Every chapter started from zero. That's the skill I sell.",
   narrative:
-    "Fronz is the newest build: a fractional CMO practice and scoped consulting engagements for founders and lean teams. The work draws on everything before it — positioning, brand storytelling, lifecycle systems, and executive-level operating experience — now delivered as complete marketing systems designed to be handed off to the teams that own them. The practice is AI-native end to end. AI multiplies the craft; human taste finishes it.",
+    "Fronz is the newest build: go-to-market systems for founders and lean teams. The work draws on everything before it — positioning, brand storytelling, lifecycle systems, and executive-level operating experience — now delivered as complete marketing systems designed to be handed off to the teams that own them. The practice is AI-native end to end. AI multiplies the craft; human taste finishes it.",
   howIWork: {
     kicker: "How I work",
     pairs: [
@@ -204,11 +204,8 @@ export const NOW = {
     heading: "Work with me.",
     consultLabel: "Book an intro call",
     consultHref: "/book",
-    emailLabel: "Email about a role",
-    emailHref:
-      "mailto:stacey@shesthefronz.com?subject=Role%20inquiry%20via%20fronzz.com",
     softLine:
-      "Most of my work is fractional and scoped engagements. Building something that needs a full-time marketing leader? For the right team, I'm open to that conversation.",
+      "The way in is a sprint. The way through is a scoped engagement your team owns.",
     downloadLabel: "Download the PDF resume",
   },
 } as const;

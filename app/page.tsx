@@ -43,7 +43,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-3">
+            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-2">
               {LINES.items.map((line) => (
                 <Link
                   key={line.id}
@@ -87,14 +87,15 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* [03] THE PLAYBOOK (the three lines) -------------------- */}
+        {/* [03] THE WORK (the two lines) -------------------------- */}
         <Section id="lines">
           <Kicker>{LINES.kicker}</Kicker>
           <Reveal as="h2" className="text-[length:var(--text-h2)]">
-            {LINES.heading}
+            {LINES.headingPre}{" "}
+            <Highlight>{LINES.headingHighlight}</Highlight>
           </Reveal>
           <Reveal className="mt-6 font-serif text-[length:var(--text-h3)] leading-snug">
-            {LINES.calloutPre} <Highlight>{LINES.calloutHighlight}</Highlight>
+            {LINES.subhead}
           </Reveal>
           <Reveal as="p" className="mt-8 text-lead text-ink-muted">
             {LINES.lead}
@@ -104,11 +105,11 @@ export default function Home() {
               {para}
             </Reveal>
           ))}
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
             {LINES.items.map((line, i) => (
               <Reveal key={line.id} delay={i * 90}>
                 <Link
-                  href={"href" in line ? line.href : `/${line.id}`}
+                  href={`/${line.id}`}
                   className="group flex h-full flex-col border border-line bg-paper p-8 transition-colors hover:border-ink"
                 >
                   <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
@@ -124,7 +125,7 @@ export default function Home() {
                     {line.start}
                   </p>
                   <span className="mt-6 inline-block font-mono text-sm text-ink-muted underline decoration-marker decoration-2 underline-offset-[6px] group-hover:text-ink">
-                    {"cta" in line ? line.cta : `Explore ${line.name}`} →
+                    Explore {line.name} →
                   </span>
                 </Link>
               </Reveal>

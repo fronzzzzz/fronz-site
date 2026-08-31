@@ -1,6 +1,7 @@
 /**
  * Fronz site content — single source of copy.
- * Sourced from Fronz_GTM_Clarity_Map.md (strategy SSOT). Edit here, not in components.
+ * Sourced from Fronz_GTM_Clarity_Map.md (strategy SSOT) and
+ * Brand_Language_Guidelines.md (language SSOT). Edit here, not in components.
  */
 
 export const SITE = {
@@ -8,7 +9,7 @@ export const SITE = {
   url: "https://fronzz.com",
   tagline: "Build the system. Own the growth.",
   description:
-    "Be clearly understood by your customers and found by the AI those customers ask. Lean systems you own, not agencies you rent.",
+    "Be clearly understood by your customers and found by the AI those customers ask. Lean go-to-market systems you own, not agencies you rent.",
   // Email intentionally stays on the shesthefronz.com domain (mail DNS lives there).
   email: "stacey@shesthefronz.com",
   /** On-site booking page — keeps the customer on fronzz.com. */
@@ -30,7 +31,7 @@ export const HERO = {
   kicker: "[01] Growth systems for seed–Series B founders & lean teams",
   lead: "Skip the agency retainers.",
   highlight: "Build the system. Own the growth.",
-  sub: "Be clearly understood by your customers and found by the AI those customers ask. Lean systems you own, not agencies you rent.",
+  sub: "Be clearly understood by your customers and found by the AI those customers ask. Lean go-to-market systems you own, not agencies you rent.",
   cta: BOOKING_CTA,
   ctaHref: SITE.bookingUrl,
   secondaryCta: "See how it works",
@@ -53,14 +54,14 @@ export const PROBLEM = {
 } as const;
 
 export const LINES = {
-  kicker: "[03] The Playbook",
-  heading: "Become the incumbent's worst nightmare.",
-  calloutPre: "In the AI era,",
-  calloutHighlight: "lean + clear beats big.",
+  kicker: "[03] The work",
+  headingPre: "In the AI era,",
+  headingHighlight: "lean + clear beats big.",
+  subhead: "Become the incumbent's worst nightmare.",
   lead: "You can punch above your weight when you're clear to the two audiences that decide whether you win: your customers, and the AI they ask.",
   approach: [
     "We build systems, not slide decks. We build autonomy into your team, not dependency on an outside partner.",
-    "We design the blueprint and you choose how much we build, from a clean strategy hand-off to a complete execution.",
+    "We design the blueprint and you choose how much we build, from a clean strategy hand-off to a complete execution. The way in is a sprint. The way through is a scoped engagement you own.",
   ],
   items: [
     {
@@ -68,7 +69,7 @@ export const LINES = {
       name: "GTM Clarity",
       legibleTo: "Legible to your customers",
       promise: "Know what to say.",
-      body: "Positioning, messaging, and the outreach system to deliver it. From your one sentence to a running go-to-market your team owns by the end.",
+      body: "Positioning, messaging, and the outreach system to deliver it. From your pitch sentence to a running go-to-market your team owns by the end.",
       span: "From $1,500 → custom builds",
       start: "Way in: GTM Clarity Jam · from $1,500",
     },
@@ -80,17 +81,6 @@ export const LINES = {
       body: "AI visibility through earned community consensus. Become the brand models recommend in your category, measured in a system you own.",
       span: "From $1,500 → custom builds",
       start: "Way in: Visibility Audit · $1,500",
-    },
-    {
-      id: "fractional-cmo",
-      name: "Fractional CMO",
-      legibleTo: "Embedded with your team",
-      promise: "Own the growth.",
-      body: "When you need the leader, not just the build. Senior marketing leadership inside your company — positioning, systems, channels, and team direction — without the full-time overhead. Two to three clients at a time.",
-      span: "Scoped monthly engagement",
-      start: "Way in: an initial consult · limited seats",
-      href: "/book",
-      cta: "Talk through the fit",
     },
   ],
 } as const;
@@ -117,7 +107,7 @@ export const PROOF = {
     "Protocol Labs",
     "Moxa",
   ],
-  note: "You get a system I've built for myself, not a deck of theory.",
+  note: "Rooms I learned in. You get a system I've built for myself, not a deck of theory.",
   /** Quiet credibility link to the prior portfolio — understated on purpose. */
   portfolio: {
     lead: "The work behind these names lives on my",
@@ -153,13 +143,13 @@ export const SUPPORT = {
 export const PRICING = {
   kicker: "[07] Pricing",
   heading: "A real price to start. A real scope for the rest.",
-  sub: "Both product lines have a transparent entry point, and each starter credits 100% toward the bigger builds in its line. Larger builds and fractional engagements are scoped to your team, timeline, and goals.",
+  sub: "Each line has a transparent entry point, and each starter credits 100% toward the bigger builds in its line. Larger builds are scoped to your team, timeline, and goals.",
   tiers: [
     {
       line: "GTM Clarity",
       entry: "GTM Clarity Jam · Founder",
       price: "$1,500",
-      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a sentence, a 90-day plan, and a recap you act on Monday. Team version: $3,000, two 90-min sessions, up to four collaborators.",
+      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a pitch sentence, a 90-day plan, and a recap you act on Monday. Team version: $3,000, two 90-min sessions, up to four collaborators.",
       featured: true,
     },
     {
@@ -258,7 +248,7 @@ export const STARTER = {
     punchLine:
       "It's not a copywriting problem. It's a positioning decision waiting to be made.",
     sellHighlight: "That's the whole job of the GTM Clarity Jam.",
-    sell: "In two hours of live, senior work we make the calls the Starter surfaces: we separate what you actually sell from how people find it, decide your position, cut your customer list to the one that's urgent, and map why your best-fit buyers aren't converting. You leave with a decided wedge, a sentence you can say out loud, and a 90-day plan you own.",
+    sell: "In two hours of live, senior work we make the calls the Starter surfaces: we separate what you actually sell from how people find it, decide your position, cut your customer list to the one that's urgent, and map why your best-fit buyers aren't converting. You leave with a decided wedge, a pitch sentence you can say out loud, and a 90-day plan you own.",
   },
   templatesHeading: "Grab a template.",
   templatesNote:
@@ -288,7 +278,7 @@ export const STARTER_FORM = {
 export const BOOK = {
   kicker: "Book a call",
   heading: "Book a free intro call.",
-  sub: "Twenty minutes to talk through where you are and what fits — a Jam, an Audit, fractional support, or none of the above. Working sessions are scoped and invoiced after we've talked, so there's nothing to buy here.",
+  sub: "Twenty minutes to talk through where you are and what fits: a Jam, an Audit, a scoped build, or none of the above. Working sessions are scoped and invoiced after we've talked, so there's nothing to buy here.",
 } as const;
 
 export const FINAL_CTA = {
@@ -300,8 +290,7 @@ export const FINAL_CTA = {
 } as const;
 
 export const NAV = [
-  { label: "Playbook", href: "/#lines" },
+  { label: "Work", href: "/#lines" },
   { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#guide" },
-  { label: "Resume", href: "/resume" },
 ] as const;

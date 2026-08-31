@@ -77,7 +77,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     arcLabel: "Get clear",
     promise: "Know what to say.",
     heroSub:
-      "Get clear on what to say, to whom, and how to reach them, then build the go-to-market system that does it. GTM Clarity spans the whole arc: from deciding your one sentence and your wedge, to a formalized outreach system, to a running go-to-market your team owns by the end.",
+      "Get clear on what to say, to whom, and how to reach them, then build the go-to-market system that does it. GTM Clarity spans the whole arc: from deciding your pitch sentence and your wedge, to a formalized outreach system, to a running go-to-market your team owns by the end.",
     problem: {
       heading: "It isn't a marketing problem. It's a clarity problem.",
       points: [
@@ -100,7 +100,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       heading: "From blur to a running system, in three moves",
       sub: "Clarity is a decision, not copy. We decide it, document it, then run it with you until your team owns it. Each move is a complete step you can stop at.",
       steps: [
-        { n: "01", name: "Decide", body: "Separate product from channel from model, choose your one wedge, and land the one sentence. Positioning before tactics, every time. (This is the Jam.)" },
+        { n: "01", name: "Decide", body: "Separate product from channel from model, choose your one wedge, and land the pitch sentence. Positioning before tactics, every time. (This is the Jam.)" },
         { n: "02", name: "Productize", body: "Turn the decision into a running outreach system: messaging set, formalized ICP, channel selection, cadence templates, and metrics. Your team can pitch, target, and reach out consistently without you in the room. (This is the Outreach Playbook.)" },
         { n: "03", name: "Run & hand off", body: "12 weeks embedded with your team. We stand up the system, run it live, and progressively transition ownership to your team by week 12. You leave with the machine running and your team operating it. (This is the Build.)" },
       ],
@@ -115,14 +115,14 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           meta: "1×2hr · 1:1 · recorded",
           teamPrice: "$3,000",
           teamMeta: "2×90min · up to 5 · recorded",
-          tagline: "Walk out with a clear customer profile, a defined product offering, and the one-sentence pitch that connects with them.",
+          tagline: "Walk out with a clear customer profile, a defined product offering, and the pitch sentence that connects with them.",
           featured: true,
           points: [
             "The core untangle: what you actually sell vs. how people find it vs. how you make money",
-            "One positioning decision made in the room, expressed as one sentence you can say out loud",
+            "One positioning decision made in the room, expressed as a pitch sentence you can say out loud",
             "Your customer list cut to the one buyer that's urgent, with the reason why",
             "Your wedge decided: offer × customer × channel, plus the one move to run for 90 days",
-            "A leave-behind recap and Sentence one-pager, both yours to act on Monday",
+            "A leave-behind recap and pitch-sentence one-pager, both yours to act on Monday",
             "Credits 100% toward the Outreach Playbook within 30 days",
           ],
         },
@@ -132,7 +132,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           meta: "~3–4 weeks · Jam fee credits 100%",
           tagline: "The outreach system your team can run without you in the room.",
           points: [
-            "Messaging set: sentence, audience variants, objection reframes, hooks",
+            "Messaging set: pitch sentence, audience variants, objection reframes, hooks",
             "One formalized ICP with jobs-to-be-done, triggers, watering holes, disqualifiers",
             "Channel selection (1–2 owned channels) with cadence templates and personalization variables",
             "Content anchors: the two or three pieces your outreach hooks into",
@@ -157,7 +157,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       ],
     },
     entryPoints: [
-      { who: "Solo founder, message won't land", start: "Start with the Founder Jam: one decision, one sentence, in two hours." },
+      { who: "Solo founder, message won't land", start: "Start with the Founder Jam: one decision, one pitch sentence, in two hours." },
       { who: "Founding team, not aligned on the pitch", start: "Start with the Team Jam: two 90-min sessions get the team to one message." },
       { who: "Decision is made, need the system", start: "Start with the Outreach Playbook: the running outreach your team can operate." },
       { who: "Ready to build it and prove it out", start: "Start with the Build: 12 weeks embedded, your team owning it by the end." },
@@ -165,7 +165,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     whoFor: {
       fit: [
         "You're a seed–Series B founder or lean team selling multiple things and need to focus",
-        "Pre- or post-PMF, but the message isn't landing",
+        "The product works, or it's close, but the message isn't landing",
         "You want to run the system yourself, not rent it forever",
       ],
       notFit: [

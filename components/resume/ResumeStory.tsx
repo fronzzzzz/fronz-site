@@ -416,12 +416,6 @@ function NowChapter() {
             {NOW.closing.consultLabel} →
           </Link>
           <a
-            href={NOW.closing.emailHref}
-            className="font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] hover:text-marker"
-          >
-            {NOW.closing.emailLabel}
-          </a>
-          <a
             href={RESUME_PDF}
             download
             className="font-mono text-sm text-paper/70 underline decoration-paper/40 decoration-2 underline-offset-[6px] hover:text-paper"

@@ -39,8 +39,6 @@ export const metadata: Metadata = {
     "answer engine optimization",
     "AEO",
     "AI customer discoverability",
-    "business intelligence dashboards",
-    "fractional growth",
     "no retainer consulting",
   ],
   authors: [{ name: "Stacey Fronek" }],
