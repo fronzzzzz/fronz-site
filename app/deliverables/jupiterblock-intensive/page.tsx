@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { FrontDoorProposal } from "@/components/proposal/FrontDoorProposal";
-import { JUPITERBLOCK_PROPOSAL } from "@/lib/deliverables/jupiterblock-front-door";
+import { JUPITERBLOCK_PROPOSAL } from "@/lib/deliverables/jupiterblock-intensive";
 
 export const metadata: Metadata = {
   title: "Front Door Intensive — JupiterBlock",

@@ -1,13 +1,13 @@
 /**
- * JupiterBlock Front Door Intensive — client proposal.
+ * JupiterBlock Intensive — client proposal.
  * Private shareable URL. Voice: second person, to Ramona.
  * Brand language: sentence-case headings, highlighter on one phrase.
  * Go-to-market = alignment. Marketing = attraction.
  */
 
 export const JUPITERBLOCK_PROPOSAL = {
-  slug: "jupiterblock-front-door",
-  path: "/deliverables/jupiterblock-front-door",
+  slug: "jupiterblock-intensive",
+  path: "/deliverables/jupiterblock-intensive",
 
   hero: {
     eyebrow: "A Three-Day Intensive",

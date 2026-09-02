@@ -8,7 +8,7 @@ import { SITE } from "@/lib/content";
 import {
   JUPITERBLOCK_PROPOSAL as P,
   jupiterblockInvoiceUrl,
-} from "@/lib/deliverables/jupiterblock-front-door";
+} from "@/lib/deliverables/jupiterblock-intensive";
 import { PrintPdfLink } from "@/components/proposal/PrintPdfLink";
 
 export function FrontDoorProposal() {
