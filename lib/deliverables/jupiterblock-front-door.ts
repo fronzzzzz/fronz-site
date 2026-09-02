@@ -36,7 +36,7 @@ export const JUPITERBLOCK_PROPOSAL = {
       {
         n: "01",
         head: "You, in full color.",
-        body: "Your uniqueness, your values, and a highly credentialed skillset, attracting aligned, vetted, high-paying clients. ",
+        body: "Your uniqueness, your values, and a highly credentialed skillset, attracting aligned, vetted, high-paying clients.",
       },
       {
         n: "02",
@@ -51,31 +51,30 @@ export const JUPITERBLOCK_PROPOSAL = {
       {
         n: "04",
         head: "Not sustainability instead of impact. Both.",
-        body: "You are not choosing your own sustainability and support over the long-term impact of your work. You are choosing the next step toward the fulfillment of the long term vision by honoring yourself at this stage of the process.",
+        body: "You are not choosing your own sustainability and support over the long-term impact of your work. You are choosing the next step toward the fulfillment of the long-term vision by honoring yourself at this stage of the process.",
       },
     ],
   },
 
   work: {
     kicker: "[02] The scope of work",
-    heading: "Map both buyers. Build the messages. Design the fork.",
-    intro:
-      "We map both paths to paying legal clients on the institutional FO and the frontier founder sides. Your ten names in the following homeworkdecide which one we lead with. The lead buyer gets the deepest pass; both get a mapped path through your funneland a designed, ready-to-test email. We do not rebuild the site this week. We structure the fork it needs and leave the overhaul to happen after the message has been tested on real buyers.",
+    heading: "Map both buyers. Build the messages. Name the fork.",
+    intro: "Two paths to paying legal clients, one intensive. Here is exactly what ships.",
     items: [
       {
         n: "01",
-        name: "Both customer profiles, defined clearly with mapped buyer paths",
+        name: "Both buyers, defined clearly with mapped paths",
         body: "Institutional players and funded ventures, side by side. Family offices and funders anchored on the ecosystem-mapping engagement you are already prototyping; frontier ventures using the kit and audit you already have.",
         deliverables: [
           "Who each buyer is, and the pain you solve",
           "The exact offer language and the full free-to-paid path for each",
-          "Your ten names ranked decides which customer profile we lead with, and which gets the secondary treatment for now",
+          "Your ten names, ranked, decide which buyer we lead with, and which gets the secondary treatment for now",
         ],
       },
       {
         n: "02",
         name: "Two designed emails and personal outreach copy",
-        body: "One outreach email and personal message per customer profile, with exact language to move them through the funnel. Final copy, designed headers and hierarchy, one clear ask. Thoughtfully designed both visually and emotionally.",
+        body: "One outreach email and personal message per buyer, with exact language to move them through the funnel. The lead buyer's message gets the deepest pass. Final copy, designed headers and hierarchy, one clear ask. Thoughtfully designed both visually and emotionally.",
         deliverables: [
           "A send-ready email for each buyer",
           "A personal message for each buyer",
@@ -86,9 +85,9 @@ export const JUPITERBLOCK_PROPOSAL = {
       {
         n: "03",
         name: "The website fork, named",
-        body: "Your site has too many doors right now. We do not rebuild it under a three-day clock. We determine the shape it needs, so you leave knowing exactly what it must become.",
+        body: "Your site has too many doors right now. We do not rebuild it under a three-day clock — that happens once the message has been tested on real buyers. We determine the shape it needs now, so you leave knowing exactly what it must become.",
         deliverables: [
-          "The clearly defined fork your homepage needs so each customer profile can move forward in the funnel",
+          "The clearly defined fork your homepage needs so each buyer can move forward in the funnel",
           "What moves off the front door",
           "A build plan a follow-on sprint can execute, solo or with support",
         ],
@@ -98,7 +97,7 @@ export const JUPITERBLOCK_PROPOSAL = {
         name: "Recap + next step",
         body: "A one-page recap so nothing gets lost, and the shape of the follow-on sprint so momentum holds after day 3.",
         deliverables: [
-          "One page: buyers, messages, the shape of thewebsite fork",
+          "One page: buyers, messages, the shape of the website fork",
           "What shipped, what is queued",
           "The two-week sprint, outlined",
         ],
@@ -116,7 +115,7 @@ export const JUPITERBLOCK_PROPOSAL = {
         n: "01",
         name: "Who",
         together:
-          "We walk through your ten names. Score both customer profiles with clear criteria. Lock the pain point sand the offer for each, and decide which buyer we lead with.",
+          "We walk through your ten names. Score both buyers with clear criteria. Lock the pain points and the offer for each, and decide which buyer we lead with.",
         between:
           "I write the position for both buyers in plain language and draft the first pass of the outreach messaging.",
       },
@@ -188,28 +187,30 @@ export const JUPITERBLOCK_PROPOSAL = {
       "Live testing or buyer interviews",
       "Finishing every offer in the ecosystem",
     ],
+    close:
+      "Solarpunk Pirates, longer product lines, and the colorful work stay parked.",
   },
 
   sprint: {
     kicker: "A peek ahead",
     heading: "If the message lands.",
     intro:
-      "Not booked. Not priced. Not part of this intensive. A sketch of the two-week sprint we would scope together on day 3, once your ten names have shown us what is real.",
+      "Not part of this intensive. A sketch of the two-week sprint we would scope together on day 3, to implement and test what we've built.",
     items: [
       {
         n: "01",
         name: "Test with real buyers",
-        body: "Both messages go to your ten names. We watch what gets opened, answered, and moved forward.",
+        body: "Both messages go to your ten names. We watch what gets opened, answered, and acted on.",
       },
       {
         n: "02",
         name: "Refine on real replies",
-        body: "We sharpen positioning and copy on what actually happened, not on guesses.",
+        body: "We sharpen positioning and copy based on what actually happened, not on guesses.",
       },
       {
         n: "03",
         name: "Rebuild the front door",
-        body: "The full website overhaul, matched to the tested funnel and both buyers — the fork we named, now built.",
+        body: "The full website overhaul, matched to the tested funnel and both buyers — the website shape we named, now fullybuilt.",
       },
     ],
     close:
