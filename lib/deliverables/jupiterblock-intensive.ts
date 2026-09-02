@@ -58,7 +58,7 @@ export const JUPITERBLOCK_PROPOSAL = {
 
   work: {
     kicker: "[02] The scope of work",
-    heading: "Map both buyers. Build the messages. Name the fork.",
+    heading: "Name the website fork.",
     intro: "Two paths to paying legal clients, one intensive. Here is exactly what ships.",
     items: [
       {
@@ -166,10 +166,9 @@ export const JUPITERBLOCK_PROPOSAL = {
       },
       {
         n: "03",
-        name: "Pacing",
+        name: "Pacing Commitment",
         checks: [
-          "No parallel website or email redesign during the three days",
-          "We change the message once, together",
+          "Commit to no parallel website or email redesign during the three days. We change the message once, together.",
         ],
         note: "Rest inside the process. There will always be more work. Right now we need you fresh for the alignment work we do together.",
       },
@@ -250,11 +249,9 @@ export const JUPITERBLOCK_PROPOSAL = {
 
   cta: {
     kicker: "If this is the next step",
-    heading: "Pay $2,500 and book.",
+    heading: "Book your three-day intensive.",
     sub: "This page is the scope. Paying the invoice is your confirmation. Then we pick dates, you do the prep, and we begin.",
     button: "Pay $2,500",
-    price: "$2,500",
-    priceNote: "Paying confirms this scope.",
   },
 } as const;
 

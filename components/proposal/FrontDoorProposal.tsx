@@ -222,7 +222,7 @@ export function FrontDoorProposal() {
                   ))}
                 </ul>
                 {"note" in item && item.note ? (
-                  <p className="mt-4 max-w-[62ch] pl-7 text-sm text-ink-muted">
+                  <p className="mt-4 max-w-[62ch] text-ink">
                     {item.note}
                   </p>
                 ) : null}
@@ -317,10 +317,6 @@ export function FrontDoorProposal() {
             <h2 className="text-[length:var(--text-h2)] text-paper">
               {P.cta.heading}
             </h2>
-            <p className="mt-4 font-mono text-4xl text-marker">{P.cta.price}</p>
-            <p className="mt-2 font-mono text-xs uppercase tracking-widest text-paper/50">
-              {P.cta.priceNote}
-            </p>
             <p className="mt-6 max-w-[62ch] text-lead text-paper/75">
               {P.cta.sub}
             </p>
