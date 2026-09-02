@@ -3,7 +3,7 @@ import { SITE, NAV } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-paper-sink">
+    <footer className="border-t border-line bg-paper-sink print:hidden">
       <div className="mx-auto w-full max-w-[1180px] px-6 py-16 md:px-10">
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="max-w-sm">

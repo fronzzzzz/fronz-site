@@ -1,7 +1,7 @@
 ---
 title: Fronz Brand Language Guidelines
-version: 1.1
-last_updated: 2026-08-31
+version: 1.2
+last_updated: 2026-09-02
 owners: Stacey Fronek
 applies_to: fronzz.com, public/llms.txt, JSON-LD, client deliverables, case studies, workshop artifacts, sales copy
 ---
@@ -73,6 +73,17 @@ Credit is same-tier only (Founder → Founder, Team → Team). Jam → Playbook 
 - Product names keep their canonical form: "GTM Clarity Jam", "GTM Build", "GTM Clarity Starter". The acronym earns its place because it's part of the product name, not shorthand for a concept.
 - If we use `GTM` outside a product name in prose, spell it out on first use: "your go-to-market (GTM) system".
 
+### Go-to-market vs marketing
+
+These are not synonyms. This distinction is how Fronz works. Weave it into the work. Do not teach it as its own section on a client page.
+
+- **Go-to-market (GTM)** is **alignment**: you internally, you with the market.
+- **Marketing** is **attraction**: how that aligned self pulls in the people you want to work with, and lets everyone else qualify themselves.
+
+Work in that order. Do not skip alignment and jump to channels, content, or campaigns. On a proposal or recap, the language shows up in what we are doing (who the door is for, what the site and email pull in). It does not get a philosophy block.
+
+**Funnel** is allowed when it means the path that qualifies people before they reach you (calendar protection, self-selection). Define it once on the page. Do not use it as a synonym for marketing. On public pages that are not about qualification, prefer **path to purchase**.
+
 ### Groundswell rule
 
 - Full name on first use per page: **"Groundswell AI Customer Discoverability"**.
@@ -94,6 +105,7 @@ Terms buyers will encounter elsewhere. Defining them positions Fronz as the one 
 | **ICP** | ideal customer profile — the one buyer everything is built around |
 | **Wedge** | one offer × one customer × one channel, run sharply |
 | **Ladder** | the path a buyer walks from free to paid to premium |
+| **Funnel** | the path that qualifies people before they reach you (use when the job is qualification; otherwise **path to purchase**) |
 | **Positioning** | the choice of who you're for and what you beat |
 | **Cohort** | (do not define — retreat/education industry standard) |
 
@@ -106,7 +118,7 @@ Insider shorthand that adds no signal to a buyer.
 | Keystone product | **anchor offering** |
 | Bridge product | **missing rung** *or* **mid-tier offer** |
 | Sub-persona A / B | **Buyer A / B** |
-| Funnel / top of funnel / TOFU | **path to purchase** / **first-touch content** / **discovery content** |
+| Top of funnel / TOFU | **first-touch content** / **discovery content** |
 | Activation | **first meaningful action** or **first purchase** |
 | Distribution (as a noun) | **reach** |
 | Nurture sequence | **email series** |

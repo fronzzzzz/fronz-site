@@ -8,7 +8,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-sm print:hidden">
       <div className="mx-auto flex w-full max-w-[1180px] items-center justify-between px-6 py-4 md:px-10">
         <Link
           href="/"

@@ -192,3 +192,29 @@ html.reveal-ready .reveal.is-visible {
     animation: none;
   }
 }
+
+/* Proposal / resume print — Save as PDF keeps the live page current */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    margin: 0.6in;
+  }
+
+  html.reveal-ready .reveal:not(.is-visible) {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .grain::after {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+}
