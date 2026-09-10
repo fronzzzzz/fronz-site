@@ -2,183 +2,166 @@
  * Fronz site content — single source of copy.
  * Sourced from Fronz_GTM_Clarity_Map.md (strategy SSOT) and
  * Brand_Language_Guidelines.md (language SSOT). Edit here, not in components.
+ *
+ * Funnel SSOT: Fronz_Funnel_and_Offer_Ladder.md (Sep 2026)
  */
 
 export const SITE = {
   name: "Fronz",
   url: "https://fronzz.com",
-  tagline: "Build the system. Own the growth.",
+  tagline: "Gain clarity. Build momentum.",
   description:
-    "Be clearly understood by your customers and found by the AI those customers ask. Lean go-to-market systems you own, not agencies you rent.",
-  // Email intentionally stays on the shesthefronz.com domain (mail DNS lives there).
+    "Senior go-to-market judgment for bootstrapped–Series A founders and lean teams: decide what to sell and to whom, get in front of real buyers, and know what to run next. Bounded containers — not agency bloat or another full-time hire.",
   email: "stacey@shesthefronz.com",
-  /** On-site booking page — keeps the customer on fronzz.com. */
   bookingUrl: "/book",
+  starterUrl: "/starter",
 } as const;
 
-/** Calendly inline embed URL (override in Vercel via NEXT_PUBLIC_CALENDLY_URL). */
 const CALENDLY_EMBED_URL =
   "https://calendly.com/fronzz/initial-consult?background_color=f3efe4&text_color=1c1e17&primary_color=1c1e17";
 
-/** Calendly event URL for the inline embed on /book. */
 export function calendlyUrl(): string {
   return process.env.NEXT_PUBLIC_CALENDLY_URL ?? CALENDLY_EMBED_URL;
 }
 
-export const BOOKING_CTA = "Book a Free Intro Call";
+export const BOOKING_CTA = "Book a Starter Review";
+export const HOME_CTA = "Map Your Business for Free";
+export const STARTER_CTA = "Complete the GTM Clarity Starter";
+
+/** Three-beat motion — homepage hero, offers page hero, arc strip. */
+export const MOTION = {
+  beats: [
+    "Gain clarity.",
+    "Build momentum.",
+    "Know what to run next.",
+  ],
+  highlightBeat: 1,
+  arc: [
+    { label: "Gain clarity", href: "/gtm-clarity#get-clear" },
+    { label: "Build momentum", href: "/gtm-clarity#make-contact" },
+    { label: "Know what to run next", href: "/gtm-clarity#keep-moving" },
+  ],
+  sections: [
+    { id: "get-clear", label: "Gain clarity" },
+    { id: "make-contact", label: "Build momentum" },
+    { id: "keep-moving", label: "Know what to run next" },
+  ],
+  sectionBlurbs: {
+    "get-clear": "Map your business and decide what you sell and to whom.",
+    "make-contact": "Put your positioning in front of real buyers and get honest counts.",
+    "keep-moving":
+      "A monthly read while you execute. Your first paid step after the map, or your return when you need one.",
+  },
+} as const;
 
 export const HERO = {
-  kicker: "[01] Growth systems for seed–Series B founders & lean teams",
-  lead: "Skip the agency retainers.",
-  highlight: "Build the system. Own the growth.",
-  sub: "Be clearly understood by your customers and found by the AI those customers ask. Lean go-to-market systems you own, not agencies you rent.",
-  cta: BOOKING_CTA,
-  ctaHref: SITE.bookingUrl,
-  secondaryCta: "See how it works",
-  secondaryHref: "#lines",
+  kicker: "[01] Go-to-market for bootstrapped–Series A founders & lean teams",
+  beats: MOTION.beats,
+  highlightBeat: MOTION.highlightBeat,
+  sub: "Decide what to sell and to whom, get it in front of real buyers, and know what to run next.",
+  cta: HOME_CTA,
+  ctaHref: SITE.starterUrl,
+  secondaryCta: "See offers",
+  secondaryHref: "/gtm-clarity",
+  arc: MOTION.arc,
 } as const;
 
 export const PROBLEM = {
-  kicker: "[02] The problem",
-  heading: "Most founders don't have a marketing problem. They have a clarity and visibility problem.",
+  kicker: "[02] The real problem",
+  heading: "Most founders don't have a marketing problem. They have a clarity and movement problem.",
   pains: [
     {
       head: "Nobody gets what you do.",
-      body: "You can describe it five ways and none of them land. Customers bounce before they understand your value. The gap isn't your words; it's the position underneath them. We help you get clear on your position and build out your value prop, your ICP (ideal customer profile), and your marketing channels. You leave with clear tactics and systems that are built and running.",
+      body: "You can describe it five ways and none of them land. Prospects nod, then don't buy. The gap isn't your words; it's the position underneath them.",
     },
     {
-      head: "AI doesn't mention you.",
-      body: "Buyers now ask ChatGPT, Perplexity, and Google's AI for a recommendation, and your competitor might be the answer. Over half of B2B software buyers start in an AI chatbot. We help ensure that you're in the room when the decision gets made.",
+      head: "You're busy, but nothing's moving.",
+      body: "Every tactic is running at once and none of them convert. Without one clear bet and a way to keep score, the effort scatters and you can't tell what's working.",
     },
   ],
 } as const;
 
 export const LINES = {
-  kicker: "[03] The work",
-  headingPre: "In the AI era,",
-  headingHighlight: "lean + clear beats big.",
-  subhead: "Become the incumbent's worst nightmare.",
-  lead: "You can punch above your weight when you're clear to the two audiences that decide whether you win: your customers, and the AI they ask.",
-  approach: [
-    "We build systems, not slide decks. We build autonomy into your team, not dependency on an outside partner.",
-    "We design the blueprint and you choose how much we build, from a clean strategy hand-off to a complete execution. The way in is a sprint. The way through is a scoped engagement you own.",
-  ],
-  items: [
-    {
-      id: "gtm-clarity",
-      name: "GTM Clarity",
-      legibleTo: "Legible to your customers",
-      promise: "Know what to say.",
-      body: "Positioning, messaging, and the outreach system to deliver it. From your pitch sentence to a running go-to-market your team owns by the end.",
-      span: "From $1,500 → custom builds",
-      start: "Way in: GTM Clarity Jam · from $1,500",
-    },
-    {
-      id: "groundswell",
-      name: "Groundswell AI Customer Discoverability",
-      legibleTo: "Legible to AI",
-      promise: "Get found & cited.",
-      body: "AI visibility through earned community consensus. Become the brand models recommend in your category, measured in a system you own.",
-      span: "From $1,500 → custom builds",
-      start: "Way in: Visibility Audit · $1,500",
-    },
-  ],
+  kicker: "[03] Lean and clear beats big",
+  heading: "Clarity is the unfair advantage.",
+  sub: "When you're clear, a lean team moves faster than a big one. I help you lock what you sell and who it's for, put it in front of real buyers, and turn their response into your next move. No bloat, no guesswork. Just momentum you can measure.",
+  cta: "Find your unfair advantage",
+  ctaHref: "/gtm-clarity",
 } as const;
 
 export const GUIDE = {
   kicker: "[04] Who you're working with",
   name: "Stacey Fronek (aka, Fronz)",
   empathy:
-    "I'm a serial founder, from tech startups to marketing agencies. I know what it's like to need results without overhead.",
-  authority:
-    "I've been producing marketing deliverables for over a decade for companies such as PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs. Those stress-tested systems are now productized so a lean team can actually use them.",
-  aiNative:
-    "The practice is AI-native: I build the dashboards, the sites, and the systems myself — which is why one senior operator can deliver what used to take a team.",
+    "I'm a serial founder, from tech startups to marketing agencies. I know what it's like to need movement without hiring a full go-to-market team.",
 } as const;
 
 export const PROOF = {
   kicker: "[05] Proof",
-  heading: "Built live, not theorized.",
-  logos: [
+  heading: "Ten years in marketing as a founder. One zero-to-one build.",
+  reach:
+    "Tens of thousands of attendees · Millions of views across campaigns",
+  names: [
     "PopSockets",
     "Hotels.com",
     "Xfinity",
     "Ethereum Foundation",
     "Protocol Labs",
-    "Moxa",
   ],
-  note: "Rooms I learned in. You get a system I've built for myself, not a deck of theory.",
-  /** Quiet credibility link to the prior portfolio — understated on purpose. */
   portfolio: {
-    lead: "The work behind these names lives on my",
+    lead: "Campaign work on my",
     label: "portfolio",
     href: "https://www.shesthefronz.com",
   },
+  build: {
+    name: "Moxa Money",
+    detail: "Co-founder, CMO & CPO — product GTM from zero.",
+  },
 } as const;
 
-export const SUPPORT = {
-  kicker: "[06] The support model",
-  heading: "I build it. You own it.",
-  promise:
-    "My job is to make your team self-sufficient, then be there when the world changes. Not to bill you while it doesn't.",
+export const WHY_FRONZ = {
+  kicker: "[07] Why Fronz",
+  heading: "Not an agency. Not a hire.",
   rows: [
-    { agency: "Mandatory monthly fee, forever", fronz: "One-time build, you own it" },
-    { agency: "You depend on them", fronz: "Your team is enabled to run it" },
     {
-      agency: "Pay whether or not you need them",
-      fronz: "On-call hours + opt-in refreshes only",
+      agency: "Open-ended retainer, vague scope",
+      inhouse: "Salary, benefits, and a seat to fill",
+      fronz: "Named container — fixed scope, fixed price, fixed cap",
+    },
+    {
+      agency: "They run your marketing",
+      inhouse: "You hire, manage, and direct",
+      fronz: "You execute — I interpret and set the next move",
+    },
+    {
+      agency: "Always on because you're paying monthly",
+      inhouse: "On payroll whether you need them this month",
+      fronz: "Step in when the container fits; graduate when it doesn't",
     },
     {
       agency: "Incentive: keep you dependent",
-      fronz: "Incentive: make you self-sufficient",
+      inhouse: "Incentive: keep the seat busy",
+      fronz: "Incentive: a clear read so you can keep moving",
     },
-  ],
-  extras: [
-    "Team enablement included in every build.",
-    "On-call hours: prepaid 10-hour packs at $250/hr, use when you want.",
-    "Groundswell Refresh, booked anytime, no cadence: $1,200, never a subscription.",
   ],
 } as const;
 
-export const PRICING = {
-  kicker: "[07] Pricing",
-  heading: "A real price to start. A real scope for the rest.",
-  sub: "Each line has a transparent entry point, and each starter credits 100% toward the bigger builds in its line. Larger builds are scoped to your team, timeline, and goals.",
-  tiers: [
-    {
-      line: "GTM Clarity",
-      entry: "GTM Clarity Jam · Founder",
-      price: "$1,500",
-      detail: "2-hour 1:1, recorded. We separate what you sell from how people find it, decide your position, cut to the one urgent customer, and pick the wedge to run. You leave with a pitch sentence, a 90-day plan, and a recap you act on Monday. Team version: $3,000, two 90-min sessions, up to four collaborators.",
-      featured: true,
-    },
-    {
-      line: "Groundswell",
-      entry: "Visibility Audit",
-      price: "$1,500",
-      detail: "Where AI is omitting you, why, and the consensus plan to fix it.",
-      featured: false,
-    },
-  ],
+export const OFFERS = {
+  kicker: "[06] How to work with Fronz",
+  heading: "Pick the container that fits where you are.",
+  sub: "Every path starts with a free map. Then fixed-scope offers for positioning, market contact, or a monthly read while you ship — named price before you commit.",
+  cta: "See offers",
+  ctaHref: "/gtm-clarity",
 } as const;
 
 export const LEAD = {
-  kicker: "[08] Free, start now",
-  heading: "See your whole business on one page.",
-  body: "The GTM Clarity Starter is a 20-minute exercise that maps your offers, customers, and tactics, and shows you exactly where it's blurry. It's the warm-up for the Jam, and it's free.",
-  cta: "Get the GTM Clarity Starter",
-  placeholder: "you@company.com",
-  button: "Get instant access",
-  /** Public page that hosts the exercise (also where the delivery email points). */
-  href: "/starter",
+  kicker: "[08] One next step",
+  heading: "Selling five things to everyone and nothing's landing?",
+  body: "The GTM Clarity Starter maps your offers, customers, and tactics on one page, then shows you where positioning breaks. Copy a template. Keep the map. Twenty minutes. Yours to keep.",
+  cta: HOME_CTA,
+  href: SITE.starterUrl,
 } as const;
 
-/**
- * Duplicatable "work in it" templates for the Starter. These are public share
- * links (not secrets), so they default to the live docs and can be overridden
- * per-environment via Vercel env. The Google link uses the `/copy` form so it
- * prompts "Make a copy" instead of opening the master doc.
- */
 export function starterTemplates() {
   return {
     notion:
@@ -190,17 +173,16 @@ export function starterTemplates() {
   };
 }
 
-/**
- * The GTM Clarity Starter — the hosted lead-magnet exercise at /starter.
- * Source of truth: "GTM Clarity Jam/GTM_Clarity_Starter_Homework.md".
- */
 export const STARTER = {
   kicker: "Free · GTM Clarity Starter",
   heading: "See your whole business on one page.",
   highlight: "on one page.",
-  sub: "A 20-minute exercise to get your offers, your people, and how you reach them in front of you, so the gaps become obvious. The warm-up for the GTM Clarity Jam.",
+  sub: "A 20-minute exercise to get your offers, your people, and how you reach them in front of you — so the gaps become obvious. The map is the deliverable. Copy a template and keep it.",
   instruction:
     "Do this honestly and roughly. Messy is fine. Messy is the point. Keep your first-instinct answers; don't polish them yet.",
+  formHeading: "Submit your map",
+  formSub:
+    "Fill in your answers below — same five parts as the exercise. I'll have your map on file. After you submit, you can book a Starter Review and I'll read what you wrote before we talk.",
   parts: [
     {
       n: "01",
@@ -234,6 +216,16 @@ export const STARTER = {
       body: "Draw lines: offer → customer → tactic. Then just look. Where are the clean lines (right offer, right person, right way to reach them)? Where are the crossed or missing lines? What surprised you?",
       prompts: ["Note anything that jumps out."],
     },
+    {
+      n: "05",
+      title: "What's automated vs. what still needs you",
+      body: "If you're running agents, content pipelines, or dashboards: list what's automated today and what decisions you're still making by gut. The gap is often where go-to-market breaks — not in the build.",
+      prompts: [
+        "Automated today…",
+        "Still deciding by gut…",
+        "What I'd want a second pair of eyes on…",
+      ],
+    },
   ],
   wall: {
     heading: "You might hit a wall here. That's expected.",
@@ -247,50 +239,83 @@ export const STARTER = {
     punchHead: "That wall is the most valuable part.",
     punchLine:
       "It's not a copywriting problem. It's a positioning decision waiting to be made.",
-    sellHighlight: "That's the whole job of the GTM Clarity Jam.",
-    sell: "In two hours of live, senior work we make the calls the Starter surfaces: we separate what you actually sell from how people find it, decide your position, cut your customer list to the one that's urgent, and map why your best-fit buyers aren't converting. You leave with a decided wedge, a pitch sentence you can say out loud, and a 90-day plan you own.",
+    sellHighlight: "The map surfaces the decision.",
+    sell: "The Starter gives you that map. From there, step into whichever container fits — senior judgment while you execute, a wedge decision, or market contact. Each is scoped before you pay.",
   },
-  templatesHeading: "Grab a template.",
+  templatesHeading: "Work in your own copy.",
   templatesNote:
-    "Make your own copy and work in it. It's yours to keep. Or use any board you like.",
-  ctaHeading: "Bring this with you.",
-  ctaBody:
-    "Finished, or stuck? Book a free intro call and send your map ahead so we start from it, not from scratch. If the Jam is the right next step, we'll scope it on the call — two hours of live, senior work that makes the calls the Starter surfaces: what you actually sell, who it's urgently for, and the one wedge to run.",
-  cta: "Book a Free Intro Call",
-  footnote: "Fronz · building systems to give lean teams an outsized presence.",
+    "Notion or Google Doc — duplicate a template and keep the map. No account required to use the Starter.",
+  reviewHeading: "Book a Starter Review",
+  reviewBody:
+    "Complete the map first — submit above or work in a template. Twenty minutes to reflect what you wrote back and see which container fits. Not a strategy session.",
+  reviewAttachNote:
+    "Worked offline? Attach your map when you book — Calendly will prompt you for a file.",
+  reviewCta: BOOKING_CTA,
+  footnote: "Fronz · senior go-to-market judgment for founders who execute.",
 } as const;
 
-/** Optional "send your map ahead of the Jam" capture on /starter. */
 export const STARTER_FORM = {
-  heading: "Send your map ahead of your Jam (optional)",
-  sub: "Prefer to type it out? Drop your rough answers here and I'll have them before we meet. Totally optional. Bringing a board works just as well.",
+  heading: "Submit your map",
+  sub: "Same five parts as the exercise. I'll read this before a Starter Review. Copy a template above if you want an editable version to keep.",
   fields: [
-    { key: "offers", label: "Your offers", placeholder: "Everything you sell, in every way you've described it…" },
-    { key: "people", label: "Your people", placeholder: "Who you're trying to reach, and what they're hiring you to do…" },
-    { key: "tactics", label: "How you reach them", placeholder: "The tactics you actually use today (and the “nothing yet” ones)…" },
-    { key: "notes", label: "What jumped out", placeholder: "Clean lines, crossed lines, surprises…" },
+    {
+      key: "offers",
+      label: "01 · Your offers",
+      placeholder: "Everything you sell, in every way you've described it…",
+      optional: false,
+    },
+    {
+      key: "people",
+      label: "02 · Your people",
+      placeholder: "Who you're trying to reach, and what they're hiring you to do…",
+      optional: false,
+    },
+    {
+      key: "tactics",
+      label: "03 · How you reach them",
+      placeholder: "The tactics you actually use today (and the “nothing yet” ones)…",
+      optional: false,
+    },
+    {
+      key: "notes",
+      label: "04 · What jumped out",
+      placeholder: "Clean lines, crossed lines, surprises…",
+      optional: false,
+    },
+    {
+      key: "automation",
+      label: "05 · Automated vs. you (optional)",
+      placeholder: "What's automated, what's still gut, what you'd want a second pair of eyes on…",
+      optional: true,
+    },
   ],
   emailPlaceholder: "you@company.com",
-  button: "Send my map",
-  success: "Got it. Your map is on its way to Stacey. Now grab a time for your Jam.",
+  emailLabel: "Your email",
+  emailHelp: "So I have your map on file and can confirm your Starter Review.",
+  button: "Submit my map",
+  successHeadline: "Map received.",
+  successBody:
+    "Your answers are saved. Book a Starter Review when you're ready — twenty minutes to reflect what you wrote back.",
+  successCta: BOOKING_CTA,
+  successTemplates: "Keep an editable copy:",
+  successFinePrint:
+    "Starter Review is twenty minutes. I read what you wrote — not a strategy session.",
 } as const;
 
 export const BOOK = {
-  kicker: "Book a call",
-  heading: "Book a free intro call.",
-  sub: "Twenty minutes to talk through where you are and what fits: a Jam, an Audit, a scoped build, or none of the above. Working sessions are scoped and invoiced after we've talked, so there's nothing to buy here.",
-} as const;
-
-export const FINAL_CTA = {
-  kicker: "[09] One next step",
-  heading: "Selling five things to everyone and nothing's landing?",
-  sub: "In two hours we separate what you sell from how people find it, decide your position, and pick the one wedge to run for 90 days. Decisions, not a deck. That's the Jam.",
-  cta: BOOKING_CTA,
-  href: SITE.bookingUrl,
+  kicker: "Starter Review",
+  heading: "Book a Starter Review.",
+  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Starter first — submit your answers or attach your map when you book. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
+  attachNote:
+    "If you worked in Notion or Google Docs, attach your map when Calendly prompts you. If you submitted the form on the Starter page, I already have your answers.",
+  prerequisite: "Haven't completed your map yet?",
+  prerequisiteLink: "Complete the GTM Clarity Starter →",
+  prerequisiteHref: SITE.starterUrl,
 } as const;
 
 export const NAV = [
   { label: "Work", href: "/#lines" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Offers", href: "/gtm-clarity" },
+  { label: "Starter", href: SITE.starterUrl },
   { label: "About", href: "/#guide" },
 ] as const;

@@ -1,16 +1,11 @@
 import { NextResponse } from "next/server";
 
 /**
- * "Send your map ahead of your Jam" capture for the GTM Clarity Starter.
+ * GTM Clarity Starter map capture.
  *
- * Always: upserts the person in Customer.io and fires `starter_map_submitted`
- * (with the map as event data) + sets a flag attribute the delivery campaign
- * branches on. Reuses the Tracking API creds from app/api/lead.
- *
- * Optional (Phase 2): if NOTION_TOKEN + NOTION_STARTER_PARENT_ID are set, also
- * creates a child page under the Fronz "GTM Clarity Starter — Submissions" page
- * so the map is a reviewable, editable working doc for the Jam. A Notion failure
- * never fails the request — the Customer.io capture is the source of record.
+ * Best-effort persistence: Customer.io (if configured) + Notion mirror (if configured).
+ * Never blocks the user on backend failure — they can still book a Starter Review
+ * and attach their map via Calendly.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +17,7 @@ type Map = {
   people: string;
   tactics: string;
   notes: string;
+  automation: string;
 };
 
 export async function POST(request: Request) {
@@ -46,23 +42,39 @@ export async function POST(request: Request) {
     people: clip(body.people),
     tactics: clip(body.tactics),
     notes: clip(body.notes),
+    automation: clip(body.automation),
   };
 
-  const siteId = process.env.CUSTOMERIO_SITE_ID;
-  const apiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
-  if (!siteId || !apiKey) {
-    return NextResponse.json(
-      { error: "Lead capture is not configured yet." },
-      { status: 503 },
+  let saved = false;
+
+  saved = (await writeToCustomerIo(map)) || saved;
+  saved = (await writeToNotion(map)) || saved;
+
+  if (!saved) {
+    console.warn(
+      "starter_map_submitted: no backend configured — map not persisted for",
+      email,
     );
   }
+
+  return NextResponse.json({ ok: true, saved });
+}
+
+function clip(value: unknown): string {
+  return typeof value === "string" ? value.trim().slice(0, 5000) : "";
+}
+
+async function writeToCustomerIo(map: Map): Promise<boolean> {
+  const siteId = process.env.CUSTOMERIO_SITE_ID;
+  const apiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
+  if (!siteId || !apiKey) return false;
 
   const host =
     process.env.CUSTOMERIO_REGION === "eu"
       ? "track-eu.customer.io"
       : "track.customer.io";
   const auth = Buffer.from(`${siteId}:${apiKey}`).toString("base64");
-  const id = encodeURIComponent(email);
+  const id = encodeURIComponent(map.email);
   const headers = {
     Authorization: `Basic ${auth}`,
     "Content-Type": "application/json",
@@ -74,19 +86,14 @@ export async function POST(request: Request) {
       method: "PUT",
       headers,
       body: JSON.stringify({
-        email,
+        email: map.email,
         starter_map_submitted: true,
         starter_map_submitted_at: now,
         source: "fronz-site/starter",
       }),
     });
 
-    if (!identify.ok) {
-      return NextResponse.json(
-        { error: "Couldn't save your map. Please try again." },
-        { status: 502 },
-      );
-    }
+    if (!identify.ok) return false;
 
     await fetch(`https://${host}/api/v1/customers/${id}/events`, {
       method: "POST",
@@ -98,32 +105,22 @@ export async function POST(request: Request) {
           people: map.people,
           tactics: map.tactics,
           notes: map.notes,
+          automation: map.automation,
         },
       }),
     });
-  } catch {
-    return NextResponse.json(
-      { error: "Couldn't reach our email system. Please try again." },
-      { status: 502 },
-    );
+
+    return true;
+  } catch (err) {
+    console.error("Customer.io capture failed (non-fatal):", err);
+    return false;
   }
-
-  // Phase 2 mirror — only runs when the Fronz Notion workspace is wired up.
-  await writeToNotion(map).catch((err) => {
-    console.error("Notion mirror failed (non-fatal):", err);
-  });
-
-  return NextResponse.json({ ok: true });
 }
 
-function clip(value: unknown): string {
-  return typeof value === "string" ? value.trim().slice(0, 5000) : "";
-}
-
-async function writeToNotion(map: Map): Promise<void> {
+async function writeToNotion(map: Map): Promise<boolean> {
   const token = process.env.NOTION_TOKEN;
   const parentId = process.env.NOTION_STARTER_PARENT_ID;
-  if (!token || !parentId) return;
+  if (!token || !parentId) return false;
 
   const section = (heading: string, text: string) => [
     {
@@ -142,42 +139,52 @@ async function writeToNotion(map: Map): Promise<void> {
 
   const submitted = new Date().toISOString().slice(0, 10);
 
-  await fetch("https://api.notion.com/v1/pages", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-      "Notion-Version": NOTION_VERSION,
-    },
-    body: JSON.stringify({
-      parent: { page_id: parentId },
-      icon: { type: "emoji", emoji: "📍" },
-      properties: {
-        title: {
-          title: [{ text: { content: `${submitted} · ${map.email}` } }],
-        },
+  try {
+    const res = await fetch("https://api.notion.com/v1/pages", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Notion-Version": NOTION_VERSION,
       },
-      children: [
-        {
-          object: "block",
-          type: "callout",
-          callout: {
-            icon: { type: "emoji", emoji: "✉️" },
-            rich_text: [
-              {
-                type: "text",
-                text: {
-                  content: `${map.email} · submitted ${submitted} · via fronz-site/starter`,
-                },
-              },
-            ],
+      body: JSON.stringify({
+        parent: { page_id: parentId },
+        icon: { type: "emoji", emoji: "📍" },
+        properties: {
+          title: {
+            title: [{ text: { content: `${submitted} · ${map.email}` } }],
           },
         },
-        ...section("Your offers", map.offers),
-        ...section("Your people", map.people),
-        ...section("How you reach them", map.tactics),
-        ...section("What jumped out", map.notes),
-      ],
-    }),
-  });
+        children: [
+          {
+            object: "block",
+            type: "callout",
+            callout: {
+              icon: { type: "emoji", emoji: "✉️" },
+              rich_text: [
+                {
+                  type: "text",
+                  text: {
+                    content: `${map.email} · submitted ${submitted} · via fronz-site/starter`,
+                  },
+                },
+              ],
+            },
+          },
+          ...section("01 · Your offers", map.offers),
+          ...section("02 · Your people", map.people),
+          ...section("03 · How you reach them", map.tactics),
+          ...section("04 · What jumped out", map.notes),
+          ...(map.automation
+            ? section("05 · Automated vs. you", map.automation)
+            : []),
+        ],
+      }),
+    });
+
+    return res.ok;
+  } catch (err) {
+    console.error("Notion mirror failed (non-fatal):", err);
+    return false;
+  }
 }

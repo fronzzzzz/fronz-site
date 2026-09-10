@@ -6,7 +6,7 @@ import { lineSchema } from "@/lib/schema";
 const line = getLine("gtm-clarity")!;
 
 export const metadata: Metadata = {
-  title: `${line.name} — ${line.promise}`,
+  title: `${line.name} — Gain clarity. Build momentum.`,
   description: line.heroSub,
   alternates: { canonical: "/gtm-clarity" },
 };

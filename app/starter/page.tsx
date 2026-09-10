@@ -59,15 +59,29 @@ export default function StarterPage() {
             <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
               {STARTER.sub}
             </p>
-            <p className="mt-6 font-serif text-xl">
-              {STARTER.instruction}
-            </p>
+            <p className="mt-6 font-serif text-xl">{STARTER.instruction}</p>
           </div>
         </section>
 
-        {/* The exercise ------------------------------------------ */}
+        {/* Form — primary path ----------------------------------- */}
         <Section>
-          <div className="grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+          <div className="mx-auto max-w-3xl">
+            <Reveal>
+              <StarterMapForm />
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* Exercise reference ------------------------------------ */}
+        <Section sink>
+          <Reveal as="h2" className="text-[length:var(--text-h3)]">
+            The five parts
+          </Reveal>
+          <p className="mt-3 text-ink-muted">
+            Use these prompts in the form above, or work offline in a template
+            below.
+          </p>
+          <div className="mt-10 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
             {STARTER.parts.map((part, i) => (
               <Reveal key={part.n} delay={i * 90} className="bg-paper p-8">
                 <span className="font-mono text-xs text-chartreuse-deep">
@@ -98,9 +112,7 @@ export default function StarterPage() {
             <Reveal as="h2" className="text-[length:var(--text-h3)]">
               {STARTER.templatesHeading}
             </Reveal>
-            <p className="mt-3 text-ink-muted">
-              {STARTER.templatesNote}
-            </p>
+            <p className="mt-3 text-ink-muted">{STARTER.templatesNote}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               {templates.notion && (
                 <a
@@ -161,29 +173,27 @@ export default function StarterPage() {
           </Reveal>
         </Section>
 
-        {/* Send your map + CTA ----------------------------------- */}
+        {/* Starter Review — offline / template path -------------- */}
         <Section>
-          <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-start">
-            <div>
-              <h2 className="text-[length:var(--text-h2)]">
-                {STARTER.ctaHeading}
-              </h2>
-              <p className="mt-6 text-lead text-ink-muted">
-                {STARTER.ctaBody}
-              </p>
-              <Link
-                href={SITE.bookingUrl}
-                className="mt-8 inline-flex items-center gap-2 rounded-[2px] bg-ink px-7 py-4 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
-              >
-                {STARTER.cta} →
-              </Link>
-              <p className="mt-8 font-mono text-xs text-ink-muted">
-                {STARTER.footnote}
-              </p>
-            </div>
-            <Reveal>
-              <StarterMapForm />
-            </Reveal>
+          <div className="mx-auto max-w-2xl border border-line bg-paper-sink p-8 md:p-10">
+            <h2 className="text-[length:var(--text-h2)]">
+              {STARTER.reviewHeading}
+            </h2>
+            <p className="mt-6 text-lead text-ink-muted">
+              {STARTER.reviewBody}
+            </p>
+            <p className="mt-4 text-sm text-ink-muted">
+              {STARTER.reviewAttachNote}
+            </p>
+            <Link
+              href={SITE.bookingUrl}
+              className="mt-8 inline-flex items-center gap-2 rounded-[2px] bg-ink px-7 py-4 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
+            >
+              {STARTER.reviewCta} →
+            </Link>
+            <p className="mt-8 font-mono text-xs text-ink-muted">
+              {STARTER.footnote}
+            </p>
           </div>
         </Section>
       </main>

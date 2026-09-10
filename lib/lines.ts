@@ -1,10 +1,10 @@
 /**
- * Detail-page content for the three Fronz lines.
- * Sourced from the offering kits (GTM Clarity Jam / Map+Playbook / Build,
- * Groundswell Offering Kit, Business Command Center one-pager) + the GTM Clarity Map.
+ * Detail-page content for the Fronz lines.
+ * GTM Clarity: Fronz_Funnel_and_Offer_Ladder.md (Sep 2026)
+ * Groundswell: Groundswell Offering Kit + GTM Clarity Map
  */
 
-import { BOOKING_CTA } from "./content";
+import { BOOKING_CTA, MOTION, STARTER_CTA, SITE } from "./content";
 
 export type Tier = {
   name: string;
@@ -18,8 +18,19 @@ export type Tier = {
   teamMeta?: string;
   tagline?: string;
   points: string[];
+  /** Anchor section on the line page (homepage arc links here). */
+  section?: "get-clear" | "make-contact" | "keep-moving";
   featured?: boolean;
   note?: string;
+  /** When this container fits — shown on outcome cards. */
+  fitNote?: string;
+  /** Optional phase label (e.g. Phase 2 cross-line card). */
+  phaseLabel?: string;
+  /** Visual treatment for cross-line / phase-2 cards. */
+  variant?: "phase2";
+  /** Override default tier CTA target and label. */
+  href?: string;
+  ctaLabel?: string;
 };
 
 export type LineDetail = {
@@ -28,20 +39,45 @@ export type LineDetail = {
   eyebrow: string; // "Legible to your customers"
   arcLabel: string; // "Get clear"
   promise: string;
+  /** When set, replaces product name + promise in the hero H1. */
+  heroBeats?: readonly string[];
+  heroHighlightBeat?: number;
   heroSub: string;
-  problem: {
+  /** Optional Phase-2 / prerequisite banner rendered in the hero. */
+  prerequisite?: {
+    label: string;
+    body: string;
+    cta?: { label: string; href: string };
+  };
+  problem?: {
     heading: string;
     points: { head: string; body: string }[];
     punch?: string;
     sources?: { label: string; href: string }[];
   };
   differentiator?: { heading: string; body: string };
-  method: {
+  method?: {
     heading: string;
     sub?: string;
     steps: { n: string; name: string; body: string }[];
   };
-  tiers: { heading: string; sub?: string; items: Tier[] };
+  /** Horizontal movement band. When present, replaces the method section. */
+  flow?: {
+    kicker?: string;
+    heading: string;
+    sub?: string;
+    steps: { label: string; body: string }[];
+  };
+  tiers: {
+    heading: string;
+    sub?: string;
+    systemNote?: string;
+    /** Motion callouts + funnel-order grid (not sequential section groups). */
+    motionCallouts?: boolean;
+    items: Tier[];
+  };
+  /** One full card per offer with an outcome line only (no deliverable bullets). */
+  outcomeCards?: boolean;
   entryPoints?: { who: string; start: string }[];
   domains?: {
     eyebrow?: string;
@@ -62,6 +98,13 @@ export type LineDetail = {
   whoFor?: { fit: string[]; notFit: string[] };
   faq: { q: string; a: string }[];
   cta: { heading: string; sub: string; button: string };
+  /** Per-line CTA targets — defaults to /book when omitted. */
+  links?: {
+    tierCta: { label: string; href: string };
+    heroSecondary?: { label: string; href: string };
+    footerCta?: { label: string; href: string };
+  };
+  whereFits?: { heading: string; sub: string };
 };
 
 export const ARC = [
@@ -73,98 +116,111 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
   "gtm-clarity": {
     slug: "gtm-clarity",
     name: "GTM Clarity",
-    eyebrow: "Legible to your customers",
-    arcLabel: "Get clear",
-    promise: "Know what to say.",
+    eyebrow: "Go-to-market for bootstrapped–Series A founders",
+    arcLabel: "Gain clarity",
+    promise: "Build momentum.",
+    heroBeats: MOTION.beats,
+    heroHighlightBeat: MOTION.highlightBeat,
     heroSub:
-      "Get clear on what to say, to whom, and how to reach them, then build the go-to-market system that does it. GTM Clarity spans the whole arc: from deciding your pitch sentence and your wedge, to a formalized outreach system, to a running go-to-market your team owns by the end.",
-    problem: {
-      heading: "It isn't a marketing problem. It's a clarity problem.",
-      points: [
-        {
-          head: "You can explain it five ways, and none of them stick.",
-          body: "Prospects nod, then don't buy. You keep rewriting the headline when the real gap is the position underneath it.",
-        },
-        {
-          head: "You sound like everyone else in your category.",
-          body: "Your pitch could sit on three competitors' sites, so buyers default to price or to no decision at all.",
-        },
-        {
-          head: "You're running every tactic, but none of them convert.",
-          body: "Posting, emailing, campaigns, all going at once. Without a sharp position and one wedge, each tactic works harder for less.",
-        },
-      ],
-      punch: "Nod at one of these? That's the deal you're leaving on the table.",
-    },
-    method: {
-      heading: "From blur to a running system, in three moves",
-      sub: "Clarity is a decision, not copy. We decide it, document it, then run it with you until your team owns it. Each move is a complete step you can stop at.",
-      steps: [
-        { n: "01", name: "Decide", body: "Separate product from channel from model, choose your one wedge, and land the pitch sentence. Positioning before tactics, every time. (This is the Jam.)" },
-        { n: "02", name: "Productize", body: "Turn the decision into a running outreach system: messaging set, formalized ICP, channel selection, cadence templates, and metrics. Your team can pitch, target, and reach out consistently without you in the room. (This is the Outreach Playbook.)" },
-        { n: "03", name: "Run & hand off", body: "12 weeks embedded with your team. We stand up the system, run it live, and progressively transition ownership to your team by week 12. You leave with the machine running and your team operating it. (This is the Build.)" },
-      ],
-    },
+      "Decide what to sell and to whom, get in front of real buyers, and keep senior judgment on what to run next. Each offer is fixed scope and fixed price; you step up when the fit is obvious.",
+    outcomeCards: true,
     tiers: {
-      heading: "Three tiers. Stop at the one that gets you where you need to go.",
-      sub: "Each tier is a complete step you own.",
+      heading: "Start free. Step up when you're ready.",
+      sub: "Each offer is fixed scope and fixed price. Begin with the free map — then step into whichever container fits where you are now.",
+      motionCallouts: true,
       items: [
         {
-          name: "GTM Clarity Jam",
-          price: "$1,500",
-          meta: "1×2hr · 1:1 · recorded",
-          teamPrice: "$3,000",
-          teamMeta: "2×90min · up to 5 · recorded",
-          tagline: "Walk out with a clear customer profile, a defined product offering, and the pitch sentence that connects with them.",
-          featured: true,
+          name: "GTM Clarity Starter",
+          price: "Free",
+          meta: "20 min · self-serve",
+          tagline: "See your whole business on one page and spot exactly where the lines break.",
           points: [
-            "The core untangle: what you actually sell vs. how people find it vs. how you make money",
-            "One positioning decision made in the room, expressed as a pitch sentence you can say out loud",
-            "Your customer list cut to the one buyer that's urgent, with the reason why",
-            "Your wedge decided: offer × customer × channel, plus the one move to run for 90 days",
-            "A leave-behind recap and pitch-sentence one-pager, both yours to act on Monday",
-            "Credits 100% toward the Outreach Playbook within 30 days",
+            "Four parts: offers, people, how you reach them, connect the dots",
+            "Optional fifth part for AI-heavy executors: what's automated vs. what still needs a human decision",
+            "Copy a Notion or Google Doc template and keep the map",
+            "Submit your answers when you want a Starter Review",
           ],
         },
         {
-          name: "Outreach Playbook",
-          price: "from $7,500",
-          meta: "~3–4 weeks · Jam fee credits 100%",
-          tagline: "The outreach system your team can run without you in the room.",
+          name: "Starter Review",
+          price: "Free",
+          meta: "20 min · after Starter",
+          tagline: "An honest read on your map and a straight answer on which container fits you next.",
           points: [
-            "Messaging set: pitch sentence, audience variants, objection reframes, hooks",
-            "One formalized ICP with jobs-to-be-done, triggers, watering holes, disqualifiers",
-            "Channel selection (1–2 owned channels) with cadence templates and personalization variables",
-            "Content anchors: the two or three pieces your outreach hooks into",
-            "A metrics spec so you know what's working and what to change",
-            "Team enablement in a working handoff session so your team owns the system",
+            "Complete the Starter first — I'll read your answers before we talk",
+            "Reflect what you wrote, not a free strategy session",
+            "Assess fit for the next container — or a clean close",
+            "Self-book after you submit the Starter form",
           ],
         },
         {
-          name: "GTM Build",
-          price: "Custom scope",
-          meta: "12 weeks · scoped to your team, timeline & goals",
-          tagline: "The outreach system running live. Your team owning it by week 12.",
+          name: "GTM Review Container",
+          price: "$500/mo",
+          meta: "3-mo min · 2 hr/mo cap",
+          fitNote: "After the map — or anytime you're executing and need a read.",
+          tagline:
+            "Senior judgment on what to run next while you execute — not another builder to manage.",
           points: [
-            "The Playbook rebuilt fresh as part of the engagement (no re-buy needed)",
-            "Two wedges built and one running live during the engagement",
-            "Channel infrastructure stood up (email platform, content engine, lead capture, measurement)",
-            "Weekly 60–90 min working session for 12 weeks, plus async review and adjustment",
-            "Progressive team ownership: Fronz-led weeks 1–4, co-run weeks 5–8, team-run weeks 9–12",
-            "Exit review with an on-call path for post-engagement support",
+            "Monthly Execution Brief: what to run next, based on what you're shipping",
+            "45-minute review call each month",
+            "3-month minimum, then month-to-month",
+            "2-hour/month cap — you own the execution",
           ],
+        },
+        {
+          name: "GTM Intensive",
+          price: "$2,500",
+          meta: "3 days · 1 hr/day together",
+          fitNote: "When the wedge still needs deciding.",
+          tagline: "Your wedge and first test decided in three days, so you walk out ready to ship.",
+          points: [
+            "Three consecutive days, one hour together each day",
+            "Separate product from channel from model; land the pitch sentence",
+            "One wedge decided: offer × customer × channel",
+            "First test designed before you leave",
+          ],
+        },
+        {
+          name: "GTM Sprint",
+          price: "$7,500",
+          meta: "2 weeks · 30 hr cap",
+          fitNote: "When you're ready for real market contact.",
+          tagline: "Real market contact in two weeks, with honest numbers that tell you what to change.",
+          points: [
+            "Two weeks toward one metric you agree on upfront",
+            "Positioning tested with real market contact",
+            "First channel live with measurement",
+            "Hypothesis scorecard and scoped follow-on at the gate",
+          ],
+        },
+        {
+          name: "Scoped GTM follow-on",
+          price: "Custom",
+          meta: "@ $250/hr · at the gate",
+          fitNote: "After a sprint or intensive opens the next move.",
+          tagline: "Your next move scoped from real data: named work, named price, no open-ended retainer.",
+          points: [
+            "Custom scope after Intensive or Sprint",
+            "Interpret what's working, design the next test",
+            "No open-ended retainer — named work, named price",
+          ],
+        },
+        {
+          name: "Groundswell AI Customer Discoverability",
+          price: "From $1,500",
+          phaseLabel: "Phase 2 · after clarity",
+          variant: "phase2",
+          tagline:
+            "Once your message and wedge are live, become the brand AI recommends when buyers ask in your category.",
+          points: [],
+          href: "/groundswell",
+          ctaLabel: "Explore Groundswell",
         },
       ],
     },
-    entryPoints: [
-      { who: "Solo founder, message won't land", start: "Start with the Founder Jam: one decision, one pitch sentence, in two hours." },
-      { who: "Founding team, not aligned on the pitch", start: "Start with the Team Jam: two 90-min sessions get the team to one message." },
-      { who: "Decision is made, need the system", start: "Start with the Outreach Playbook: the running outreach your team can operate." },
-      { who: "Ready to build it and prove it out", start: "Start with the Build: 12 weeks embedded, your team owning it by the end." },
-    ],
     whoFor: {
       fit: [
-        "You're a seed–Series B founder or lean team selling multiple things and need to focus",
+        "You're a bootstrapped–Series A founder or lean team selling multiple things and need to focus",
         "The product works, or it's close, but the message isn't landing",
         "You want to run the system yourself, not rent it forever",
       ],
@@ -175,34 +231,43 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     },
     faq: [
       {
-        q: "Is this just another agency engagement?",
-        a: "No retainer, no bloat. We decide it together, your team runs it, and you own every artifact. I'm on call, not on the meter.",
+        q: "Is this an agency engagement or a fractional hire?",
+        a: "Neither model. No open-ended retainer, no headcount on your payroll. Each tier is a named container — fixed scope, fixed price. You execute; I interpret and design the next move. The GTM Review Container is monthly senior judgment, not done-for-you marketing and not a full-time marketer seat.",
       },
       {
-        q: "I can't afford a big engagement. Where do I start?",
-        a: "Start at $1,500 with the Founder Jam. It pays for itself in clarity, and the full Jam fee credits toward the Outreach Playbook within 30 days.",
+        q: "Where do I start?",
+        a: "The GTM Clarity Starter — free, twenty minutes, your map on one page. When you want a read on what you found, submit your answers and book a Starter Review.",
       },
       {
-        q: "What's the difference between Founder and Team pricing on the Jam?",
-        a: "Founder pricing is for a solo founder in a 1:1 session. Team pricing brings up to five collaborators into the room, with the format calibrated for group decisions. Team Jams run as two 90-minute sessions so the team can sit with the fork between them before deciding. Beyond the Jam, engagements are scoped to your team and goals.",
+        q: "What's the difference between the Starter and the Starter Review?",
+        a: "The Starter is the exercise — you map offers, people, and tactics and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
       },
       {
-        q: "What's the difference between the Jam and the Outreach Playbook?",
-        a: "The Jam is where the decision gets made: what you sell vs. how people find it, your position, the one urgent customer, the wedge to run. The Playbook turns that decision into the running outreach system your team can operate: messaging, ICP, channel selection, cadence, metrics, and a working handoff.",
+        q: "Do I have to go through every container in order?",
+        a: "No. Every path starts with the free map. After that, step into whichever container fits where you are — Review Container for ongoing senior judgment, Intensive to decide a wedge, Sprint for market contact. Many founders start with senior judgment; others sprint first and come back for a read.",
       },
       {
-        q: "What's the difference between the Playbook and the Build?",
-        a: "The Playbook documents the system and hands it to your team. The Build runs the system with you for 12 weeks. In the Build, your team learns by doing while I sit alongside, reviewing metrics weekly, adjusting the cadence, and progressively transitioning ownership until you're operating it without me.",
+        q: "What's the GTM Review Container vs. the Intensive?",
+        a: "Different jobs. The Container is monthly senior judgment while you execute — a brief plus a 45-minute call each month. It works as a first paid step after the map or as a return after a sprint. The Intensive is three consecutive days to decide your wedge and first test when that decision is the blocker.",
       },
       {
-        q: "How does the Jam credit work?",
-        a: "Full Jam price credits toward the Outreach Playbook in the same tier, if booked within 30 days. Founder Jam → Founder Playbook. Team Jam → Team Playbook. If you skip the Playbook and go straight to the Build, the Jam credit still applies to the Build price.",
+        q: "What's the Intensive vs. the Sprint?",
+        a: "The Intensive decides the wedge and designs the first test. The Sprint runs market contact for two weeks toward one north-star metric — positioning tested, first channel live, ugly counts. Sprint assumes you're ready to ship, not still deciding.",
+      },
+      {
+        q: "Can I skip straight to the Intensive or Sprint?",
+        a: "Sometimes — if you've already done the clarity work elsewhere. Complete your GTM Clarity Starter and we can discuss this on your free Starter Review call.",
       },
     ],
     cta: {
       heading: "Selling five things to everyone and nothing's landing?",
-      sub: "In two hours we separate what you sell from how people find it, decide your position, and pick the one wedge to run for 90 days. Decisions, not a deck. That's the Jam.",
-      button: BOOKING_CTA,
+      sub: "Start with the GTM Clarity Starter — twenty minutes, your whole business on one page. When you want a read, book the Starter Review after you submit.",
+      button: STARTER_CTA,
+    },
+    links: {
+      tierCta: { label: STARTER_CTA, href: SITE.starterUrl },
+      heroSecondary: { label: STARTER_CTA, href: SITE.starterUrl },
+      footerCta: { label: STARTER_CTA, href: SITE.starterUrl },
     },
   },
 
@@ -214,6 +279,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     promise: "Get found & cited.",
     heroSub:
       "Become the brand AI recommends when your buyers ask, by earning genuine community consensus across the sources models trust, not by buying placements. Groundswell spans the whole arc: see where you stand, earn authority through the channels you already own, then run the system that sustains it as models change.",
+    prerequisite: {
+      label: "Phase 2",
+      body: "Groundswell works once your message and wedge are already live. If prospects still don't get what you sell, start with the free GTM Clarity Starter and come back when you're clear.",
+      cta: { label: "Start with GTM Clarity", href: SITE.starterUrl },
+    },
     problem: {
       heading: "Buyers ask AI for a recommendation. Your competitor is the answer.",
       points: [
@@ -337,8 +407,17 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     ],
     cta: {
       heading: "When buyers ask AI, is your competitor the answer?",
-      sub: "The way in is the $1,500 Visibility Audit — the map of exactly where and how to become the answer. It starts with a free intro call to make sure it's the right move.",
-      button: BOOKING_CTA,
+      sub: "The way in is the $1,500 Visibility Audit — the map of exactly where and how to become the answer. If prospects still don't understand what you sell, start with the GTM Clarity Starter instead.",
+      button: "Explore the Visibility Audit",
+    },
+    links: {
+      tierCta: { label: "Book a free intro call", href: SITE.bookingUrl },
+      heroSecondary: { label: "Start with GTM Clarity", href: SITE.starterUrl },
+      footerCta: { label: "See Groundswell pricing", href: "#pricing" },
+    },
+    whereFits: {
+      heading: "Groundswell when AI is the gap, GTM Clarity when the message is.",
+      sub: "If prospects don't understand what you sell, start with the GTM Clarity Starter. If the pitch is clear but AI recommends your competitor, start with the Visibility Audit.",
     },
   },
 };

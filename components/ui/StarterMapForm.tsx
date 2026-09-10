@@ -1,16 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { STARTER_FORM, STARTER, SITE } from "@/lib/content";
+import Link from "next/link";
+import { STARTER_FORM, SITE, starterTemplates } from "@/lib/content";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const initial = { offers: "", people: "", tactics: "", notes: "", email: "" };
+const initial = {
+  offers: "",
+  people: "",
+  tactics: "",
+  notes: "",
+  automation: "",
+  email: "",
+};
 
 export function StarterMapForm() {
   const [values, setValues] = useState(initial);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const templates = starterTemplates();
 
   function update(key: string, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -32,6 +41,7 @@ export function StarterMapForm() {
           people: values.people.trim(),
           tactics: values.tactics.trim(),
           notes: values.notes.trim(),
+          automation: values.automation.trim(),
         }),
       });
 
@@ -52,13 +62,48 @@ export function StarterMapForm() {
   if (status === "success") {
     return (
       <div className="border border-line bg-paper p-8">
-        <p className="font-serif text-xl">{STARTER_FORM.success}</p>
-        <a
+        <p className="font-serif text-[length:var(--text-h3)]">
+          {STARTER_FORM.successHeadline}
+        </p>
+        <p className="mt-4 text-ink-muted">{STARTER_FORM.successBody}</p>
+        <Link
           href={SITE.bookingUrl}
-          className="mt-6 inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
+          className="mt-8 inline-flex items-center gap-2 rounded-[2px] bg-ink px-6 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
         >
-          {STARTER.cta} →
-        </a>
+          {STARTER_FORM.successCta} →
+        </Link>
+        {(templates.notion || templates.gdoc) && (
+          <div className="mt-10 border-t border-line pt-8">
+            <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
+              {STARTER_FORM.successTemplates}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {templates.notion && (
+                <a
+                  href={templates.notion}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-[2px] border border-line px-4 py-2.5 font-mono text-sm transition-colors hover:border-ink"
+                >
+                  Notion template →
+                </a>
+              )}
+              {templates.gdoc && (
+                <a
+                  href={templates.gdoc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-[2px] border border-line px-4 py-2.5 font-mono text-sm transition-colors hover:border-ink"
+                >
+                  Google Doc template →
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+        <p className="mt-8 font-mono text-xs text-ink-muted">
+          {STARTER_FORM.successFinePrint}
+        </p>
       </div>
     );
   }
@@ -97,7 +142,7 @@ export function StarterMapForm() {
           htmlFor="starter-email"
           className="font-mono text-xs uppercase tracking-widest text-ink-muted"
         >
-          Your email
+          {STARTER_FORM.emailLabel}
         </label>
         <input
           id="starter-email"
@@ -108,6 +153,7 @@ export function StarterMapForm() {
           placeholder={STARTER_FORM.emailPlaceholder}
           className="w-full border border-line bg-paper px-4 py-3.5 font-mono text-sm text-ink placeholder:text-ink-muted focus:border-chartreuse-deep focus:outline-none"
         />
+        <p className="text-xs text-ink-muted">{STARTER_FORM.emailHelp}</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-4">

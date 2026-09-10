@@ -1,25 +1,21 @@
 # Fronz
 
-> Fronz helps founders get understood by customers and found by AI: lean go-to-market systems you own, not agencies you rent. Founded and run by Stacey Fronek.
+> Senior go-to-market judgment for bootstrapped–Series A founders: gain clarity, build momentum, know what to run next. Founded and run by Stacey Fronek.
 
-Fronz is a productized growth-systems practice for seed–Series B founders and lean teams (roughly 1–30 staff). The model is sprint, then a scoped engagement you own, with light on-demand support. No monthly retainers. Every method is built live at the founder's own company, Moxa, first.
+Fronz is a go-to-market practice for bootstrapped–Series A founders and lean teams (roughly 1–30 staff). You execute; Fronz brings senior judgment in bounded containers — not open-ended agency engagements. Every path starts with the free GTM Clarity Starter map.
 
 ## Services
 
-- [GTM Clarity](https://fronzz.com/gtm-clarity): Positioning and go-to-market clarity so customers understand what you do. Entry: GTM Clarity Jam, $1,500 (2-hour 1:1, recorded): a working session that separates what you sell from how people find it, decides your position, cuts to the one urgent customer, and produces a pitch sentence, a focus wedge, and a 90-day plan you own. Ladder: Jam $1,500 → Outreach Playbook from $7,500 (Jam fee credits 100%) → GTM Build, custom-scoped 12-week engagement.
-- [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Answer Engine Optimization (AEO) built on authentic community consensus: making AI engines cite your brand. Short form after first use: Groundswell. Entry: Visibility Audit, $1,500. Ladder: Audit $1,500 → Authority Build from $15,000 → Authority Engine, custom-scoped.
+- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders who execute. Free GTM Clarity Starter → Starter Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
+- [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Phase 2 — AI visibility after messaging and wedge are live. Entry: Visibility Audit, $1,500.
 
-## Support model
+## How we work
 
-- One-time builds you own; no mandatory monthly retainer.
-- Team enablement included in every build.
-- On-call hours: prepaid 10-hour packs at $250/hr.
-- Refresh, booked anytime (no cadence): Groundswell $1,200.
+- You execute; Fronz interprets and sets the next move.
+- Named containers with fixed scope, fixed price, and fixed caps.
+- GTM Review Container: monthly senior judgment while you ship — bounded, not always-on.
 
-## Free resource
+## Key pages
 
-- [GTM Clarity Starter](https://fronzz.com/starter): a free 20-minute exercise to map your offers, customers, and tactics on one page.
-
-## Contact
-
-- Email: stacey@shesthefronz.com
+- [GTM Clarity Starter](https://fronzz.com/starter): Free 20-minute exercise to map offers, customers, and tactics on one page.
+- [Book a Starter Review](https://fronzz.com/book): Twenty minutes to reflect your map back after you complete the Starter.

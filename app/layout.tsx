@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "answer engine optimization",
     "AEO",
     "AI customer discoverability",
-    "no retainer consulting",
+    "bounded go-to-market containers",
   ],
   authors: [{ name: "Stacey Fronek" }],
   creator: "Stacey Fronek",

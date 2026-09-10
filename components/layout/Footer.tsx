@@ -12,7 +12,8 @@ export function Footer() {
               <span className="text-chartreuse-deep">.</span>
             </p>
             <p className="mt-3 text-ink-muted">
-              Building systems to give lean teams an outsized presence.
+              Go-to-market judgment for bootstrapped–Series A founders who
+              execute.
             </p>
           </div>
 
@@ -28,6 +29,12 @@ export function Footer() {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/groundswell"
+                className="text-sm text-ink-muted transition-colors hover:text-ink"
+              >
+                Groundswell <span className="text-ink-muted/70">(Phase 2)</span>
+              </Link>
             </nav>
             <div className="flex flex-col gap-3">
               <p className="kicker mb-1">Contact</p>
@@ -52,7 +59,7 @@ export function Footer() {
             © {new Date().getFullYear()} {SITE.name}. Made by a human, on
             purpose.
           </p>
-          <p>Skip the retainers. Own the growth.</p>
+          <p>Clarity. Momentum. Senior judgment.</p>
         </div>
       </div>
     </footer>

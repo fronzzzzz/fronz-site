@@ -87,7 +87,7 @@ export const schemaGraph = {
       alumniOf: "Berry College",
       email: `mailto:${SITE.email}`,
       description:
-        "Go-to-market and growth-systems consultant who helps founders get understood by their customers and found by the AI those customers ask. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
+        "Go-to-market consultant who helps bootstrapped–Series A founders decide their wedge, get real market contact, and keep senior judgment on what to run next — in bounded containers, not bloated agency engagements. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
       knowsAbout: [
         "Go-to-market strategy",
         "Positioning",
@@ -106,7 +106,7 @@ export const schemaGraph = {
       founder: { "@id": personId },
       email: `mailto:${SITE.email}`,
       areaServed: "Worldwide",
-      priceRange: "$1,500+",
+      priceRange: "$500+",
       knowsAbout: [
         "Go-to-market consulting",
         "Positioning workshops",
@@ -115,10 +115,10 @@ export const schemaGraph = {
       makesOffer: [
         {
           "@type": "Offer",
-          name: "GTM Clarity Jam",
+          name: "GTM Clarity Starter",
           description:
-            "A 2-hour 1:1 working session that separates product from channel from monetization model, decides your positioning, and produces your pitch sentence, your focus wedge, and a 90-day plan.",
-          price: "1500",
+            "A free 20-minute exercise to map offers, customers, and tactics on one page — so positioning gaps become obvious.",
+          price: "0",
           priceCurrency: "USD",
           category: "GTM Clarity",
         },

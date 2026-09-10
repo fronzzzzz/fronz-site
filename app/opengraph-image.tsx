@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { HERO, SITE } from "@/lib/content";
 
-export const alt = `${SITE.name} — ${HERO.highlight}`;
+export const alt = `${SITE.name} — ${HERO.beats.join(" ")}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -11,8 +11,6 @@ const INK_MUTED = "#5a5c50";
 const LINE = "#d9d3c4";
 const MARKER = "#b9c766";
 const CHARTREUSE_DEEP = "#6f7d33";
-
-const [HIGHLIGHT_FIRST, HIGHLIGHT_SECOND] = HERO.highlight.split(/(?<=\.)\s+/);
 
 async function loadGoogleFont(family: string, weight: number) {
   const css = await fetch(
@@ -117,9 +115,11 @@ export default async function Image() {
             {HERO.kicker}
           </p>
 
-          <HeadlineLine>{HERO.lead}</HeadlineLine>
-          <HeadlineLine highlighted>{HIGHLIGHT_FIRST}</HeadlineLine>
-          <HeadlineLine>{HIGHLIGHT_SECOND}</HeadlineLine>
+          {HERO.beats.map((beat, i) => (
+            <HeadlineLine key={beat} highlighted={i === HERO.highlightBeat}>
+              {beat}
+            </HeadlineLine>
+          ))}
 
           <div
             style={{

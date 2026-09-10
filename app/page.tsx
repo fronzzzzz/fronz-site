@@ -3,10 +3,9 @@ import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, Kicker } from "@/components/ui/Section";
-import { Highlight } from "@/components/ui/Highlight";
+import { MotionHeadline } from "@/components/ui/MotionHeadline";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { LeadForm } from "@/components/ui/LeadForm";
 import {
   SITE,
   HERO,
@@ -14,10 +13,9 @@ import {
   LINES,
   GUIDE,
   PROOF,
-  SUPPORT,
-  PRICING,
+  OFFERS,
+  WHY_FRONZ,
   LEAD,
-  FINAL_CTA,
 } from "@/lib/content";
 
 export default function Home() {
@@ -29,10 +27,10 @@ export default function Home() {
         <section className="relative overflow-hidden">
           <div className="mx-auto flex min-h-[88vh] w-full max-w-[1180px] flex-col justify-center px-6 py-24 md:px-10">
             <p className="kicker mb-8">{HERO.kicker}</p>
-            <h1 className="max-w-[14ch] text-[length:var(--text-display)] leading-[0.98]">
-              {HERO.lead}{" "}
-              <Highlight>{HERO.highlight}</Highlight>
-            </h1>
+            <MotionHeadline
+              beats={HERO.beats}
+              highlightIndex={HERO.highlightBeat}
+            />
             <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
               {HERO.sub}
             </p>
@@ -43,20 +41,24 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border-y border-line sm:grid-cols-2">
-              {LINES.items.map((line) => (
-                <Link
-                  key={line.id}
-                  href="/#lines"
-                  className="group bg-paper px-1 py-4 transition-colors hover:bg-paper-sink sm:px-0 sm:pr-6"
-                >
-                  <p className="font-serif text-lg group-hover:underline group-hover:decoration-marker group-hover:decoration-2 group-hover:underline-offset-4">
-                    {line.name}
-                  </p>
-                  <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-widest text-ink-muted">
-                    {line.legibleTo}
-                  </p>
-                </Link>
+            <div className="mt-16 flex flex-row flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-6">
+              {HERO.arc.map((step, i) => (
+                <span key={step.href} className="inline-flex items-center gap-4">
+                  {i > 0 && (
+                    <span
+                      className="font-mono text-sm tracking-widest text-marker"
+                      aria-hidden="true"
+                    >
+                      &gt;&gt;
+                    </span>
+                  )}
+                  <Link
+                    href={step.href}
+                    className="font-mono text-sm font-bold uppercase tracking-wide underline decoration-transparent decoration-2 underline-offset-[6px] transition-colors hover:text-chartreuse-deep hover:decoration-marker"
+                  >
+                    {step.label}
+                  </Link>
+                </span>
               ))}
             </div>
           </div>
@@ -87,66 +89,38 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* [03] THE WORK (the two lines) -------------------------- */}
-        <Section id="lines">
-          <Kicker>{LINES.kicker}</Kicker>
-          <Reveal as="h2" className="text-[length:var(--text-h2)]">
-            {LINES.headingPre}{" "}
-            <Highlight>{LINES.headingHighlight}</Highlight>
-          </Reveal>
-          <Reveal className="mt-6 font-serif text-[length:var(--text-h3)] leading-snug">
-            {LINES.subhead}
-          </Reveal>
-          <Reveal as="p" className="mt-8 text-lead text-ink-muted">
-            {LINES.lead}
-          </Reveal>
-          {LINES.approach.map((para) => (
-            <Reveal as="p" key={para} className="mt-4 text-lead text-ink-muted">
-              {para}
-            </Reveal>
-          ))}
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {LINES.items.map((line, i) => (
-              <Reveal key={line.id} delay={i * 90}>
-                <Link
-                  href={`/${line.id}`}
-                  className="group flex h-full flex-col border border-line bg-paper p-8 transition-colors hover:border-ink"
-                >
-                  <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-                    {line.legibleTo}
-                  </p>
-                  <h3 className="mt-3 text-[length:var(--text-h3)]">
-                    {line.name}
-                  </h3>
-                  <p className="mt-2 font-serif text-xl">{line.promise}</p>
-                  <p className="mt-4 flex-1 text-ink-muted">{line.body}</p>
-                  <p className="mt-6 font-mono text-lg">{line.span}</p>
-                  <p className="mt-2 font-mono text-xs text-ink-muted">
-                    {line.start}
-                  </p>
-                  <span className="mt-6 inline-block font-mono text-sm text-ink-muted underline decoration-marker decoration-2 underline-offset-[6px] group-hover:text-ink">
-                    Explore {line.name} →
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+        {/* [03] UPSIDE (highlight) -------------------------------- */}
+        <section id="lines" className="bg-ink text-paper">
+          <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
+            <p className="kicker mb-6 text-paper/60">{LINES.kicker}</p>
+            <h2 className="max-w-3xl text-[length:var(--text-h2)] text-paper">
+              {LINES.heading}
+            </h2>
+            <p className="mt-6 max-w-2xl text-lead text-paper/75">
+              {LINES.sub}
+            </p>
+            <Link
+              href={LINES.ctaHref}
+              className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-marker px-7 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-chartreuse"
+            >
+              {LINES.cta} →
+            </Link>
           </div>
-        </Section>
+        </section>
 
         {/* [04] THE GUIDE ----------------------------------------- */}
         <Section id="guide" sink>
-          <div className="grid gap-12 md:grid-cols-[1fr_1.3fr] md:items-center">
-            <Reveal className="relative aspect-[4/5] overflow-hidden border border-line bg-paper">
+          <div className="flex max-w-4xl flex-col gap-8 sm:flex-row sm:items-start sm:gap-10 md:gap-12">
+            <Reveal className="relative aspect-[4/5] w-full max-w-[11rem] shrink-0 overflow-hidden border border-line bg-paper sm:max-w-[13rem] md:max-w-[15rem]">
               <Image
                 src="/stacey-fronek.jpg"
                 alt="Portrait of Stacey Fronek sitting at an outdoor cafe holding a coffee cup, smiling at the camera"
                 fill
                 className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 40vw"
-                priority
+                sizes="(max-width: 640px) 176px, 240px"
               />
             </Reveal>
-            <div>
+            <div className="min-w-0 flex-1">
               <Kicker>{GUIDE.kicker}</Kicker>
               <Reveal
                 as="h2"
@@ -156,12 +130,6 @@ export default function Home() {
               </Reveal>
               <Reveal as="p" className="mt-6 text-lead">
                 {GUIDE.empathy}
-              </Reveal>
-              <Reveal as="p" className="mt-4 text-ink-muted">
-                {GUIDE.authority}
-              </Reveal>
-              <Reveal as="p" className="mt-4 text-ink-muted">
-                {GUIDE.aiNative}
               </Reveal>
             </div>
           </div>
@@ -173,159 +141,97 @@ export default function Home() {
           <Reveal as="h2" className="text-[length:var(--text-h2)]">
             {PROOF.heading}
           </Reveal>
-          <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
-            {PROOF.logos.map((logo) => (
-              <span
-                key={logo}
-                className="font-serif text-2xl text-ink-muted md:text-3xl"
-              >
-                {logo}
-              </span>
-            ))}
-          </div>
-          <p className="mt-10 font-mono text-sm text-ink-muted">
-            {PROOF.note}{" "}
-            {PROOF.portfolio.lead}{" "}
-            <a
-              href={PROOF.portfolio.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-marker underline-offset-2 transition-colors hover:text-ink"
-            >
-              {PROOF.portfolio.label}
-            </a>
-            .
-          </p>
-        </Section>
-
-        {/* [06] SUPPORT MODEL ------------------------------------- */}
-        <Section id="support" sink>
-          <Kicker>{SUPPORT.kicker}</Kicker>
-          <Reveal as="h2" className="text-[length:var(--text-h2)]">
-            {SUPPORT.heading}
-          </Reveal>
-          <Reveal as="p" className="mt-6 text-lead text-ink-muted">
-            {SUPPORT.promise}
-          </Reveal>
-
-          <div className="mt-12 overflow-hidden border border-line">
-            <div className="grid grid-cols-2 bg-ink font-mono text-xs uppercase tracking-widest text-paper">
-              <div className="p-4">Agency retainer</div>
-              <div className="p-4">Fronz</div>
-            </div>
-            {SUPPORT.rows.map((row, i) => (
-              <div
-                key={row.fronz}
-                className={`grid grid-cols-2 ${i % 2 ? "bg-paper-sink" : "bg-paper"}`}
-              >
-                <div className="border-t border-line p-4 text-ink-muted line-through decoration-line">
-                  {row.agency}
-                </div>
-                <div className="border-l border-t border-line p-4">
-                  {row.fronz}
-                </div>
+          <Reveal className="mt-10 grid overflow-hidden border border-line md:grid-cols-2">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-sm text-ink-muted">{PROOF.reach}</p>
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+                {PROOF.names.map((name) => (
+                  <span key={name} className="font-serif text-lg text-ink">
+                    {name}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <ul className="mt-10 grid gap-3 md:grid-cols-3">
-            {SUPPORT.extras.map((extra) => (
-              <li
-                key={extra}
-                className="border-t-2 border-marker pt-3 text-sm text-ink-muted"
-              >
-                {extra}
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* [07] PRICING ------------------------------------------- */}
-        <Section id="pricing">
-          <Kicker>{PRICING.kicker}</Kicker>
-          <Reveal as="h2" className="text-[length:var(--text-h2)]">
-            {PRICING.heading}
-          </Reveal>
-          <Reveal as="p" className="mt-5 text-lead text-ink-muted">
-            {PRICING.sub}
-          </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {PRICING.tiers.map((tier, i) => (
-              <Reveal
-                key={tier.line}
-                delay={i * 90}
-                className={`flex flex-col border p-8 ${
-                  tier.featured
-                    ? "border-ink bg-ink text-paper"
-                    : "border-line bg-paper"
-                }`}
-              >
-                <p
-                  className={`font-mono text-xs uppercase tracking-widest ${
-                    tier.featured ? "text-marker" : "text-chartreuse-deep"
-                  }`}
+              <p className="mt-5 font-mono text-xs text-ink-muted">
+                {PROOF.portfolio.lead}{" "}
+                <a
+                  href={PROOF.portfolio.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-marker underline-offset-2 transition-colors hover:text-ink"
                 >
-                  {tier.line}
-                </p>
-                <h3
-                  className={`mt-3 text-[length:var(--text-h3)] ${tier.featured ? "text-paper" : ""}`}
-                >
-                  {tier.entry}
-                </h3>
-                <p className="mt-4 font-mono text-4xl">{tier.price}</p>
-                <p
-                  className={`mt-4 flex-1 text-sm ${tier.featured ? "text-paper/75" : "text-ink-muted"}`}
-                >
-                  {tier.detail}
-                </p>
-                <Link
-                  href={SITE.bookingUrl}
-                  className={`mt-6 inline-block font-mono text-sm underline decoration-2 underline-offset-[6px] ${
-                    tier.featured
-                      ? "decoration-marker hover:text-marker"
-                      : "decoration-marker hover:text-chartreuse-deep"
-                  }`}
-                >
-                  Book a free intro call →
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
-        {/* [08] LEAD MAGNET --------------------------------------- */}
-        <Section id="starter" sink>
-          <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-            <div>
-              <Kicker>{LEAD.kicker}</Kicker>
-              <Reveal as="h2" className="text-[length:var(--text-h2)]">
-                {LEAD.heading}
-              </Reveal>
-              <Reveal as="p" className="mt-5 text-ink-muted">
-                {LEAD.body}
-              </Reveal>
+                  {PROOF.portfolio.label}
+                </a>
+                .
+              </p>
             </div>
-            <Reveal>
-              <LeadForm />
-            </Reveal>
+            <div className="border-t border-line bg-paper-sink p-6 md:border-t-0 md:border-l md:p-8">
+              <p className="font-serif text-xl md:text-2xl">{PROOF.build.name}</p>
+              <p className="mt-2 text-sm text-ink-muted">{PROOF.build.detail}</p>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* [06] OFFERS GATEWAY ------------------------------------ */}
+        <Section id="offers">
+          <Kicker>{OFFERS.kicker}</Kicker>
+          <Reveal as="h2" className="max-w-2xl text-[length:var(--text-h2)]">
+            {OFFERS.heading}
+          </Reveal>
+          <Reveal as="p" className="mt-5 max-w-2xl text-lead text-ink-muted">
+            {OFFERS.sub}
+          </Reveal>
+          <Reveal className="mt-10">
+            <Button href={OFFERS.ctaHref}>{OFFERS.cta}</Button>
+          </Reveal>
+        </Section>
+
+        {/* [07] WHY FRONZ ----------------------------------------- */}
+        <Section id="why-fronz" sink>
+          <Kicker>{WHY_FRONZ.kicker}</Kicker>
+          <Reveal as="h2" className="text-[length:var(--text-h2)]">
+            {WHY_FRONZ.heading}
+          </Reveal>
+
+          <div className="mt-10 overflow-x-auto border border-line">
+            <div className="min-w-[640px]">
+              <div className="grid grid-cols-3 bg-ink font-mono text-xs uppercase tracking-widest text-paper">
+                <div className="p-4">Typical agency</div>
+                <div className="border-l border-paper/15 p-4">In-house hire</div>
+                <div className="border-l border-paper/15 p-4">Fronz</div>
+              </div>
+              {WHY_FRONZ.rows.map((row, i) => (
+                <div
+                  key={row.fronz}
+                  className={`grid grid-cols-3 ${i % 2 ? "bg-paper-sink" : "bg-paper"}`}
+                >
+                  <div className="border-t border-line p-4 text-sm text-ink-muted line-through decoration-line">
+                    {row.agency}
+                  </div>
+                  <div className="border-l border-t border-line p-4 text-sm text-ink-muted line-through decoration-line">
+                    {row.inhouse}
+                  </div>
+                  <div className="border-l border-t border-line p-4 text-sm">
+                    {row.fronz}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </Section>
 
-        {/* [09] FINAL CTA ----------------------------------------- */}
-        <section id="book" className="bg-ink text-paper">
+        {/* [08] STARTER CTA --------------------------------------- */}
+        <section id="starter" className="bg-ink text-paper">
           <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
-            <p className="kicker mb-6 text-paper/60">{FINAL_CTA.kicker}</p>
+            <p className="kicker mb-6 text-paper/60">{LEAD.kicker}</p>
             <h2 className="text-[length:var(--text-h2)] text-paper">
-              {FINAL_CTA.heading}
+              {LEAD.heading}
             </h2>
-            <p className="mt-6 text-lead text-paper/75">
-              {FINAL_CTA.sub}
-            </p>
+            <p className="mt-6 text-lead text-paper/75">{LEAD.body}</p>
             <Link
-              href={FINAL_CTA.href}
+              href={LEAD.href}
               className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-marker px-7 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-chartreuse"
             >
-              {FINAL_CTA.cta} →
+              {LEAD.cta} →
             </Link>
           </div>
         </section>
