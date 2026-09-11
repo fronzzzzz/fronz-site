@@ -1,19 +1,20 @@
 # Fronz
 
-> Senior go-to-market judgment for bootstrapped–Series A founders: gain clarity, build momentum, know what to run next. Founded and run by Stacey Fronek.
+> Senior go-to-market judgment for founders and lean teams: gain clarity, build momentum, know what to run next. Founded and run by Stacey Fronek.
 
-Fronz is a go-to-market practice for bootstrapped–Series A founders and lean teams (roughly 1–30 staff). You execute; Fronz brings senior judgment in bounded containers — not open-ended agency engagements. Every path starts with the free GTM Clarity Starter map.
+Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 staff). Bounded containers with fixed scope and fixed caps, not open-ended agency engagements. Every path starts with the free GTM Clarity Starter map.
 
 ## Services
 
-- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders who execute. Free GTM Clarity Starter → Starter Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
-- [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Phase 2 — AI visibility after messaging and wedge are live. Entry: Visibility Audit, $1,500.
+- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders and lean teams. Free GTM Clarity Starter → Starter Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
+- [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Phase 2. AI visibility after messaging and wedge are live. Entry: Visibility Audit, $1,500.
 
 ## How we work
 
-- You execute; Fronz interprets and sets the next move.
 - Named containers with fixed scope, fixed price, and fixed caps.
-- GTM Review Container: monthly senior judgment while you ship — bounded, not always-on.
+- Review Container: monthly judgment while you run day-to-day.
+- Intensive, Sprint, and scoped follow-on: hands-on work inside the container when that is what you hired.
+- Groundswell: execution inside the audit and build scope.
 
 ## Key pages
 

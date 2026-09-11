@@ -11,7 +11,7 @@ export const SITE = {
   url: "https://fronzz.com",
   tagline: "Gain clarity. Build momentum.",
   description:
-    "Senior go-to-market judgment for bootstrapped–Series A founders and lean teams: decide what to sell and to whom, get in front of real buyers, and know what to run next. Bounded containers — not agency bloat or another full-time hire.",
+    "Senior go-to-market judgment for founders and lean teams: decide what to sell and to whom, get in front of real buyers, and know what to run next. Bounded containers — not agency bloat or another full-time hire.",
   email: "stacey@shesthefronz.com",
   bookingUrl: "/book",
   starterUrl: "/starter",
@@ -55,7 +55,7 @@ export const MOTION = {
 } as const;
 
 export const HERO = {
-  kicker: "[01] Go-to-market for bootstrapped–Series A founders & lean teams",
+  kicker: "[01] Go-to-market for founders & lean teams",
   beats: MOTION.beats,
   highlightBeat: MOTION.highlightBeat,
   sub: "Decide what to sell and to whom, get it in front of real buyers, and know what to run next.",
@@ -115,7 +115,7 @@ export const PROOF = {
   },
   build: {
     name: "Moxa Money",
-    detail: "Co-founder, CMO & CPO — product GTM from zero.",
+    detail: "Co-founder, CMO & CPO. Product GTM from zero.",
   },
 } as const;
 
@@ -126,12 +126,12 @@ export const WHY_FRONZ = {
     {
       agency: "Open-ended retainer, vague scope",
       inhouse: "Salary, benefits, and a seat to fill",
-      fronz: "Named container — fixed scope, fixed price, fixed cap",
+      fronz: "Named container: fixed scope, fixed price, fixed cap",
     },
     {
       agency: "They run your marketing",
       inhouse: "You hire, manage, and direct",
-      fronz: "You execute — I interpret and set the next move",
+      fronz: "Scoped to the container: guide, decide, or execute inside fixed caps",
     },
     {
       agency: "Always on because you're paying monthly",
@@ -149,7 +149,7 @@ export const WHY_FRONZ = {
 export const OFFERS = {
   kicker: "[06] How to work with Fronz",
   heading: "Pick the container that fits where you are.",
-  sub: "Every path starts with a free map. Then fixed-scope offers for positioning, market contact, or a monthly read while you ship — named price before you commit.",
+  sub: "Every path starts with a free map. Then fixed-scope offers for positioning decisions, hands-on market contact, or a monthly read while you ship.",
   cta: "See offers",
   ctaHref: "/gtm-clarity",
 } as const;
@@ -240,7 +240,7 @@ export const STARTER = {
     punchLine:
       "It's not a copywriting problem. It's a positioning decision waiting to be made.",
     sellHighlight: "The map surfaces the decision.",
-    sell: "The Starter gives you that map. From there, step into whichever container fits — senior judgment while you execute, a wedge decision, or market contact. Each is scoped before you pay.",
+    sell: "The Starter gives you that map. From there, step into whichever container fits: a monthly read, a wedge decision, or market contact in scope.",
   },
   templatesHeading: "Work in your own copy.",
   templatesNote:
@@ -251,7 +251,7 @@ export const STARTER = {
   reviewAttachNote:
     "Worked offline? Attach your map when you book — Calendly will prompt you for a file.",
   reviewCta: BOOKING_CTA,
-  footnote: "Fronz · senior go-to-market judgment for founders who execute.",
+  footnote: "Fronz · go-to-market in bounded containers for founders and lean teams.",
 } as const;
 
 export const STARTER_FORM = {

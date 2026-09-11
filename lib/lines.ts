@@ -116,17 +116,17 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
   "gtm-clarity": {
     slug: "gtm-clarity",
     name: "GTM Clarity",
-    eyebrow: "Go-to-market for bootstrapped–Series A founders",
+    eyebrow: "Go-to-market for founders and lean teams",
     arcLabel: "Gain clarity",
     promise: "Build momentum.",
     heroBeats: MOTION.beats,
     heroHighlightBeat: MOTION.highlightBeat,
     heroSub:
-      "Decide what to sell and to whom, get in front of real buyers, and keep senior judgment on what to run next. Each offer is fixed scope and fixed price; you step up when the fit is obvious.",
+      "Decide what to sell and to whom, get in front of real buyers, and keep senior judgment on what to run next. Fixed-scope containers for judgment, decisions, and hands-on market contact.",
     outcomeCards: true,
     tiers: {
       heading: "Start free. Step up when you're ready.",
-      sub: "Each offer is fixed scope and fixed price. Begin with the free map — then step into whichever container fits where you are now.",
+      sub: "Begin with the free map, then step into whichever container fits where you are now.",
       motionCallouts: true,
       items: [
         {
@@ -147,9 +147,9 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           meta: "20 min · after Starter",
           tagline: "An honest read on your map and a straight answer on which container fits you next.",
           points: [
-            "Complete the Starter first — I'll read your answers before we talk",
+            "Complete the Starter first. I'll read your answers before we talk",
             "Reflect what you wrote, not a free strategy session",
-            "Assess fit for the next container — or a clean close",
+            "Assess fit for the next container, or a clean close",
             "Self-book after you submit the Starter form",
           ],
         },
@@ -157,14 +157,14 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "GTM Review Container",
           price: "$500/mo",
           meta: "3-mo min · 2 hr/mo cap",
-          fitNote: "After the map — or anytime you're executing and need a read.",
+          fitNote: "After the map, or anytime you're executing and need a read.",
           tagline:
-            "Senior judgment on what to run next while you execute — not another builder to manage.",
+            "Senior judgment on what to run next while you execute. Not another builder to manage.",
           points: [
             "Monthly Execution Brief: what to run next, based on what you're shipping",
             "45-minute review call each month",
             "3-month minimum, then month-to-month",
-            "2-hour/month cap — you own the execution",
+            "2-hour/month cap: you own the execution",
           ],
         },
         {
@@ -172,12 +172,13 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           price: "$2,500",
           meta: "3 days · 1 hr/day together",
           fitNote: "When the wedge still needs deciding.",
-          tagline: "Your wedge and first test decided in three days, so you walk out ready to ship.",
+          tagline: "Your wedge and first test decided in three days, so you walk out with both locked.",
           points: [
             "Three consecutive days, one hour together each day",
             "Separate product from channel from model; land the pitch sentence",
             "One wedge decided: offer × customer × channel",
             "First test designed before you leave",
+            "Collaborative decision work, not execution-only guidance",
           ],
         },
         {
@@ -185,9 +186,10 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           price: "$7,500",
           meta: "2 weeks · 30 hr cap",
           fitNote: "When you're ready for real market contact.",
-          tagline: "Real market contact in two weeks, with honest numbers that tell you what to change.",
+          tagline: "Two weeks of hands-on market contact: positioning tested, first channel live, honest numbers.",
           points: [
             "Two weeks toward one metric you agree on upfront",
+            "Hands-on execution inside the sprint cap, not a deck you implement alone",
             "Positioning tested with real market contact",
             "First channel live with measurement",
             "Hypothesis scorecard and scoped follow-on at the gate",
@@ -201,8 +203,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           tagline: "Your next move scoped from real data: named work, named price, no open-ended retainer.",
           points: [
             "Custom scope after Intensive or Sprint",
-            "Interpret what's working, design the next test",
-            "No open-ended retainer — named work, named price",
+            "Execute the next scoped move: interpret what's working, build what's next",
+            "No open-ended retainer: named work, named price",
           ],
         },
         {
@@ -220,9 +222,9 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     },
     whoFor: {
       fit: [
-        "You're a bootstrapped–Series A founder or lean team selling multiple things and need to focus",
+        "You're a founder or lean team selling multiple things and need to focus",
         "The product works, or it's close, but the message isn't landing",
-        "You want to run the system yourself, not rent it forever",
+        "You want bounded work you can graduate from, not an open-ended retainer",
       ],
       notFit: [
         "You want done-for-you marketing forever",
@@ -232,36 +234,36 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     faq: [
       {
         q: "Is this an agency engagement or a fractional hire?",
-        a: "Neither model. No open-ended retainer, no headcount on your payroll. Each tier is a named container — fixed scope, fixed price. You execute; I interpret and design the next move. The GTM Review Container is monthly senior judgment, not done-for-you marketing and not a full-time marketer seat.",
+        a: "Neither model. No open-ended retainer, no headcount on your payroll. Each tier is a named container with fixed scope and fixed price. The Review Container is monthly judgment while you run day-to-day. The Intensive and Sprint include hands-on work inside the cap: wedge decisions, market contact, channels live. Nothing is open-ended done-for-you forever.",
       },
       {
         q: "Where do I start?",
-        a: "The GTM Clarity Starter — free, twenty minutes, your map on one page. When you want a read on what you found, submit your answers and book a Starter Review.",
+        a: "The GTM Clarity Starter: free, twenty minutes, your map on one page. When you want a read on what you found, submit your answers and book a Starter Review.",
       },
       {
         q: "What's the difference between the Starter and the Starter Review?",
-        a: "The Starter is the exercise — you map offers, people, and tactics and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
+        a: "The Starter is the exercise: you map offers, people, and tactics and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
       },
       {
         q: "Do I have to go through every container in order?",
-        a: "No. Every path starts with the free map. After that, step into whichever container fits where you are — Review Container for ongoing senior judgment, Intensive to decide a wedge, Sprint for market contact. Many founders start with senior judgment; others sprint first and come back for a read.",
+        a: "No. Every path starts with the free map. After that, step into whichever container fits where you are: Review Container for ongoing senior judgment, Intensive to decide a wedge, Sprint for hands-on market contact. Many founders start with senior judgment; others sprint first and come back for a read.",
       },
       {
         q: "What's the GTM Review Container vs. the Intensive?",
-        a: "Different jobs. The Container is monthly senior judgment while you execute — a brief plus a 45-minute call each month. It works as a first paid step after the map or as a return after a sprint. The Intensive is three consecutive days to decide your wedge and first test when that decision is the blocker.",
+        a: "Different jobs. The Container is monthly senior judgment while you execute: a brief plus a 45-minute call each month. It works as a first paid step after the map or as a return after a sprint. The Intensive is three consecutive days of collaborative decision work: wedge, pitch sentence, and first test design before you leave.",
       },
       {
         q: "What's the Intensive vs. the Sprint?",
-        a: "The Intensive decides the wedge and designs the first test. The Sprint runs market contact for two weeks toward one north-star metric — positioning tested, first channel live, ugly counts. Sprint assumes you're ready to ship, not still deciding.",
+        a: "The Intensive decides the wedge and designs the first test. The Sprint assumes the wedge is decided. I run market contact inside the two-week cap: positioning tested, first channel live, counts in hand.",
       },
       {
         q: "Can I skip straight to the Intensive or Sprint?",
-        a: "Sometimes — if you've already done the clarity work elsewhere. Complete your GTM Clarity Starter and we can discuss this on your free Starter Review call.",
+        a: "Sometimes, if you've already done the clarity work elsewhere. Complete your GTM Clarity Starter and we can discuss this on your free Starter Review call.",
       },
     ],
     cta: {
       heading: "Selling five things to everyone and nothing's landing?",
-      sub: "Start with the GTM Clarity Starter — twenty minutes, your whole business on one page. When you want a read, book the Starter Review after you submit.",
+      sub: "Start with the GTM Clarity Starter: twenty minutes, your whole business on one page. When you want a read, book the Starter Review after you submit.",
       button: STARTER_CTA,
     },
     links: {

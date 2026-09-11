@@ -12,8 +12,7 @@ export function Footer() {
               <span className="text-chartreuse-deep">.</span>
             </p>
             <p className="mt-3 text-ink-muted">
-              Go-to-market judgment for bootstrapped–Series A founders who
-              execute.
+              Go-to-market in bounded containers for founders and lean teams.
             </p>
           </div>
 
