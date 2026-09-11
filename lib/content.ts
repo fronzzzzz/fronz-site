@@ -157,7 +157,7 @@ export const OFFERS = {
 export const LEAD = {
   kicker: "[08] One next step",
   heading: "Selling five things to everyone and nothing's landing?",
-  body: "The GTM Clarity Starter maps your offers, customers, and tactics on one page, then shows you where positioning breaks. Copy a template. Keep the map. Twenty minutes. Yours to keep.",
+  body: "The GTM Clarity Starter maps your offers, customers, and channels on one page, then shows you where positioning breaks. Copy a template. Keep the map. Twenty minutes. Yours to keep.",
   cta: HOME_CTA,
   href: SITE.starterUrl,
 } as const;
@@ -177,12 +177,23 @@ export const STARTER = {
   kicker: "Free · GTM Clarity Starter",
   heading: "See your whole business on one page.",
   highlight: "on one page.",
-  sub: "A 20-minute exercise to get your offers, your people, and how you reach them in front of you — so the gaps become obvious. The map is the deliverable. Copy a template and keep it.",
+  sub: "Twenty minutes. Four parts. One map. The gaps become obvious when offers, people, and channels sit on the same page.",
   instruction:
     "Do this honestly and roughly. Messy is fine. Messy is the point. Keep your first-instinct answers; don't polish them yet.",
-  formHeading: "Submit your map",
-  formSub:
-    "Fill in your answers below — same five parts as the exercise. I'll have your map on file. After you submit, you can book a Starter Review and I'll read what you wrote before we talk.",
+  process: [
+    "Copy a template or start online",
+    "One part at a time, about 20 minutes total",
+    "Download your map, or submit and book a Starter Review",
+  ],
+  download: {
+    heading: "Download the template",
+    sub: "Duplicate a Notion or Google Doc and work offline. Same four parts. Submit online when you're done, or attach your file when you book.",
+  },
+  preview: {
+    heading: "The map",
+    sub: "Four parts on one page. Part 4 is where the positioning gaps show up.",
+    cta: "Start the map",
+  },
   parts: [
     {
       n: "01",
@@ -197,117 +208,79 @@ export const STARTER = {
     {
       n: "02",
       title: "Your people",
-      body: "List every type of customer you're trying to reach (or have imagined reaching). For each, write your clearest description of who they are, and if you can, what they're really trying to get done (the job they'd “hire” you for).",
+      body: "List every type of customer you're trying to reach. For each: who they are, what they're trying to get done, how urgent it feels, and which offer or offers are for them.",
       prompts: [
         "Who they are…",
         "What they're trying to achieve…",
         "How urgently they feel it (gut call: low / medium / high)",
+        "Which offer or offers are for this person?",
       ],
     },
     {
       n: "03",
-      title: "How you reach them",
-      body: "For each customer, list the tactics you actually use to reach them today: email list, IRL events, social, word of mouth, DMs, a podcast, nothing-yet. Be honest about the “nothing yet” ones. A great customer with no way to reach them is one of the most useful things to find.",
-      prompts: ["Customer → tactics you use to reach them today…"],
+      title: "Your channels",
+      body: "For each person, tap the channels you actually use today. Be honest about “Nothing yet.” A great customer with no way to reach them is one of the most useful things to find.",
+      prompts: ["Pick all that apply, or add your own channel."],
     },
     {
       n: "04",
       title: "Connect the dots",
-      body: "Draw lines: offer → customer → tactic. Then just look. Where are the clean lines (right offer, right person, right way to reach them)? Where are the crossed or missing lines? What surprised you?",
+      body: "Your map draws from the links you made. Look for clean lines and missing connections, then note what surprised you.",
       prompts: ["Note anything that jumps out."],
     },
-    {
-      n: "05",
-      title: "What's automated vs. what still needs you",
-      body: "If you're running agents, content pipelines, or dashboards: list what's automated today and what decisions you're still making by gut. The gap is often where go-to-market breaks — not in the build.",
-      prompts: [
-        "Automated today…",
-        "Still deciding by gut…",
-        "What I'd want a second pair of eyes on…",
-      ],
-    },
   ],
-  wall: {
-    heading: "You might hit a wall here. That's expected.",
-    body: "Most founders get to Part 4 and feel one of these:",
-    quotes: [
-      "“I'm describing the same thing five different ways.”",
-      "“I can't tell which of these is the actual product vs. just how people find me.”",
-      "“I have way more offers and audiences than I can focus on.”",
-      "“My best customers and my best channels don't line up.”",
-    ],
-    punchHead: "That wall is the most valuable part.",
-    punchLine:
-      "It's not a copywriting problem. It's a positioning decision waiting to be made.",
-    sellHighlight: "The map surfaces the decision.",
-    sell: "The Starter gives you that map. From there, step into whichever container fits: a monthly read, a wedge decision, or market contact in scope.",
-  },
-  templatesHeading: "Work in your own copy.",
-  templatesNote:
-    "Notion or Google Doc — duplicate a template and keep the map. No account required to use the Starter.",
-  reviewHeading: "Book a Starter Review",
-  reviewBody:
-    "Complete the map first — submit above or work in a template. Twenty minutes to reflect what you wrote back and see which container fits. Not a strategy session.",
-  reviewAttachNote:
-    "Worked offline? Attach your map when you book — Calendly will prompt you for a file.",
-  reviewCta: BOOKING_CTA,
   footnote: "Fronz · go-to-market in bounded containers for founders and lean teams.",
 } as const;
 
 export const STARTER_FORM = {
-  heading: "Submit your map",
-  sub: "Same five parts as the exercise. I'll read this before a Starter Review. Copy a template above if you want an editable version to keep.",
-  fields: [
-    {
-      key: "offers",
-      label: "01 · Your offers",
-      placeholder: "Everything you sell, in every way you've described it…",
-      optional: false,
-    },
-    {
-      key: "people",
-      label: "02 · Your people",
-      placeholder: "Who you're trying to reach, and what they're hiring you to do…",
-      optional: false,
-    },
-    {
-      key: "tactics",
-      label: "03 · How you reach them",
-      placeholder: "The tactics you actually use today (and the “nothing yet” ones)…",
-      optional: false,
-    },
-    {
-      key: "notes",
-      label: "04 · What jumped out",
-      placeholder: "Clean lines, crossed lines, surprises…",
-      optional: false,
-    },
-    {
-      key: "automation",
-      label: "05 · Automated vs. you (optional)",
-      placeholder: "What's automated, what's still gut, what you'd want a second pair of eyes on…",
-      optional: true,
-    },
+  back: "Back",
+  next: "Next part",
+  addOffer: "Add another offer",
+  addPerson: "Add another person",
+  addDescription: "Add another way you describe it",
+  offerName: "Offer name",
+  offerNamePlaceholder: "e.g. Monthly advisory, Workshop, SaaS product…",
+  descriptionPlaceholder: "Another way you've described it…",
+  personLabel: "Who they are",
+  personLabelPlaceholder: "e.g. Series A founder, solo consultant…",
+  personJob: "What they're trying to achieve",
+  personJobPlaceholder: "The job they'd hire you for…",
+  urgencyLabel: "How urgent (gut call)",
+  offerLinkLabel: "Which offer or offers are for this person?",
+  customChannelPlaceholder: "Add custom channel…",
+  addCustomChannel: "Add",
+  gapsHeading: "Gaps flagged on your map",
+  reflectionLabel: "What jumped out?",
+  reflectionExamples: [
+    "I'm describing the same thing five different ways.",
+    "I have way more offers and audiences than I can focus on.",
+    "My best customers and my best channels don't line up.",
   ],
+  downloadHeading: "Download your map",
+  downloadSub:
+    "Your map is ready. Download a styled PDF to keep, share, or work from offline.",
+  downloadButton: "Download your map",
+  reviewGatewayHeading: "Want a free read of your GTM Starter Map?",
+  reviewGatewaySub:
+    "Submit your map and schedule a free 20-minute Starter Review.",
   emailPlaceholder: "you@company.com",
   emailLabel: "Your email",
-  emailHelp: "So I have your map on file and can confirm your Starter Review.",
-  button: "Submit my map",
+  emailHelp: "So I have your map on file and can match it to your booking.",
+  submitButton: "Submit and schedule",
+  scheduleHeading: "Schedule your Starter Review",
+  scheduleSub: "Twenty minutes to review your map together.",
   successHeadline: "Map received.",
-  successBody:
-    "Your answers are saved. Book a Starter Review when you're ready — twenty minutes to reflect what you wrote back.",
-  successCta: BOOKING_CTA,
-  successTemplates: "Keep an editable copy:",
-  successFinePrint:
-    "Starter Review is twenty minutes. I read what you wrote — not a strategy session.",
+  successBody: "Your answers are saved. Pick a time below.",
+  offlineNote:
+    "Worked offline? Attach your template when Calendly prompts you for a file.",
 } as const;
 
 export const BOOK = {
   kicker: "Starter Review",
   heading: "Book a Starter Review.",
-  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Starter first — submit your answers or attach your map when you book. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
+  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Starter first: submit online or attach your template when you book. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
   attachNote:
-    "If you worked in Notion or Google Docs, attach your map when Calendly prompts you. If you submitted the form on the Starter page, I already have your answers.",
+    "If you worked in Notion or Google Docs, attach your map when Calendly prompts you. If you submitted online, I already have your answers.",
   prerequisite: "Haven't completed your map yet?",
   prerequisiteLink: "Complete the GTM Clarity Starter →",
   prerequisiteHref: SITE.starterUrl,

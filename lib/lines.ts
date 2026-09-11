@@ -242,7 +242,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "What's the difference between the Starter and the Starter Review?",
-        a: "The Starter is the exercise: you map offers, people, and tactics and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
+        a: "The Starter is the exercise: you map offers, people, and channels and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
       },
       {
         q: "Do I have to go through every container in order?",

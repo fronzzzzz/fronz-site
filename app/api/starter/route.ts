@@ -1,34 +1,40 @@
 import { NextResponse } from "next/server";
+import {
+  flattenStarterMap,
+  isValidMapPayload,
+  type StarterMapData,
+} from "@/lib/starter-map";
 
 /**
  * GTM Clarity Starter map capture.
  *
- * Best-effort persistence: Customer.io (if configured) + Notion mirror (if configured).
- * Never blocks the user on backend failure — they can still book a Starter Review
- * and attach their map via Calendly.
+ * Accepts structured map (Phase 1) or legacy flat strings.
+ * Best-effort persistence: Customer.io + Notion mirror.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NOTION_VERSION = "2022-06-28";
 
-type Map = {
+type FlatMap = {
   email: string;
   offers: string;
   people: string;
-  tactics: string;
+  channels: string;
   notes: string;
   automation: string;
+  structured?: StarterMapData;
 };
 
 export async function POST(request: Request) {
-  let body: Partial<Map>;
+  let body: Record<string, unknown>;
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const email = typeof body.email === "string" ? body.email.trim() : "";
+  const email =
+    typeof body.email === "string" ? body.email.trim() : "";
   if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json(
       { error: "Please enter a valid email address." },
@@ -36,14 +42,22 @@ export async function POST(request: Request) {
     );
   }
 
-  const map: Map = {
-    email,
-    offers: clip(body.offers),
-    people: clip(body.people),
-    tactics: clip(body.tactics),
-    notes: clip(body.notes),
-    automation: clip(body.automation),
-  };
+  let map: FlatMap;
+
+  if (isValidMapPayload(body.map)) {
+    const structured: StarterMapData = { ...body.map, email };
+    const flat = flattenStarterMap(structured);
+    map = { email, ...flat, structured };
+  } else {
+    map = {
+      email,
+      offers: clip(body.offers),
+      people: clip(body.people),
+      channels: clip(body.channels ?? body.tactics),
+      notes: clip(body.notes),
+      automation: clip(body.automation),
+    };
+  }
 
   let saved = false;
 
@@ -64,7 +78,7 @@ function clip(value: unknown): string {
   return typeof value === "string" ? value.trim().slice(0, 5000) : "";
 }
 
-async function writeToCustomerIo(map: Map): Promise<boolean> {
+async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
   const siteId = process.env.CUSTOMERIO_SITE_ID;
   const apiKey = process.env.CUSTOMERIO_TRACK_API_KEY;
   if (!siteId || !apiKey) return false;
@@ -90,6 +104,7 @@ async function writeToCustomerIo(map: Map): Promise<boolean> {
         starter_map_submitted: true,
         starter_map_submitted_at: now,
         source: "fronz-site/starter",
+        starter_map_version: map.structured ? 1 : 0,
       }),
     });
 
@@ -103,9 +118,10 @@ async function writeToCustomerIo(map: Map): Promise<boolean> {
         data: {
           offers: map.offers,
           people: map.people,
-          tactics: map.tactics,
+          channels: map.channels,
           notes: map.notes,
           automation: map.automation,
+          structured: map.structured ?? null,
         },
       }),
     });
@@ -117,7 +133,7 @@ async function writeToCustomerIo(map: Map): Promise<boolean> {
   }
 }
 
-async function writeToNotion(map: Map): Promise<boolean> {
+async function writeToNotion(map: FlatMap): Promise<boolean> {
   const token = process.env.NOTION_TOKEN;
   const parentId = process.env.NOTION_STARTER_PARENT_ID;
   if (!token || !parentId) return false;
@@ -138,6 +154,9 @@ async function writeToNotion(map: Map): Promise<boolean> {
   ];
 
   const submitted = new Date().toISOString().slice(0, 10);
+  const versionNote = map.structured
+    ? " · structured map v1"
+    : " · legacy flat submit";
 
   try {
     const res = await fetch("https://api.notion.com/v1/pages", {
@@ -165,7 +184,7 @@ async function writeToNotion(map: Map): Promise<boolean> {
                 {
                   type: "text",
                   text: {
-                    content: `${map.email} · submitted ${submitted} · via fronz-site/starter`,
+                    content: `${map.email} · submitted ${submitted} · via fronz-site/starter${versionNote}`,
                   },
                 },
               ],
@@ -173,8 +192,8 @@ async function writeToNotion(map: Map): Promise<boolean> {
           },
           ...section("01 · Your offers", map.offers),
           ...section("02 · Your people", map.people),
-          ...section("03 · How you reach them", map.tactics),
-          ...section("04 · What jumped out", map.notes),
+          ...section("03 · Your channels", map.channels),
+          ...section("04 · Connect the dots", map.notes),
           ...(map.automation
             ? section("05 · Automated vs. you", map.automation)
             : []),

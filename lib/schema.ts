@@ -117,7 +117,7 @@ export const schemaGraph = {
           "@type": "Offer",
           name: "GTM Clarity Starter",
           description:
-            "A free 20-minute exercise to map offers, customers, and tactics on one page — so positioning gaps become obvious.",
+            "A free 20-minute exercise to map offers, customers, and channels on one page — so positioning gaps become obvious.",
           price: "0",
           priceCurrency: "USD",
           category: "GTM Clarity",

@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Section } from "@/components/ui/Section";
 import { Highlight } from "@/components/ui/Highlight";
-import { Reveal } from "@/components/ui/Reveal";
-import { StarterMapForm } from "@/components/ui/StarterMapForm";
-import { SITE, STARTER, starterTemplates } from "@/lib/content";
+import { StarterFunnel } from "@/components/starter/StarterFunnel";
+import { STARTER, calendlyUrl, starterTemplates } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "GTM Clarity Starter — see your whole business on one page",
+  title: "GTM Clarity Starter: see your whole business on one page",
   description: STARTER.sub,
   alternates: { canonical: "/starter" },
 };
@@ -31,7 +29,6 @@ function howToSchema() {
 
 export default function StarterPage() {
   const templates = starterTemplates();
-  const hasTemplates = Boolean(templates.notion || templates.gdoc);
 
   return (
     <>
@@ -39,11 +36,14 @@ export default function StarterPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema()) }}
       />
+      <link
+        rel="stylesheet"
+        href="https://assets.calendly.com/assets/external/widget.css"
+      />
       <Header />
       <main>
-        {/* Intro ------------------------------------------------- */}
         <section className="border-b border-line">
-          <div className="mx-auto w-full max-w-[1180px] px-6 py-16 md:px-10 md:py-20">
+          <div className="mx-auto w-full max-w-[1180px] px-6 py-14 md:px-10 md:py-20">
             <nav className="mb-8 font-mono text-xs uppercase tracking-widest text-ink-muted">
               <Link href="/" className="hover:text-ink">
                 Fronz
@@ -56,146 +56,35 @@ export default function StarterPage() {
               See your whole business{" "}
               <Highlight>{STARTER.highlight}</Highlight>
             </h1>
-            <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
+            <p className="mt-6 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
               {STARTER.sub}
             </p>
-            <p className="mt-6 font-serif text-xl">{STARTER.instruction}</p>
+            <p className="mt-4 max-w-2xl font-serif text-xl">
+              {STARTER.instruction}
+            </p>
+
+            <ol className="mt-10 grid gap-4 border-y border-line py-8 sm:grid-cols-3 sm:gap-8">
+              {STARTER.process.map((step, i) => (
+                <li key={step} className="flex gap-4">
+                  <span className="font-mono text-sm text-chartreuse-deep">
+                    0{i + 1}
+                  </span>
+                  <p className="text-sm text-ink-muted">{step}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
-        {/* Form — primary path ----------------------------------- */}
-        <Section>
-          <div className="mx-auto max-w-3xl">
-            <Reveal>
-              <StarterMapForm />
-            </Reveal>
+        <section className="bg-paper-sink">
+          <div className="mx-auto w-full max-w-[1180px] px-6 py-14 md:px-10 md:py-20">
+            <StarterFunnel
+              notionUrl={templates.notion}
+              gdocUrl={templates.gdoc}
+              calendlyUrl={calendlyUrl()}
+            />
           </div>
-        </Section>
-
-        {/* Exercise reference ------------------------------------ */}
-        <Section sink>
-          <Reveal as="h2" className="text-[length:var(--text-h3)]">
-            The five parts
-          </Reveal>
-          <p className="mt-3 text-ink-muted">
-            Use these prompts in the form above, or work offline in a template
-            below.
-          </p>
-          <div className="mt-10 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-            {STARTER.parts.map((part, i) => (
-              <Reveal key={part.n} delay={i * 90} className="bg-paper p-8">
-                <span className="font-mono text-xs text-chartreuse-deep">
-                  {part.n}
-                </span>
-                <h3 className="mt-4 text-[length:var(--text-h3)]">
-                  {part.title}
-                </h3>
-                <p className="mt-3 text-ink-muted">{part.body}</p>
-                <ul className="mt-5 space-y-2">
-                  {part.prompts.map((prompt) => (
-                    <li
-                      key={prompt}
-                      className="border-l-2 border-line pl-3 font-mono text-sm text-ink-muted"
-                    >
-                      {prompt}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
-        {/* Templates --------------------------------------------- */}
-        {hasTemplates && (
-          <Section sink>
-            <Reveal as="h2" className="text-[length:var(--text-h3)]">
-              {STARTER.templatesHeading}
-            </Reveal>
-            <p className="mt-3 text-ink-muted">{STARTER.templatesNote}</p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {templates.notion && (
-                <a
-                  href={templates.notion}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-[2px] border border-line bg-paper px-6 py-3.5 font-mono text-sm tracking-wide transition-colors hover:border-ink"
-                >
-                  Copy the Notion template →
-                </a>
-              )}
-              {templates.gdoc && (
-                <a
-                  href={templates.gdoc}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-[2px] border border-line bg-paper px-6 py-3.5 font-mono text-sm tracking-wide transition-colors hover:border-ink"
-                >
-                  Copy the Google Doc template →
-                </a>
-              )}
-            </div>
-          </Section>
-        )}
-
-        {/* The wall ---------------------------------------------- */}
-        <Section sink>
-          <Reveal as="h2" className="text-[length:var(--text-h2)]">
-            {STARTER.wall.heading}
-          </Reveal>
-          <p className="mt-6 text-ink-muted">{STARTER.wall.body}</p>
-          <ul className="mt-8 grid gap-3 md:grid-cols-2">
-            {STARTER.wall.quotes.map((quote) => (
-              <li
-                key={quote}
-                className="border-t-2 border-marker pt-3 font-serif text-lg"
-              >
-                {quote}
-              </li>
-            ))}
-          </ul>
-
-          <Reveal className="mt-14 border-t border-line pt-10">
-            <p className="font-serif text-[length:var(--text-h2)] leading-tight">
-              <Highlight>{STARTER.wall.punchHead}</Highlight>
-            </p>
-            <div className="mt-8 grid gap-x-12 gap-y-6 md:grid-cols-2">
-              <p className="text-lead text-ink-muted">
-                {STARTER.wall.punchLine}
-              </p>
-              <p className="text-lead">
-                <span className="font-semibold text-ink">
-                  {STARTER.wall.sellHighlight}
-                </span>{" "}
-                {STARTER.wall.sell}
-              </p>
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* Starter Review — offline / template path -------------- */}
-        <Section>
-          <div className="mx-auto max-w-2xl border border-line bg-paper-sink p-8 md:p-10">
-            <h2 className="text-[length:var(--text-h2)]">
-              {STARTER.reviewHeading}
-            </h2>
-            <p className="mt-6 text-lead text-ink-muted">
-              {STARTER.reviewBody}
-            </p>
-            <p className="mt-4 text-sm text-ink-muted">
-              {STARTER.reviewAttachNote}
-            </p>
-            <Link
-              href={SITE.bookingUrl}
-              className="mt-8 inline-flex items-center gap-2 rounded-[2px] bg-ink px-7 py-4 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
-            >
-              {STARTER.reviewCta} →
-            </Link>
-            <p className="mt-8 font-mono text-xs text-ink-muted">
-              {STARTER.footnote}
-            </p>
-          </div>
-        </Section>
+        </section>
       </main>
       <Footer />
     </>
