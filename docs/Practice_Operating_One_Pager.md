@@ -19,7 +19,7 @@ Two paid motions. Same spine. Flavors change; the container does not.
 
 **Rate floor: $250/hr on every paid container.** Price and hour caps move together. If hours grow, price grows — not scope.
 
-### Check-in — qualify or close (legacy one-off · use GTM Review Container instead for primary path)
+### Check-in — qualify or close (legacy one-off · use GTM Counsel instead for primary path)
 
 | | |
 |---|---|
@@ -27,11 +27,11 @@ Two paid motions. Same spine. Flavors change; the container does not.
 | Time | One session · 45–60 min |
 | Your hours | 2 cap |
 | Outcome | Container yes/no, start date, or clean close. Not strategy deck. |
-| When | **Superseded by GTM Review Container for ICP.** One-off only if re-initiate + explicitly not retainer-ready. |
+| When | **Superseded by GTM Counsel for ICP.** One-off only if re-initiate + explicitly not retainer-ready. |
 
 See `My Drive/Fronz/Fronz_Funnel_and_Offer_Ladder.md` for current ladder.
 
-### GTM Review Container — primary paid entry (Sep 2026)
+### GTM Counsel — primary paid entry (Sep 2026)
 
 | | |
 |---|---|
@@ -54,7 +54,7 @@ Diagnosis that does not fit a free Map Review lives **here**, paid before the fi
 | Time | 3 consecutive days · 1 hr together/day |
 | Your hours | 10 cap |
 | Outcome | Wedge decided · first test designed · daily review between days (replaces 2-hr Jam) |
-| When | GTM Review month 3 gate · or sprint-ready from Map Review (rare) |
+| When | GTM Counsel month 3 gate · or sprint-ready from Map Review (rare) |
 
 Do not build bespoke proposal pages before payment. Send the generic one-pager (§7).
 

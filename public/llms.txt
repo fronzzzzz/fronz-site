@@ -6,13 +6,13 @@ Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 sta
 
 ## Services
 
-- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders and lean teams. Free GTM Clarity Map → Map Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
+- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders and lean teams. Free GTM Clarity Map → Map Review → GTM Counsel ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
 - [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Phase 2. AI visibility after messaging and wedge are live. Entry: Visibility Audit, $1,500.
 
 ## How we work
 
 - Named containers with fixed scope, fixed price, and fixed caps.
-- Review Container: monthly judgment while you run day-to-day.
+- GTM Counsel: monthly judgment while you run day-to-day.
 - Intensive, Sprint, and scoped follow-on: hands-on work inside the container when that is what you hired.
 - Groundswell: execution inside the audit and build scope.
 

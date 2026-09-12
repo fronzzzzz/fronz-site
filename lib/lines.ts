@@ -159,7 +159,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
         {
           id: "keep-moving",
           key: "first-paid",
-          label: "First paid container",
+          label: "Monthly go-to-market judgment",
           sub: "A monthly read on what you're already running so you gain clarity and keep moving.",
         },
         {
@@ -204,7 +204,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           ],
         },
         {
-          name: "GTM Review Container",
+          name: "GTM Counsel",
           price: "$500/mo",
           meta: "3-mo min · 2 hr/mo cap",
           band: "first-paid",
@@ -214,7 +214,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           fitNote:
             "Start here after the map if you're moving and determining where to focus your efforts. Return here after a sprint when you need the next read.",
           tagline:
-            "Clarity on what you're already running, what's missing, and senior judgment on what to do next.",
+            "Each month: a 45-minute review and one-page Execution Brief: what worked, three next priorities, one test. You run it. 3-month minimum.",
           points: [
             "Monthly Execution Brief: what to run next, based on what you're shipping",
             "45-minute review call each month",
@@ -299,7 +299,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     faq: [
       {
         q: "Is this an agency engagement or a fractional hire?",
-        a: "Neither model. No open-ended retainer, no headcount on your payroll. Each tier is a named container with fixed scope and fixed price. The Review Container is monthly judgment while you run day-to-day. The Intensive and Sprint include hands-on work inside the cap: wedge decisions, market contact, channels live. Nothing is open-ended done-for-you forever.",
+        a: "Neither model. No open-ended retainer, no headcount on your payroll. Each tier is a named container with fixed scope and fixed price. GTM Counsel is monthly judgment while you run day-to-day. The Intensive and Sprint include hands-on work inside the cap: wedge decisions, market contact, channels live. Nothing is open-ended done-for-you forever.",
       },
       {
         q: "Where do I start?",
@@ -311,11 +311,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "Do I have to go through every container in order?",
-        a: "No. Every path starts with the free map. After that, step into whichever container fits where you are: Review Container for ongoing senior judgment, Intensive to decide a wedge, Sprint for hands-on market contact. Many founders start with senior judgment; others sprint first and come back for a read.",
+        a: "No. Every path starts with the free map. After that, step into whichever container fits where you are: GTM Counsel for ongoing senior judgment, Intensive to decide a wedge, Sprint for hands-on market contact. Many founders start with GTM Counsel; others sprint first and come back for a read.",
       },
       {
-        q: "What's the GTM Review Container vs. the Intensive?",
-        a: "Different jobs. The Container is monthly senior judgment while you execute: a brief plus a 45-minute call each month. It works as a first paid step after the map or as a return after a sprint. The Intensive is three consecutive days of collaborative decision work: wedge, pitch sentence, and first test design before you leave.",
+        q: "What's GTM Counsel vs. the Intensive?",
+        a: "Different jobs. GTM Counsel is monthly senior judgment while you execute: a brief plus a 45-minute call each month. It works as a first paid step after the map or as a return after a sprint. The Intensive is three consecutive days of collaborative decision work: wedge, pitch sentence, and first test design before you leave.",
       },
       {
         q: "What's the Intensive vs. the Sprint?",

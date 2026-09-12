@@ -1,7 +1,7 @@
 ---
 title: Fronz Brand Language Guidelines
 version: 1.2
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 owners: Stacey Fronek
 applies_to: fronzz.com, public/llms.txt, JSON-LD, client deliverables, case studies, workshop artifacts, sales copy
 ---
@@ -70,7 +70,7 @@ Credit is same-tier only (Founder → Founder, Team → Team). Jam → Playbook 
 `GTM` is an industry abbreviation for **go-to-market**. On any buyer-facing page:
 
 - First occurrence of the phrase on a page: use **"go-to-market"** in prose.
-- Product names keep their canonical form: "GTM Clarity Jam", "GTM Build", "GTM Clarity Map", "Map Review". The acronym earns its place because it's part of the product name, not shorthand for a concept.
+- Product names keep their canonical form: "GTM Clarity Map", "Map Review", "GTM Counsel", "GTM Intensive", "GTM Sprint". The acronym earns its place because it's part of the product name, not shorthand for a concept.
 - If we use `GTM` outside a product name in prose, spell it out on first use: "your go-to-market (GTM) system".
 
 ### Go-to-market vs marketing
