@@ -48,7 +48,7 @@ The two Fronz lines have fixed names. Never abbreviate a product name without th
 
 **Playbook** is reserved for the GTM product **Outreach Playbook**. Do not use "Playbook" as a homepage section or nav label. Use **Work**.
 
-**GTM Clarity Starter** is the named free front door. Keep the full name on first use.
+**GTM Clarity Map** is the named free front door. Keep the full name on first use. The free call is **Map Review** (meta: Free · 20 min).
 
 ### Product tiers within each line (do not rename)
 
@@ -70,7 +70,7 @@ Credit is same-tier only (Founder → Founder, Team → Team). Jam → Playbook 
 `GTM` is an industry abbreviation for **go-to-market**. On any buyer-facing page:
 
 - First occurrence of the phrase on a page: use **"go-to-market"** in prose.
-- Product names keep their canonical form: "GTM Clarity Jam", "GTM Build", "GTM Clarity Starter". The acronym earns its place because it's part of the product name, not shorthand for a concept.
+- Product names keep their canonical form: "GTM Clarity Jam", "GTM Build", "GTM Clarity Map", "Map Review". The acronym earns its place because it's part of the product name, not shorthand for a concept.
 - If we use `GTM` outside a product name in prose, spell it out on first use: "your go-to-market (GTM) system".
 
 ### Go-to-market vs marketing

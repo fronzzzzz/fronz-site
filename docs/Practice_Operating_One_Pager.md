@@ -2,7 +2,7 @@
 
 Internal only. Not site copy. Drafted 31 Aug 2026 after the brand pass and the first two courtships (Compass, Ramona). Updated Sep 2026 after JupiterBlock stall — courtship economics + sprint repricing. **Updated Sep 3 2026 after Compass follow-up call retro — live-call circuit breakers + fork-sentence rule.**
 
-The job of this page: stop donating the sprint, stop using over-prep as the salesperson, and let the Starter plus a hard intro be the only thing that runs when you are in the work.
+The job of this page: stop donating the sprint, stop using over-prep as the salesperson, and let the map plus a hard intro be the only thing that runs when you are in the work.
 
 **Master plan (sequenced actions):** `My Drive/Fronz/Fronz_System_Hardening_Plan.md`  
 **Funnel SSOT:** `My Drive/Fronz/Fronz_Funnel_and_Offer_Ladder.md`
@@ -41,10 +41,10 @@ See `My Drive/Fronz/Fronz_Funnel_and_Offer_Ladder.md` for current ladder.
 | Their input | Data dump 48 hrs before each monthly call |
 | Deliverable | **Monthly Execution Brief:** worked/didn't · 3 priorities · 1 test · container read |
 | Client cap | 4–6 active |
-| When | After **Starter Review** · primary path for AI-heavy executors not sprint-ready |
+| When | After **Map Review** · primary path for AI-heavy executors not sprint-ready |
 | Month 3 | Mandatory graduation gate: Intensive / Sprint / continue / graduate |
 
-Diagnosis that does not fit a free Starter Review lives **here**, paid before the first month — not on the review call as free strategy.
+Diagnosis that does not fit a free Map Review lives **here**, paid before the first month — not on the review call as free strategy.
 
 ### Intensive — narrow container (Jam rebuilt · 3 days)
 
@@ -54,7 +54,7 @@ Diagnosis that does not fit a free Starter Review lives **here**, paid before th
 | Time | 3 consecutive days · 1 hr together/day |
 | Your hours | 10 cap |
 | Outcome | Wedge decided · first test designed · daily review between days (replaces 2-hr Jam) |
-| When | GTM Review month 3 gate · or sprint-ready from Starter Review (rare) |
+| When | GTM Review month 3 gate · or sprint-ready from Map Review (rare) |
 
 Do not build bespoke proposal pages before payment. Send the generic one-pager (§7).
 
@@ -99,7 +99,7 @@ No magic pills. If they will not stay in the work, you do not start. You are not
 
 These are the practice rules. Merge will argue with every one of them. Keep them anyway.
 
-**Free intro = 20 minutes.** Their completed Starter. You do not fill it in. If they skipped it, that is homework, not your hour.
+**Free intro = 20 minutes.** Their completed GTM Clarity Map. You do not fill it in. If they skipped it, that is homework, not your hour.
 
 **Unpaid cap = 45 minutes** to read what they sent, per live opportunity. Clock stops. Want more? That is week 1 of a paid sprint.
 
@@ -152,9 +152,9 @@ When a sprint is active, or when two weeks of 15 hrs are already committed, you 
 What the waitlist is:
 
 - Next sprint start date (a real date, even if it moves once)
-- Required: GTM Clarity Starter done
+- Required: GTM Clarity Map done
 - Required: 20-minute intro booked into the **held weekly slot** (see §4)
-- Message: “Next sprint starts [date]. Do the Starter. Book the intro.”
+- Message: “Next sprint starts [date]. Do the map. Book the intro.”
 
 What the waitlist is not:
 
@@ -169,7 +169,7 @@ If the intro calendar is empty because you cancelled it to stay in Compass, the 
 
 There is no one else selling. So only assets that do not need live over-functioning get to be the funnel.
 
-1. **Starter, always on.** Front door. Do not replace it with custom PDFs.
+1. **GTM Clarity Map, always on.** Front door. Do not replace it with custom PDFs.
 2. **One 20-minute intro hold per week, including during a sprint.** Miss it and the funnel is you again.
 3. **Exit intros.** Every sprint exit review asks for two introductions. That is recirculation.
 
@@ -177,17 +177,17 @@ Do not, this quarter: a content engine, a second lead magnet, or a Groundswell c
 
 ### Blocker — email capture is on the wrong stack
 
-The homepage Starter form (`/api/lead`) and the “send your map” form (`/api/starter`) both write to **Customer.io** using `CUSTOMERIO_SITE_ID` / `CUSTOMERIO_TRACK_API_KEY`. Delivery comment in the lead form: sending domain is not verified; people still get the Starter by redirect to `/starter`. Capture can fail and they still pass through. That means:
+The homepage lead form (`/api/lead`) and the “send your map” form (`/api/starter`) both write to **Customer.io** using `CUSTOMERIO_SITE_ID` / `CUSTOMERIO_TRACK_API_KEY`. Delivery comment in the lead form: sending domain is not verified; people still get the map at `/map`. Capture can fail and they still pass through. That means:
 
-- The list that should be the waitlist / Starter list may be empty, mixed with another workspace, or undeliverable.
+- The list that should be the waitlist / map list may be empty, mixed with another workspace, or undeliverable.
 - A waitlist you cannot email is a spreadsheet you will not open.
 
 **Must migrate before the waitlist is real.** Either:
 
 - A **dedicated Fronz Customer.io workspace** (not the current account), with a verified sending domain on fronzz.com or a Fronz subdomain, **or**
-- A **separate system** (list + transactional send) whose only job is Starter delivery, waitlist, and intro reminders.
+- A **separate system** (list + transactional send) whose only job is map delivery, waitlist, and intro reminders.
 
-Until that ships: Starter still lives as a public page. Intros still book on Calendly. Waitlist is a dated note plus people who booked, not an email campaign. Do not build the campaign on the current CIO account.
+Until that ships: the map still lives as a public page at `/map`. Intros still book on Calendly. Waitlist is a dated note plus people who booked, not an email campaign. Do not build the campaign on the current CIO account.
 
 ---
 
@@ -233,11 +233,11 @@ Check items off in order where dependencies exist.
 ### A · Email & waitlist (blocks real funnel)
 
 - [ ] **Migrate lead capture off mixed Customer.io** — dedicated Fronz workspace *or* separate list + transactional send (`/api/lead`, `/api/starter`). Verified sending domain on fronzz.com.
-- [ ] **Waitlist that is not theater** — next sprint start date (real), Starter required, intro books into **held weekly Calendly slot** (§4).
+- [ ] **Waitlist that is not theater** — next sprint start date (real), GTM Clarity Map required, intro books into **held weekly Calendly slot** (§4).
 - [ ] **Waitlist email** — intro reminders + “next sprint starts {date}” (only after A is done).
 - [ ] **Do not** build drip campaigns on the current CIO account.
 
-*Source: §4 blocker. Until A ships: Starter public page + Calendly + spreadsheet of people who booked.*
+*Source: §4 blocker. Until A ships: `/map` public page + Calendly + spreadsheet of people who booked.*
 
 ### B · Site — offer ladder & pricing (Sep 2026)
 
@@ -273,7 +273,7 @@ Hold until gate. Align public site with §1 containers and `Offer Templates/` �
 
 ### The rule
 
-> Custom scope is **sprint week 1**, not the preview. The preview is: Starter → 20-min intro → **container name + price** → invoice.
+> Custom scope is **sprint week 1**, not the preview. The preview is: GTM Clarity Map → 20-min Map Review → **container name + price** → invoice.
 
 ### Three proposal tiers — only these
 
@@ -298,7 +298,7 @@ If courtship hours are unpaid, they **reduce effective rate**. Example: 15 hrs u
 
 ### What courtship is allowed to include
 
-- Read their Starter (45 min cap)
+- Read their GTM Clarity Map (45 min cap)
 - 20-min intro
 - One paragraph: what you heard + recommended container
 - Tier B one-pager from template (15 min)

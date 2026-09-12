@@ -6,7 +6,7 @@ import { CalendlyEmbed } from "@/components/ui/CalendlyEmbed";
 import { BOOK, calendlyUrl } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Book a Starter Review",
+  title: "Book a Map Review",
   description: BOOK.sub,
   alternates: { canonical: "/book" },
 };
@@ -27,7 +27,7 @@ export default function BookPage() {
                 Fronz
               </Link>
               <span className="mx-2">/</span>
-              <span className="text-ink">Starter Review</span>
+              <span className="text-ink">Map Review</span>
             </nav>
             <p className="kicker mb-6">{BOOK.kicker}</p>
             <h1 className="text-[length:var(--text-h2)]">{BOOK.heading}</h1>

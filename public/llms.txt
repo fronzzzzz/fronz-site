@@ -1,12 +1,12 @@
 # Fronz
 
-> Senior go-to-market judgment for founders and lean teams: gain clarity, build momentum, know what to run next. Founded and run by Stacey Fronek.
+> Senior go-to-market judgment for founders and lean teams: gain clarity, build momentum, own the growth. Founded and run by Stacey Fronek.
 
-Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 staff). Bounded containers with fixed scope and fixed caps, not open-ended agency engagements. Every path starts with the free GTM Clarity Starter map.
+Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 staff). Bounded containers with fixed scope and fixed caps, not open-ended agency engagements. Every path starts with the free GTM Clarity Map.
 
 ## Services
 
-- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders and lean teams. Free GTM Clarity Starter → Starter Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
+- [GTM Clarity](https://fronzz.com/gtm-clarity): Clarity, momentum, and senior judgment for founders and lean teams. Free GTM Clarity Map → Map Review → GTM Review Container ($500/mo) → GTM Intensive ($2,500) → GTM Sprint ($7,500) → scoped follow-on.
 - [Groundswell AI Customer Discoverability](https://fronzz.com/groundswell): Phase 2. AI visibility after messaging and wedge are live. Entry: Visibility Audit, $1,500.
 
 ## How we work
@@ -18,5 +18,5 @@ Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 sta
 
 ## Key pages
 
-- [GTM Clarity Starter](https://fronzz.com/starter): Free 20-minute exercise to map offers, customers, and tactics on one page.
-- [Book a Starter Review](https://fronzz.com/book): Twenty minutes to reflect your map back after you complete the Starter.
+- [GTM Clarity Map](https://fronzz.com/map): Free 20-minute exercise to map offers, customers, and channels on one page.
+- [Book a Map Review](https://fronzz.com/book): Twenty minutes to reflect your map back after you complete the GTM Clarity Map.

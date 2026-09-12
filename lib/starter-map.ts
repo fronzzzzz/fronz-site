@@ -1,5 +1,5 @@
 /**
- * GTM Clarity Starter — structured map model (Phase 1).
+ * GTM Clarity Map — structured map model (Phase 1).
  * Captures offers, people, channels, and links; flattens for Notion / Customer.io.
  */
 
@@ -51,7 +51,7 @@ export type StarterMapData = {
   offers: StarterOffer[];
   people: StarterPerson[];
   reflection: string;
-  /** Contact fields — collected only when booking a Starter Review */
+  /** Contact fields — collected only when booking a Map Review */
   name: string;
   email: string;
   company: string;

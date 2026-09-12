@@ -24,10 +24,10 @@ Ready-to-copy examples:
   `https://fronzz.com?utm_source=linkedin&utm_medium=dm&utm_campaign=client-outreach`
 - Warm intro forwarded by a contact:
   `https://fronzz.com?utm_source=warm-intro&utm_medium=referral&utm_campaign=gtm-clarity`
-- Starter as the front door:
-  `https://fronzz.com/starter?utm_source=email&utm_medium=cold-email&utm_campaign=gtm-clarity`
+- GTM Clarity Map as the front door:
+  `https://fronzz.com/map?utm_source=email&utm_medium=cold-email&utm_campaign=gtm-clarity`
 
-Rule of thumb: link `/` or `/starter` for client conversations. Do not link `/resume`.
+Rule of thumb: link `/` or `/map` for client conversations. Do not link `/resume`.
 
 ## Private links
 

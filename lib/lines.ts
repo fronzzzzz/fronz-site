@@ -4,7 +4,7 @@
  * Groundswell: Groundswell Offering Kit + GTM Clarity Map
  */
 
-import { BOOKING_CTA, MOTION, STARTER_CTA, SITE } from "./content";
+import { BOOKING_CTA, MAP_CTA, MOTION, SITE } from "./content";
 
 export type Tier = {
   name: string;
@@ -122,7 +122,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     heroBeats: MOTION.beats,
     heroHighlightBeat: MOTION.highlightBeat,
     heroSub:
-      "Decide what to sell and to whom, get in front of real buyers, and keep senior judgment on what to run next. Fixed-scope containers for judgment, decisions, and hands-on market contact.",
+      "Decide what to sell and to whom, get it in front of real buyers, and walk away with a go-to-market motion you own. Fixed-scope containers for judgment, decisions, and hands-on market contact.",
     outcomeCards: true,
     tiers: {
       heading: "Start free. Step up when you're ready.",
@@ -130,7 +130,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       motionCallouts: true,
       items: [
         {
-          name: "GTM Clarity Starter",
+          name: "GTM Clarity Map",
           price: "Free",
           meta: "20 min · self-serve",
           tagline: "See your whole business on one page and spot exactly where the lines break.",
@@ -138,19 +138,19 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
             "Four parts: offers, people, how you reach them, connect the dots",
             "Optional fifth part for AI-heavy executors: what's automated vs. what still needs a human decision",
             "Copy a Notion or Google Doc template and keep the map",
-            "Submit your answers when you want a Starter Review",
+            "Submit your answers when you want a Map Review",
           ],
         },
         {
-          name: "Starter Review",
+          name: "Map Review",
           price: "Free",
-          meta: "20 min · after Starter",
+          meta: "20 min · after map",
           tagline: "An honest read on your map and a straight answer on which container fits you next.",
           points: [
-            "Complete the Starter first. I'll read your answers before we talk",
+            "Complete the GTM Clarity Map first. I'll read your answers before we talk",
             "Reflect what you wrote, not a free strategy session",
             "Assess fit for the next container, or a clean close",
-            "Self-book after you submit the Starter form",
+            "Self-book after you submit the map online",
           ],
         },
         {
@@ -238,11 +238,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "Where do I start?",
-        a: "The GTM Clarity Starter: free, twenty minutes, your map on one page. When you want a read on what you found, submit your answers and book a Starter Review.",
+        a: "The GTM Clarity Map: free, twenty minutes, your whole business on one page. When you want a read on what you found, submit your answers and book a Map Review.",
       },
       {
-        q: "What's the difference between the Starter and the Starter Review?",
-        a: "The Starter is the exercise: you map offers, people, and channels and see where the lines break. The Starter Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
+        q: "What's the difference between the map and the Map Review?",
+        a: "The map is the exercise: you list offers, people, and channels and see where the lines break. The Map Review is twenty minutes where I read your map and reflect it back, then we talk about whether a GTM Container fits.",
       },
       {
         q: "Do I have to go through every container in order?",
@@ -258,18 +258,18 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       },
       {
         q: "Can I skip straight to the Intensive or Sprint?",
-        a: "Sometimes, if you've already done the clarity work elsewhere. Complete your GTM Clarity Starter and we can discuss this on your free Starter Review call.",
+        a: "Sometimes, if you've already done the clarity work elsewhere. Complete your GTM Clarity Map and we can discuss this on your free Map Review call.",
       },
     ],
     cta: {
       heading: "Selling five things to everyone and nothing's landing?",
-      sub: "Start with the GTM Clarity Starter: twenty minutes, your whole business on one page. When you want a read, book the Starter Review after you submit.",
-      button: STARTER_CTA,
+      sub: "Start with the GTM Clarity Map: twenty minutes, your whole business on one page. When you want a read, book the Map Review after you submit.",
+      button: MAP_CTA,
     },
     links: {
-      tierCta: { label: STARTER_CTA, href: SITE.starterUrl },
-      heroSecondary: { label: STARTER_CTA, href: SITE.starterUrl },
-      footerCta: { label: STARTER_CTA, href: SITE.starterUrl },
+      tierCta: { label: MAP_CTA, href: SITE.mapUrl },
+      heroSecondary: { label: MAP_CTA, href: SITE.mapUrl },
+      footerCta: { label: MAP_CTA, href: SITE.mapUrl },
     },
   },
 
@@ -283,8 +283,8 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
       "Become the brand AI recommends when your buyers ask, by earning genuine community consensus across the sources models trust, not by buying placements. Groundswell spans the whole arc: see where you stand, earn authority through the channels you already own, then run the system that sustains it as models change.",
     prerequisite: {
       label: "Phase 2",
-      body: "Groundswell works once your message and wedge are already live. If prospects still don't get what you sell, start with the free GTM Clarity Starter and come back when you're clear.",
-      cta: { label: "Start with GTM Clarity", href: SITE.starterUrl },
+      body: "Groundswell works once your message and wedge are already live. If prospects still don't get what you sell, start with the free GTM Clarity Map and come back when you're clear.",
+      cta: { label: "Start with GTM Clarity", href: SITE.mapUrl },
     },
     problem: {
       heading: "Buyers ask AI for a recommendation. Your competitor is the answer.",
@@ -409,17 +409,17 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
     ],
     cta: {
       heading: "When buyers ask AI, is your competitor the answer?",
-      sub: "The way in is the $1,500 Visibility Audit — the map of exactly where and how to become the answer. If prospects still don't understand what you sell, start with the GTM Clarity Starter instead.",
+      sub: "The way in is the $1,500 Visibility Audit — the map of exactly where and how to become the answer. If prospects still don't understand what you sell, start with the GTM Clarity Map instead.",
       button: "Explore the Visibility Audit",
     },
     links: {
       tierCta: { label: "Book a free intro call", href: SITE.bookingUrl },
-      heroSecondary: { label: "Start with GTM Clarity", href: SITE.starterUrl },
+      heroSecondary: { label: "Start with GTM Clarity", href: SITE.mapUrl },
       footerCta: { label: "See Groundswell pricing", href: "#pricing" },
     },
     whereFits: {
       heading: "Groundswell when AI is the gap, GTM Clarity when the message is.",
-      sub: "If prospects don't understand what you sell, start with the GTM Clarity Starter. If the pitch is clear but AI recommends your competitor, start with the Visibility Audit.",
+      sub: "If prospects don't understand what you sell, start with the GTM Clarity Map. If the pitch is clear but AI recommends your competitor, start with the Visibility Audit.",
     },
   },
 };

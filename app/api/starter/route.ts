@@ -8,7 +8,7 @@ import {
 } from "@/lib/starter-map";
 
 /**
- * GTM Clarity Starter map capture.
+ * GTM Clarity Map capture.
  *
  * Accepts structured map (Phase 1) or legacy flat strings.
  * Best-effort persistence: Customer.io + Notion (database row or child page).
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   const name = typeof body.name === "string" ? body.name.trim() : "";
   const company =
     typeof body.company === "string" ? body.company.trim() : "";
-  /** Submitting for a Starter Review implies client relationship and processing consent. */
+  /** Submitting for a Map Review implies client relationship and processing consent. */
   const consentResearch = true;
   const submissionId = crypto.randomUUID();
 
@@ -172,7 +172,7 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
         starter_map_submitted: true,
         starter_map_submitted_at: now,
         starter_research_consent: map.consentResearch,
-        source: "fronz-site/starter",
+        source: "fronz-site/map",
         starter_map_version: map.structured ? 1 : 0,
         starter_submission_id: map.submissionId,
       }),

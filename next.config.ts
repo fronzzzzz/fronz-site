@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         destination: "/deliverables/the-sanctuary-jam",
         permanent: true,
       },
+      {
+        source: "/starter",
+        destination: "/map",
+        permanent: true,
+      },
     ];
   },
 };

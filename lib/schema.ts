@@ -87,7 +87,7 @@ export const schemaGraph = {
       alumniOf: "Berry College",
       email: `mailto:${SITE.email}`,
       description:
-        "Go-to-market consultant who helps founders and lean teams decide their wedge, get real market contact, and keep senior judgment on what to run next — in bounded containers, not bloated agency engagements. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
+        "Go-to-market consultant who helps founders and lean teams decide their wedge, get real market contact, and own a go-to-market motion that works — in bounded containers, not bloated agency engagements. A decade producing for PopSockets, Hotels.com, Xfinity, the Ethereum Foundation, and Protocol Labs.",
       knowsAbout: [
         "Go-to-market strategy",
         "Positioning",
@@ -115,7 +115,7 @@ export const schemaGraph = {
       makesOffer: [
         {
           "@type": "Offer",
-          name: "GTM Clarity Starter",
+          name: "GTM Clarity Map",
           description:
             "A free 20-minute exercise to map offers, customers, and channels on one page — so positioning gaps become obvious.",
           price: "0",

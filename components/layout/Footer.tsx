@@ -58,7 +58,7 @@ export function Footer() {
             © {new Date().getFullYear()} {SITE.name}. Made by a human, on
             purpose.
           </p>
-          <p>Clarity. Momentum. Senior judgment.</p>
+          <p>Clarity. Momentum. Ownership.</p>
         </div>
       </div>
     </footer>

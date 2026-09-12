@@ -81,7 +81,7 @@ export function buildNotionSubmissionPage(record: StarterSubmissionRecord) {
       "Submission ID": {
         rich_text: richText(record.meta.submissionId),
       },
-      Source: { select: { name: "fronz-site/starter" } },
+      Source: { select: { name: "fronz-site/map" } },
       Gaps: { rich_text: richText(record.meta.gapsText) },
     },
     children: [
@@ -91,7 +91,7 @@ export function buildNotionSubmissionPage(record: StarterSubmissionRecord) {
         callout: {
           icon: { type: "emoji", emoji: "✉️" },
           rich_text: richText(
-            `${record.name} · ${record.company} · ${record.email} · submitted ${submittedDate} · via fronz-site/starter${versionNote} · id ${record.meta.submissionId}`,
+            `${record.name} · ${record.company} · ${record.email} · submitted ${submittedDate} · via fronz-site/map${versionNote} · id ${record.meta.submissionId}`,
           ),
         },
       },

@@ -7,16 +7,16 @@ import { StarterFunnel } from "@/components/starter/StarterFunnel";
 import { STARTER, calendlyUrl, starterTemplates } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "GTM Clarity Starter: see your whole business on one page",
+  title: "GTM Clarity Map: see your whole business on one page",
   description: STARTER.sub,
-  alternates: { canonical: "/starter" },
+  alternates: { canonical: "/map" },
 };
 
 function howToSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "GTM Clarity Starter",
+    name: "GTM Clarity Map",
     description: STARTER.sub,
     step: STARTER.parts.map((p) => ({
       "@type": "HowToStep",
@@ -27,7 +27,7 @@ function howToSchema() {
   };
 }
 
-export default function StarterPage() {
+export default function MapPage() {
   const templates = starterTemplates();
 
   return (
@@ -49,7 +49,7 @@ export default function StarterPage() {
                 Fronz
               </Link>
               <span className="mx-2">/</span>
-              <span className="text-ink">GTM Clarity Starter</span>
+              <span className="text-ink">GTM Clarity Map</span>
             </nav>
             <p className="kicker mb-6">{STARTER.kicker}</p>
             <h1 className="max-w-[16ch] text-[length:var(--text-display)] leading-[0.98]">

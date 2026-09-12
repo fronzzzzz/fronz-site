@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
 /**
- * Lead capture for the GTM Clarity Starter.
+ * Lead capture for the GTM Clarity Map.
  * Upserts the person in Customer.io and triggers an event a campaign can
- * listen for to deliver the Starter. Requires these env vars:
+ * listen for to deliver the map. Requires these env vars:
  *   CUSTOMERIO_SITE_ID         — Customer.io Tracking site ID
  *   CUSTOMERIO_TRACK_API_KEY   — Customer.io Tracking API key
  *   CUSTOMERIO_REGION          — "us" (default) or "eu"

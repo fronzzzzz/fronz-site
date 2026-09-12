@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Bootstrap the GTM Clarity Starter Submissions database in Fronz Notion.
+ * Bootstrap the GTM Clarity Map submissions database in Fronz Notion.
  *
  * Requires in .env.local (or env):
  *   NOTION_TOKEN
@@ -20,9 +20,12 @@ function loadEnvLocal() {
   try {
     const raw = readFileSync(resolve(process.cwd(), ".env.local"), "utf8");
     for (const line of raw.split("\n")) {
-      const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
-      if (m && !process.env[m[1]]) {
-        process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const m = trimmed.match(/^([A-Z0-9_]+)=(.*)$/);
+      if (m) {
+        // .env.local wins over inherited shell env (avoids stale NOTION_TOKEN).
+        process.env[m[1]] = m[2].replace(/^["']|["']$/g, "").trim();
       }
     }
   } catch {
@@ -32,12 +35,23 @@ function loadEnvLocal() {
 
 loadEnvLocal();
 
-const token = process.env.NOTION_TOKEN;
-const parentId = process.env.NOTION_STARTER_PARENT_ID;
+const token = process.env.NOTION_TOKEN?.trim();
+const parentId = process.env.NOTION_STARTER_PARENT_ID?.trim();
 
 if (!token || !parentId) {
   console.error(
-    "Missing NOTION_TOKEN or NOTION_STARTER_PARENT_ID. Add them to .env.local first.",
+    "Missing NOTION_TOKEN or NOTION_STARTER_PARENT_ID in .env.local.",
+  );
+  console.error("Run from repo root: node scripts/setup-notion-starter-db.mjs");
+  process.exit(1);
+}
+
+if (!/^(ntn_|secret_)/.test(token)) {
+  console.error(
+    "NOTION_TOKEN should be the integration secret from Notion (starts with ntn_ or secret_).",
+  );
+  console.error(
+    "Notion → Settings → Connections → your integration → Configuration → Internal integration secret → Show → copy again.",
   );
   process.exit(1);
 }
@@ -82,7 +96,7 @@ const body = {
     "Submission ID": { rich_text: {} },
     Source: {
       select: {
-        options: [{ name: "fronz-site/starter", color: "green" }],
+        options: [{ name: "fronz-site/map", color: "green" }],
       },
     },
     Gaps: { rich_text: {} },
@@ -103,6 +117,13 @@ const data = await res.json();
 
 if (!res.ok) {
   console.error("Notion API error:", JSON.stringify(data, null, 2));
+  if (data.code === "unauthorized") {
+    console.error("\n401 unauthorized usually means:");
+    console.error("  • The secret was copied incorrectly (truncated or extra characters)");
+    console.error("  • You copied the integration ID instead of the secret");
+    console.error("  • The secret was reset — generate a new one in Notion and update .env.local");
+    console.error("\nAlso confirm the Submissions page is shared with this integration.");
+  }
   process.exit(1);
 }
 

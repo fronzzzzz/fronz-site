@@ -1,19 +1,10 @@
-# GTM Clarity Starter — Notion DB (MVP)
+# GTM Clarity Map — Notion DB (MVP)
 
 Submissions from `/api/starter` can write to a **Notion database** (recommended) or fall back to child pages under the Submissions parent page.
 
 ## Access for Cursor / agents
 
 The Cursor Notion MCP must be connected to the **Fronz workspace**, and the Submissions page must be **shared with the same integration** that powers `NOTION_TOKEN` on the site.
-
-If the agent gets `object_not_found` for `NOTION_STARTER_PARENT_ID`, the integration does not have access yet.
-
-### Grant access
-
-1. Notion → **Settings → Connections** → confirm the Fronz site integration exists.
-2. Open [GTM Clarity Starter — Submissions](https://app.notion.com/p/GTM-Clarity-Starter-Submissions-3898234f4e908171bfaaf5c46ffc3e04).
-3. **⋯ → Connections → Add connection** → select the Fronz integration.
-4. In Cursor, connect Notion MCP to the **fronz** workspace (not a personal sandbox).
 
 ## Bootstrap the database
 
@@ -24,8 +15,6 @@ node scripts/setup-notion-starter-db.mjs
 ```
 
 Copy the printed `NOTION_STARTER_DATABASE_ID` into `.env.local`.
-
-Or create manually: inline database on the Submissions page with the properties below.
 
 ## Database schema
 
@@ -44,17 +33,15 @@ Or create manually: inline database on the Submissions page with the properties 
 | Channels | Multi-select | Pattern analysis |
 | Map version | Number | Schema migrations |
 | Submission ID | Text | Stable key from API |
-| Source | Select | `fronz-site/starter` |
+| Source | Select | `fronz-site/map` |
 | Gaps | Text | Quick scan before call |
-
-Each row’s **page body** still holds the full map sections (offers, people, channels, reflection).
 
 ## Env vars
 
 ```env
 NOTION_TOKEN=ntn_...
-NOTION_STARTER_PARENT_ID=3898234f-4e90-8171-bfaa-f5c46ffc3e04
-NOTION_STARTER_DATABASE_ID=...   # after bootstrap
+NOTION_STARTER_PARENT_ID=...
+NOTION_STARTER_DATABASE_ID=...
 ```
 
 When `NOTION_STARTER_DATABASE_ID` is set, submissions create **database rows**. Otherwise they create **child pages** (legacy behavior).
@@ -66,6 +53,8 @@ When `NOTION_STARTER_DATABASE_ID` is set, submissions create **database rows**. 
 3. **Nothing yet** — Nothing yet channel = checked
 4. **This week** — Submitted within 7 days
 
-## API response
+## Public template
 
-Successful submits return `{ ok: true, saved: boolean, submissionId: string }`. Use `submissionId` in Calendly prefill (future) to match bookings to rows.
+Duplicate link for Option A on `/map`:
+
+`https://www.notion.so/3d6ebef38005806da346d8810eb980f5?source=copy_link`

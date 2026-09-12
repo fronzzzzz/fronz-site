@@ -215,16 +215,16 @@ export function StarterMapPdfDocument({ map }: { map: StarterMapData }) {
 
   return (
     <Document
-      title="GTM Clarity Starter Map"
+      title="GTM Clarity Map"
       author="Fronz"
-      subject="GTM Clarity Starter Map"
+      subject="GTM Clarity Map"
     >
       <Page size="LETTER" style={s.page}>
         <View style={s.header}>
           <Text style={s.brand}>
             Fronz<Text style={s.brandDot}>.</Text>
           </Text>
-          <Text style={s.title}>GTM Clarity Starter Map</Text>
+          <Text style={s.title}>GTM Clarity Map</Text>
           <Text style={s.meta}>Generated {date}</Text>
         </View>
 
@@ -331,8 +331,8 @@ export function StarterMapPdfDocument({ map }: { map: StarterMapData }) {
         </View>
 
         <View style={s.footer} fixed>
-          <Text style={s.footerText}>fronzz.com · GTM Clarity Starter</Text>
-          <Text style={s.footerText}>Gain clarity. Build momentum.</Text>
+          <Text style={s.footerText}>fronzz.com · GTM Clarity Map</Text>
+          <Text style={s.footerText}>Gain clarity. Build momentum. Own the growth.</Text>
         </View>
       </Page>
     </Document>

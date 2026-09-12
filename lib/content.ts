@@ -9,12 +9,12 @@
 export const SITE = {
   name: "Fronz",
   url: "https://fronzz.com",
-  tagline: "Gain clarity. Build momentum.",
+  tagline: "Gain clarity. Build momentum. Own the growth.",
   description:
-    "Senior go-to-market judgment for founders and lean teams: decide what to sell and to whom, get in front of real buyers, and know what to run next. Bounded containers — not agency bloat or another full-time hire.",
+    "Senior go-to-market judgment for founders and lean teams: decide what to sell and to whom, get in front of real buyers, and own a go-to-market motion that works. Bounded containers — not agency bloat or another full-time hire.",
   email: "stacey@shesthefronz.com",
   bookingUrl: "/book",
-  starterUrl: "/starter",
+  mapUrl: "/map",
 } as const;
 
 const CALENDLY_EMBED_URL =
@@ -24,33 +24,35 @@ export function calendlyUrl(): string {
   return process.env.NEXT_PUBLIC_CALENDLY_URL ?? CALENDLY_EMBED_URL;
 }
 
-export const BOOKING_CTA = "Book a Starter Review";
+export const BOOKING_CTA = "Book a Map Review";
 export const HOME_CTA = "Map Your Business for Free";
-export const STARTER_CTA = "Complete the GTM Clarity Starter";
+export const MAP_CTA = "Complete the GTM Clarity Map";
+/** @deprecated Use MAP_CTA */
+export const STARTER_CTA = MAP_CTA;
 
 /** Three-beat motion — homepage hero, offers page hero, arc strip. */
 export const MOTION = {
   beats: [
     "Gain clarity.",
     "Build momentum.",
-    "Know what to run next.",
+    "Own the growth.",
   ],
   highlightBeat: 1,
   arc: [
     { label: "Gain clarity", href: "/gtm-clarity#get-clear" },
     { label: "Build momentum", href: "/gtm-clarity#make-contact" },
-    { label: "Know what to run next", href: "/gtm-clarity#keep-moving" },
+    { label: "Own the growth", href: "/gtm-clarity#keep-moving" },
   ],
   sections: [
     { id: "get-clear", label: "Gain clarity" },
     { id: "make-contact", label: "Build momentum" },
-    { id: "keep-moving", label: "Know what to run next" },
+    { id: "keep-moving", label: "Senior judgment" },
   ],
   sectionBlurbs: {
     "get-clear": "Map your business and decide what you sell and to whom.",
     "make-contact": "Put your positioning in front of real buyers and get honest counts.",
     "keep-moving":
-      "A monthly read while you execute. Your first paid step after the map, or your return when you need one.",
+      "Senior judgment while you execute, or scoped follow-on when the market has answered. Graduate when you own the motion.",
   },
 } as const;
 
@@ -58,9 +60,9 @@ export const HERO = {
   kicker: "[01] Go-to-market for founders & lean teams",
   beats: MOTION.beats,
   highlightBeat: MOTION.highlightBeat,
-  sub: "Decide what to sell and to whom, get it in front of real buyers, and know what to run next.",
+  sub: "Decide what to sell and to whom, get it in front of real buyers, and walk away with a go-to-market motion you own.",
   cta: HOME_CTA,
-  ctaHref: SITE.starterUrl,
+  ctaHref: SITE.mapUrl,
   secondaryCta: "See offers",
   secondaryHref: "/gtm-clarity",
   arc: MOTION.arc,
@@ -157,16 +159,16 @@ export const OFFERS = {
 export const LEAD = {
   kicker: "[08] One next step",
   heading: "Selling five things to everyone and nothing's landing?",
-  body: "The GTM Clarity Starter maps your offers, customers, and channels on one page, then shows you where positioning breaks. Copy a template. Keep the map. Twenty minutes. Yours to keep.",
+  body: "The GTM Clarity Map puts your offers, customers, and channels on one page, then shows you where positioning breaks. Copy a template. Keep the map. Twenty minutes. Yours to keep.",
   cta: HOME_CTA,
-  href: SITE.starterUrl,
+  href: SITE.mapUrl,
 } as const;
 
 export function starterTemplates() {
   return {
     notion:
       process.env.NEXT_PUBLIC_STARTER_NOTION_TEMPLATE_URL ??
-      "https://app.notion.com/p/fronzz/GTM-Clarity-Starter-3898234f4e90805f9c45caf4f44a8ddd?source=copy_link",
+      "https://www.notion.so/3d6ebef38005806da346d8810eb980f5?source=copy_link",
     gdoc:
       process.env.NEXT_PUBLIC_STARTER_GDOC_TEMPLATE_URL ??
       "https://docs.google.com/document/d/1QqaSpLlEYZ5BCO9WUP8vOAE288SaSQE8BivX-elUUPc/copy",
@@ -174,7 +176,7 @@ export function starterTemplates() {
 }
 
 export const STARTER = {
-  kicker: "Free · GTM Clarity Starter",
+  kicker: "Free · GTM Clarity Map",
   heading: "See your whole business on one page.",
   highlight: "on one page.",
   sub: "Twenty minutes. Four parts. One map. The gaps become obvious when offers, people, and channels sit on the same page.",
@@ -183,13 +185,13 @@ export const STARTER = {
   process: [
     "Copy a template or start online",
     "One part at a time, about 20 minutes total",
-    "Download your map, or submit and book a free Starter Review",
+    "Download your map, or submit and book a free Map Review",
   ],
   privacyHeading: "Your GTM Clarity Map is Your Data, Not Ours",
   privacy:
-    "While you work, your map stays on this device only. We only receive your answers if you submit to book a free Starter Review. Please complete in a single session, or download a template to work on your own time.",
+    "While you work, your map stays on this device only. We only receive your answers if you submit to book a free Map Review. Please complete in a single session, or download a template to work on your own time.",
   privacyConnect:
-    "Your GTM Clarity Map is your data, not ours — we only receive your answers if you submit to book a free Starter Review.",
+    "Your GTM Clarity Map is your data, not ours — we only receive your answers if you submit to book a free Map Review.",
   download: {
     heading: "Download the template",
     sub: "Duplicate a Notion or Google Doc and work offline. Same four parts. Nothing is sent to Fronz until you submit online to book a review, or attach your file when you book.",
@@ -262,8 +264,8 @@ export const STARTER_FORM = {
     "My best customers and my best channels don't line up.",
   ],
   downloadButton: "Download your map",
-  reviewGatewayKicker: "Free · Starter Review",
-  reviewGatewayHeading: "Want a free read of your GTM Starter Map?",
+  reviewGatewayKicker: "Free · Map Review",
+  reviewGatewayHeading: "Want a free read of your GTM Clarity Map?",
   reviewGatewaySub:
     "Submit your map and we'll read it before your call. Twenty minutes.",
   reviewGatewayFinePrint:
@@ -277,7 +279,7 @@ export const STARTER_FORM = {
   emailHelp:
     "So I can match your map to your booking and read it before we talk.",
   submitButton: "Submit and schedule",
-  scheduleHeading: "Schedule your Starter Review",
+  scheduleHeading: "Schedule your Map Review",
   scheduleSub: "Twenty minutes to review your map together.",
   successHeadline: "Map received.",
   successBody:
@@ -287,19 +289,19 @@ export const STARTER_FORM = {
 } as const;
 
 export const BOOK = {
-  kicker: "Starter Review",
-  heading: "Book a Starter Review.",
-  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Starter first: submit online or attach your template when you book. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
+  kicker: "Free · Map Review",
+  heading: "Book a Map Review.",
+  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Map first: submit online or attach your template when you book. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
   attachNote:
     "If you worked in Notion or Google Docs, attach your map when Calendly prompts you. If you submitted online, I already have your answers.",
   prerequisite: "Haven't completed your map yet?",
-  prerequisiteLink: "Complete the GTM Clarity Starter →",
-  prerequisiteHref: SITE.starterUrl,
+  prerequisiteLink: "Complete the GTM Clarity Map →",
+  prerequisiteHref: SITE.mapUrl,
 } as const;
 
 export const NAV = [
   { label: "Work", href: "/#lines" },
   { label: "Offers", href: "/gtm-clarity" },
-  { label: "Starter", href: SITE.starterUrl },
+  { label: "Map", href: SITE.mapUrl },
   { label: "About", href: "/#guide" },
 ] as const;

@@ -220,7 +220,7 @@ export default function Home() {
         </Section>
 
         {/* [08] STARTER CTA --------------------------------------- */}
-        <section id="starter" className="bg-ink text-paper">
+        <section id="map" className="bg-ink text-paper">
           <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
             <p className="kicker mb-6 text-paper/60">{LEAD.kicker}</p>
             <h2 className="text-[length:var(--text-h2)] text-paper">
