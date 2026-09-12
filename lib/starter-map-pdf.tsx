@@ -7,6 +7,7 @@ import {
   View,
   pdf,
 } from "@react-pdf/renderer";
+import { SITE } from "@/lib/content";
 import {
   detectGaps,
   offerDescriptionSummary,
@@ -332,7 +333,7 @@ export function StarterMapPdfDocument({ map }: { map: StarterMapData }) {
 
         <View style={s.footer} fixed>
           <Text style={s.footerText}>fronzz.com · GTM Clarity Map</Text>
-          <Text style={s.footerText}>Gain clarity. Build momentum. Own the growth.</Text>
+          <Text style={s.footerText}>{SITE.tagline}</Text>
         </View>
       </Page>
     </Document>

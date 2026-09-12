@@ -11,9 +11,7 @@ export function Footer() {
               {SITE.name}
               <span className="text-chartreuse-deep">.</span>
             </p>
-            <p className="mt-3 text-ink-muted">
-              Go-to-market in bounded containers for founders and lean teams.
-            </p>
+            <p className="mt-3 text-ink-muted">{SITE.descriptor}</p>
           </div>
 
           <div className="flex gap-16">
@@ -55,10 +53,9 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-2 border-t border-line pt-6 font-mono text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} {SITE.name}. Made by a human, on
-            purpose.
+            © {new Date().getFullYear()} {SITE.name}
           </p>
-          <p>Clarity. Momentum. Ownership.</p>
+          <p>{SITE.tagline}</p>
         </div>
       </div>
     </footer>

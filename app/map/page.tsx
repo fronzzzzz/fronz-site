@@ -56,12 +56,6 @@ export default function MapPage() {
               See your whole business{" "}
               <Highlight>{STARTER.highlight}</Highlight>
             </h1>
-            <p className="mt-6 max-w-2xl text-[length:var(--text-lead)] text-ink-muted">
-              {STARTER.sub}
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-xl">
-              {STARTER.instruction}
-            </p>
             <ol className="mt-10 grid gap-4 border-y border-line py-8 sm:grid-cols-3 sm:gap-8">
               {STARTER.process.map((step, i) => (
                 <li key={step} className="flex gap-4">
@@ -75,15 +69,38 @@ export default function MapPage() {
           </div>
         </section>
 
-        <section className="bg-paper-sink">
-          <div className="mx-auto w-full max-w-[1180px] px-6 py-14 md:px-10 md:py-20">
-            <StarterFunnel
-              notionUrl={templates.notion}
-              gdocUrl={templates.gdoc}
-              calendlyUrl={calendlyUrl()}
-            />
+        <section className="bg-ink text-paper">
+          <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
+            <StarterFunnel calendlyUrl={calendlyUrl()} />
           </div>
         </section>
+
+        {templates.notion && (
+          <section className="border-t border-line bg-paper-sink">
+            <div className="mx-auto w-full max-w-[1180px] px-6 py-10 md:px-10 md:py-12">
+              <div className="border border-line bg-paper px-6 py-5 md:px-8 md:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+                  <div className="min-w-0 max-w-xl">
+                    <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
+                      {STARTER.download.heading}
+                    </p>
+                    <p className="mt-2 text-sm text-ink-muted">
+                      {STARTER.download.sub}
+                    </p>
+                  </div>
+                  <a
+                    href={templates.notion}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center rounded-[2px] border border-line bg-paper px-5 py-2.5 font-mono text-xs tracking-wide transition-colors hover:border-ink"
+                  >
+                    {STARTER.download.cta} →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
       <Footer />
     </>

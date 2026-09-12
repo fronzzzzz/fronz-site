@@ -39,7 +39,7 @@ declare global {
 
 /**
  * Calendly inline widget — keeps booking on your site instead of routing to calendly.com.
- * Set NEXT_PUBLIC_CALENDLY_URL to your event link (e.g. …/initial-consult).
+ * Set NEXT_PUBLIC_CALENDLY_URL to your event link (e.g. …/map-review).
  */
 export function CalendlyEmbed({
   url,

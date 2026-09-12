@@ -200,7 +200,7 @@ function ReviewGatewayForm({
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="inline-flex min-h-[48px] items-center justify-center rounded-[2px] bg-chartreuse-deep px-8 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-paper disabled:opacity-60"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-[2px] bg-marker px-8 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-chartreuse disabled:opacity-60"
           >
             {status === "submitting"
               ? "Sending…"
@@ -348,6 +348,9 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
           {STARTER_FORM.scheduleHeading}
         </h2>
         <p className="mt-2 text-ink-muted">{STARTER_FORM.scheduleSub}</p>
+        <p className="mt-3 text-sm text-ink-muted">
+          {STARTER_FORM.scheduleNotionNote}
+        </p>
         <div className="mt-8">
           <CalendlyEmbed
             url={calendlyUrl}
@@ -362,17 +365,13 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
             }
           />
         </div>
-          <p className="mt-6 font-mono text-xs text-ink-muted">
-            {STARTER_FORM.offlineNote}
-          </p>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl border border-line bg-paper p-6 md:p-10">
-      {step === 0 && <PrivacyNote variant="wizard" />}
-      <div className={`flex items-center justify-between gap-4 ${step === 0 ? "mt-8" : ""}`}>
+    <div className="mx-auto max-w-3xl">
+      <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
           Part {step + 1} of {partCount}
         </p>

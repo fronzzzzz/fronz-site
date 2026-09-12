@@ -137,7 +137,7 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           points: [
             "Four parts: offers, people, how you reach them, connect the dots",
             "Optional fifth part for AI-heavy executors: what's automated vs. what still needs a human decision",
-            "Copy a Notion or Google Doc template and keep the map",
+            "Copy the Notion template or complete the map online",
             "Submit your answers when you want a Map Review",
           ],
         },
