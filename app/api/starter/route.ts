@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { writeStarterSubmissionToNotion } from "@/lib/notion-starter";
+import { buildSubmissionMeta } from "@/lib/starter-submission-meta";
 import {
   flattenStarterMap,
   isValidMapPayload,
@@ -9,11 +11,10 @@ import {
  * GTM Clarity Starter map capture.
  *
  * Accepts structured map (Phase 1) or legacy flat strings.
- * Best-effort persistence: Customer.io + Notion mirror.
+ * Best-effort persistence: Customer.io + Notion (database row or child page).
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const NOTION_VERSION = "2022-06-28";
 
 type FlatMap = {
   name: string;
@@ -26,6 +27,7 @@ type FlatMap = {
   notes: string;
   automation: string;
   structured?: StarterMapData;
+  submissionId: string;
 };
 
 export async function POST(request: Request) {
@@ -43,6 +45,7 @@ export async function POST(request: Request) {
     typeof body.company === "string" ? body.company.trim() : "";
   /** Submitting for a Starter Review implies client relationship and processing consent. */
   const consentResearch = true;
+  const submissionId = crypto.randomUUID();
 
   if (!name) {
     return NextResponse.json(
@@ -74,13 +77,22 @@ export async function POST(request: Request) {
       consentResearch,
     };
     const flat = flattenStarterMap(structured);
-    map = { name, email, company, consentResearch, ...flat, structured };
+    map = {
+      name,
+      email,
+      company,
+      consentResearch,
+      submissionId,
+      ...flat,
+      structured,
+    };
   } else {
     map = {
       name,
       email,
       company,
       consentResearch,
+      submissionId,
       offers: clip(body.offers),
       people: clip(body.people),
       channels: clip(body.channels ?? body.tactics),
@@ -92,7 +104,31 @@ export async function POST(request: Request) {
   let saved = false;
 
   saved = (await writeToCustomerIo(map)) || saved;
-  saved = (await writeToNotion(map)) || saved;
+
+  const notion = await writeStarterSubmissionToNotion({
+    name: map.name,
+    email: map.email,
+    company: map.company,
+    structured: map.structured,
+    offers: map.offers,
+    people: map.people,
+    channels: map.channels,
+    notes: map.notes,
+    meta: buildSubmissionMeta(
+      map.structured ?? {
+        version: 1,
+        offers: [],
+        people: [],
+        reflection: "",
+        name: map.name,
+        email: map.email,
+        company: map.company,
+        consentResearch: true,
+      },
+      map.submissionId,
+    ),
+  });
+  saved = notion.ok || saved;
 
   if (!saved) {
     console.warn(
@@ -101,7 +137,7 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true, saved });
+  return NextResponse.json({ ok: true, saved, submissionId: map.submissionId });
 }
 
 function clip(value: unknown): string {
@@ -138,6 +174,7 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
         starter_research_consent: map.consentResearch,
         source: "fronz-site/starter",
         starter_map_version: map.structured ? 1 : 0,
+        starter_submission_id: map.submissionId,
       }),
     });
 
@@ -149,6 +186,7 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
       body: JSON.stringify({
         name: "starter_map_submitted",
         data: {
+          submission_id: map.submissionId,
           name: map.name,
           company: map.company,
           consent_research: map.consentResearch,
@@ -165,87 +203,6 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
     return true;
   } catch (err) {
     console.error("Customer.io capture failed (non-fatal):", err);
-    return false;
-  }
-}
-
-async function writeToNotion(map: FlatMap): Promise<boolean> {
-  const token = process.env.NOTION_TOKEN;
-  const parentId = process.env.NOTION_STARTER_PARENT_ID;
-  if (!token || !parentId) return false;
-
-  const section = (heading: string, text: string) => [
-    {
-      object: "block",
-      type: "heading_3",
-      heading_3: { rich_text: [{ type: "text", text: { content: heading } }] },
-    },
-    {
-      object: "block",
-      type: "paragraph",
-      paragraph: {
-        rich_text: [{ type: "text", text: { content: text || "—" } }],
-      },
-    },
-  ];
-
-  const submitted = new Date().toISOString().slice(0, 10);
-  const versionNote = map.structured
-    ? " · structured map v1"
-    : " · legacy flat submit";
-
-  try {
-    const res = await fetch("https://api.notion.com/v1/pages", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "Notion-Version": NOTION_VERSION,
-      },
-      body: JSON.stringify({
-        parent: { page_id: parentId },
-        icon: { type: "emoji", emoji: "📍" },
-        properties: {
-          title: {
-            title: [
-              {
-                text: {
-                  content: `${submitted} · ${map.name} · ${map.company}`,
-                },
-              },
-            ],
-          },
-        },
-        children: [
-          {
-            object: "block",
-            type: "callout",
-            callout: {
-              icon: { type: "emoji", emoji: "✉️" },
-              rich_text: [
-                {
-                  type: "text",
-                  text: {
-                    content: `${map.name} · ${map.company} · ${map.email} · submitted ${submitted} · via fronz-site/starter${versionNote}`,
-                  },
-                },
-              ],
-            },
-          },
-          ...section("01 · Your offers", map.offers),
-          ...section("02 · Your people", map.people),
-          ...section("03 · Your channels", map.channels),
-          ...section("04 · Connect the dots", map.notes),
-          ...(map.automation
-            ? section("05 · Automated vs. you", map.automation)
-            : []),
-        ],
-      }),
-    });
-
-    return res.ok;
-  } catch (err) {
-    console.error("Notion mirror failed (non-fatal):", err);
     return false;
   }
 }
