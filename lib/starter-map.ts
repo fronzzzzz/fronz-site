@@ -51,7 +51,12 @@ export type StarterMapData = {
   offers: StarterOffer[];
   people: StarterPerson[];
   reflection: string;
+  /** Contact fields — collected only when booking a Starter Review */
+  name: string;
   email: string;
+  company: string;
+  /** Opt-in: anonymized gap/channel patterns for market research */
+  consentResearch: boolean;
 };
 
 export function createId(prefix: string): string {
@@ -64,7 +69,10 @@ export function emptyStarterMap(): StarterMapData {
     offers: [emptyOffer()],
     people: [emptyPerson()],
     reflection: "",
+    name: "",
     email: "",
+    company: "",
+    consentResearch: false,
   };
 }
 
@@ -280,6 +288,9 @@ export function normalizeStoredMap(raw: unknown): StarterMapData {
     offers: v.offers as StarterMapData["offers"],
     people: (v.people as unknown[]).map(normalizePerson),
     reflection: typeof v.reflection === "string" ? v.reflection : "",
+    name: typeof v.name === "string" ? v.name : "",
     email: typeof v.email === "string" ? v.email : "",
+    company: typeof v.company === "string" ? v.company : "",
+    consentResearch: v.consentResearch === true,
   };
 }

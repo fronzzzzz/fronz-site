@@ -16,7 +16,10 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NOTION_VERSION = "2022-06-28";
 
 type FlatMap = {
+  name: string;
   email: string;
+  company: string;
+  consentResearch: boolean;
   offers: string;
   people: string;
   channels: string;
@@ -35,9 +38,27 @@ export async function POST(request: Request) {
 
   const email =
     typeof body.email === "string" ? body.email.trim() : "";
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  const company =
+    typeof body.company === "string" ? body.company.trim() : "";
+  /** Submitting for a Starter Review implies client relationship and processing consent. */
+  const consentResearch = true;
+
+  if (!name) {
+    return NextResponse.json(
+      { error: "Please enter your name." },
+      { status: 400 },
+    );
+  }
   if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json(
       { error: "Please enter a valid email address." },
+      { status: 400 },
+    );
+  }
+  if (!company) {
+    return NextResponse.json(
+      { error: "Please enter your company name." },
       { status: 400 },
     );
   }
@@ -45,12 +66,21 @@ export async function POST(request: Request) {
   let map: FlatMap;
 
   if (isValidMapPayload(body.map)) {
-    const structured: StarterMapData = { ...body.map, email };
+    const structured: StarterMapData = {
+      ...body.map,
+      name,
+      email,
+      company,
+      consentResearch,
+    };
     const flat = flattenStarterMap(structured);
-    map = { email, ...flat, structured };
+    map = { name, email, company, consentResearch, ...flat, structured };
   } else {
     map = {
+      name,
       email,
+      company,
+      consentResearch,
       offers: clip(body.offers),
       people: clip(body.people),
       channels: clip(body.channels ?? body.tactics),
@@ -101,8 +131,11 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
       headers,
       body: JSON.stringify({
         email: map.email,
+        name: map.name,
+        company: map.company,
         starter_map_submitted: true,
         starter_map_submitted_at: now,
+        starter_research_consent: map.consentResearch,
         source: "fronz-site/starter",
         starter_map_version: map.structured ? 1 : 0,
       }),
@@ -116,6 +149,9 @@ async function writeToCustomerIo(map: FlatMap): Promise<boolean> {
       body: JSON.stringify({
         name: "starter_map_submitted",
         data: {
+          name: map.name,
+          company: map.company,
+          consent_research: map.consentResearch,
           offers: map.offers,
           people: map.people,
           channels: map.channels,
@@ -171,7 +207,13 @@ async function writeToNotion(map: FlatMap): Promise<boolean> {
         icon: { type: "emoji", emoji: "📍" },
         properties: {
           title: {
-            title: [{ text: { content: `${submitted} · ${map.email}` } }],
+            title: [
+              {
+                text: {
+                  content: `${submitted} · ${map.name} · ${map.company}`,
+                },
+              },
+            ],
           },
         },
         children: [
@@ -184,7 +226,7 @@ async function writeToNotion(map: FlatMap): Promise<boolean> {
                 {
                   type: "text",
                   text: {
-                    content: `${map.email} · submitted ${submitted} · via fronz-site/starter${versionNote}`,
+                    content: `${map.name} · ${map.company} · ${map.email} · submitted ${submitted} · via fronz-site/starter${versionNote}`,
                   },
                 },
               ],

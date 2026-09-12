@@ -62,7 +62,6 @@ export default function StarterPage() {
             <p className="mt-4 max-w-2xl font-serif text-xl">
               {STARTER.instruction}
             </p>
-
             <ol className="mt-10 grid gap-4 border-y border-line py-8 sm:grid-cols-3 sm:gap-8">
               {STARTER.process.map((step, i) => (
                 <li key={step} className="flex gap-4">

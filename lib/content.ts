@@ -183,11 +183,16 @@ export const STARTER = {
   process: [
     "Copy a template or start online",
     "One part at a time, about 20 minutes total",
-    "Download your map, or submit and book a Starter Review",
+    "Download your map, or submit and book a free Starter Review",
   ],
+  privacyHeading: "Your GTM Clarity Map is Your Data, Not Ours",
+  privacy:
+    "While you work, your map stays on this device only. We only receive your answers if you submit to book a free Starter Review. Please complete in a single session, or download a template to work on your own time.",
+  privacyConnect:
+    "Your GTM Clarity Map is your data, not ours — we only receive your answers if you submit to book a free Starter Review.",
   download: {
     heading: "Download the template",
-    sub: "Duplicate a Notion or Google Doc and work offline. Same four parts. Submit online when you're done, or attach your file when you book.",
+    sub: "Duplicate a Notion or Google Doc and work offline. Same four parts. Nothing is sent to Fronz until you submit online to book a review, or attach your file when you book.",
   },
   preview: {
     heading: "The map",
@@ -256,21 +261,27 @@ export const STARTER_FORM = {
     "I have way more offers and audiences than I can focus on.",
     "My best customers and my best channels don't line up.",
   ],
-  downloadHeading: "Download your map",
-  downloadSub:
-    "Your map is ready. Download a styled PDF to keep, share, or work from offline.",
   downloadButton: "Download your map",
+  reviewGatewayKicker: "Free · Starter Review",
   reviewGatewayHeading: "Want a free read of your GTM Starter Map?",
   reviewGatewaySub:
-    "Submit your map and schedule a free 20-minute Starter Review.",
+    "Submit your map and we'll read it before your call. Twenty minutes.",
+  reviewGatewayFinePrint:
+    "Submitting sends your map and contact details to Fronz so we can prep your review and match your booking.",
+  nameLabel: "Your name",
+  namePlaceholder: "First and last",
+  companyLabel: "Company",
+  companyPlaceholder: "Company or project name",
   emailPlaceholder: "you@company.com",
-  emailLabel: "Your email",
-  emailHelp: "So I have your map on file and can match it to your booking.",
+  emailLabel: "Work email",
+  emailHelp:
+    "So I can match your map to your booking and read it before we talk.",
   submitButton: "Submit and schedule",
   scheduleHeading: "Schedule your Starter Review",
   scheduleSub: "Twenty minutes to review your map together.",
   successHeadline: "Map received.",
-  successBody: "Your answers are saved. Pick a time below.",
+  successBody:
+    "Your map and contact details are saved. Pick a time below — use the same name and email so your booking matches.",
   offlineNote:
     "Worked offline? Attach your template when Calendly prompts you for a file.",
 } as const;

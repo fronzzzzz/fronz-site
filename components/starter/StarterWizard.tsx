@@ -17,12 +17,19 @@ import {
 } from "@/lib/starter-map";
 import { CalendlyEmbed } from "@/components/ui/CalendlyEmbed";
 import { MapDiagram, MapMobileSummary } from "@/components/starter/MapDiagram";
+import { PrivacyNote } from "@/components/starter/PrivacyNote";
 import { downloadStarterMapPdf } from "@/lib/starter-map-pdf";
 
 const STORAGE_KEY = "fronz-starter-map-v1";
 
-type Phase = "wizard" | "complete" | "success";
+type Phase = "wizard" | "success";
 type Status = "idle" | "submitting" | "error";
+
+type BookedContact = {
+  name: string;
+  email: string;
+  company: string;
+};
 
 function loadMap(): StarterMapData {
   if (typeof window === "undefined") return emptyStarterMap();
@@ -102,6 +109,123 @@ function toggleOffer(person: StarterPerson, offerId: string): StarterPerson {
 const inputClass =
   "w-full min-h-[44px] border border-line bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-muted focus:border-chartreuse-deep focus:outline-none";
 
+type ReviewGatewayFormProps = {
+  map: StarterMapData;
+  persist: (next: StarterMapData) => void;
+  onSubmit: (e: React.FormEvent) => void;
+  status: Status;
+  error: string;
+};
+
+const inputClassDark =
+  "w-full min-h-[44px] border border-paper/20 bg-paper/5 px-4 py-3 text-sm text-paper placeholder:text-paper/40 focus:border-chartreuse-deep focus:outline-none";
+
+function ReviewGatewayForm({
+  map,
+  persist,
+  onSubmit,
+  status,
+  error,
+}: ReviewGatewayFormProps) {
+  return (
+    <div className="mt-10 bg-ink p-6 text-paper md:p-10">
+      <p className="font-mono text-xs uppercase tracking-widest text-paper/60">
+        {STARTER_FORM.reviewGatewayKicker}
+      </p>
+      <h3 className="mt-3 text-[length:var(--text-h3)] text-paper">
+        {STARTER_FORM.reviewGatewayHeading}
+      </h3>
+      <p className="mt-4 max-w-xl text-paper/75">
+        {STARTER_FORM.reviewGatewaySub}
+      </p>
+      <form onSubmit={onSubmit} className="mt-8 space-y-6">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="starter-name"
+              className="font-mono text-xs uppercase tracking-widest text-paper/60"
+            >
+              {STARTER_FORM.nameLabel}
+            </label>
+            <input
+              id="starter-name"
+              type="text"
+              required
+              autoComplete="name"
+              value={map.name}
+              onChange={(e) => persist({ ...map, name: e.target.value })}
+              placeholder={STARTER_FORM.namePlaceholder}
+              className={inputClassDark}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="starter-company"
+              className="font-mono text-xs uppercase tracking-widest text-paper/60"
+            >
+              {STARTER_FORM.companyLabel}
+            </label>
+            <input
+              id="starter-company"
+              type="text"
+              required
+              autoComplete="organization"
+              value={map.company}
+              onChange={(e) => persist({ ...map, company: e.target.value })}
+              placeholder={STARTER_FORM.companyPlaceholder}
+              className={inputClassDark}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="starter-email"
+            className="font-mono text-xs uppercase tracking-widest text-paper/60"
+          >
+            {STARTER_FORM.emailLabel}
+          </label>
+          <input
+            id="starter-email"
+            type="email"
+            required
+            autoComplete="email"
+            value={map.email}
+            onChange={(e) => persist({ ...map, email: e.target.value })}
+            placeholder={STARTER_FORM.emailPlaceholder}
+            className={`${inputClassDark} font-mono`}
+          />
+          <p className="text-xs text-paper/60">{STARTER_FORM.emailHelp}</p>
+        </div>
+        <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="inline-flex min-h-[48px] items-center justify-center rounded-[2px] bg-chartreuse-deep px-8 py-4 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-paper disabled:opacity-60"
+          >
+            {status === "submitting"
+              ? "Sending…"
+              : `${STARTER_FORM.submitButton} →`}
+          </button>
+          {status === "error" && (
+            <p className="font-mono text-xs text-paper/70">
+              {error}{" "}
+              <a
+                href={`mailto:${SITE.email}`}
+                className="underline decoration-marker underline-offset-2 hover:text-paper"
+              >
+                Or email me.
+              </a>
+            </p>
+          )}
+        </div>
+        <p className="font-mono text-xs text-paper/50">
+          {STARTER_FORM.reviewGatewayFinePrint}
+        </p>
+      </form>
+    </div>
+  );
+}
+
 type StarterWizardProps = {
   calendlyUrl: string;
   onExit: () => void;
@@ -117,6 +241,9 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
   const [customChannelDraft, setCustomChannelDraft] = useState<
     Record<string, string>
   >({});
+  const [bookedContact, setBookedContact] = useState<BookedContact | null>(
+    null,
+  );
 
   useEffect(() => {
     setMap(loadMap());
@@ -146,38 +273,55 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
   }
 
   function goNext() {
-    if (!canAdvance()) return;
-    if (step < partCount - 1) {
-      setStep((s) => s + 1);
-      return;
-    }
-    setPhase("complete");
+    if (!canAdvance() || step >= partCount - 1) return;
+    setStep((s) => s + 1);
   }
 
   function goBack() {
-    if (phase === "complete") {
-      setPhase("wizard");
-      setStep(partCount - 1);
-      return;
-    }
     if (step > 0) setStep((s) => s - 1);
     else onExit();
   }
 
+  async function handleDownload() {
+    setDownloading(true);
+    try {
+      await downloadStarterMapPdf(map);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!map.email.trim()) return;
+    const name = map.name.trim();
+    const email = map.email.trim();
+    const company = map.company.trim();
+    if (!name || !email || !company) return;
     setStatus("submitting");
     setError("");
+
+    const payload = {
+      ...map,
+      name,
+      email,
+      company,
+    };
 
     try {
       const res = await fetch("/api/starter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: map.email.trim(), map }),
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          consentResearch: true,
+          map: payload,
+        }),
       });
 
       if (res.ok) {
+        setBookedContact({ name, email, company });
         clearMap();
         setPhase("success");
         setStatus("idle");
@@ -205,7 +349,18 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
         </h2>
         <p className="mt-2 text-ink-muted">{STARTER_FORM.scheduleSub}</p>
         <div className="mt-8">
-          <CalendlyEmbed url={calendlyUrl} minHeight={640} />
+          <CalendlyEmbed
+            url={calendlyUrl}
+            minHeight={640}
+            prefill={
+              bookedContact
+                ? {
+                    name: bookedContact.name,
+                    email: bookedContact.email,
+                  }
+                : undefined
+            }
+          />
         </div>
           <p className="mt-6 font-mono text-xs text-ink-muted">
             {STARTER_FORM.offlineNote}
@@ -214,100 +369,10 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
     );
   }
 
-  if (phase === "complete") {
-    return (
-      <div className="mx-auto max-w-2xl border border-line bg-paper p-6 md:p-10">
-        <p className="font-mono text-xs uppercase tracking-widest text-chartreuse-deep">
-          Final step
-        </p>
-        <h2 className="mt-3 text-[length:var(--text-h3)]">
-          {STARTER_FORM.downloadHeading}
-        </h2>
-        <p className="mt-3 text-ink-muted">{STARTER_FORM.downloadSub}</p>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={goBack}
-            className="min-h-[44px] font-mono text-sm text-ink-muted underline decoration-line underline-offset-4 hover:text-ink"
-          >
-            {STARTER_FORM.back}
-          </button>
-          <button
-            type="button"
-            disabled={downloading}
-            onClick={async () => {
-              setDownloading(true);
-              try {
-                await downloadStarterMapPdf(map);
-              } finally {
-                setDownloading(false);
-              }
-            }}
-            className="inline-flex min-h-[44px] items-center rounded-[2px] bg-ink px-7 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep disabled:opacity-60"
-          >
-            {downloading ? "Building PDF…" : `${STARTER_FORM.downloadButton} →`}
-          </button>
-        </div>
-
-        <div className="mt-12 border-t border-line pt-10">
-          <h3 className="text-[length:var(--text-h3)]">
-            {STARTER_FORM.reviewGatewayHeading}
-          </h3>
-          <p className="mt-3 text-ink-muted">
-            {STARTER_FORM.reviewGatewaySub}
-          </p>
-          <form onSubmit={handleSubmit} className="mt-8">
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="starter-email"
-                className="font-mono text-xs uppercase tracking-widest text-ink-muted"
-              >
-                {STARTER_FORM.emailLabel}
-              </label>
-              <input
-                id="starter-email"
-                type="email"
-                required
-                value={map.email}
-                onChange={(e) => persist({ ...map, email: e.target.value })}
-                placeholder={STARTER_FORM.emailPlaceholder}
-                className={`${inputClass} font-mono`}
-              />
-              <p className="text-xs text-ink-muted">
-                {STARTER_FORM.emailHelp}
-              </p>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                className="inline-flex min-h-[44px] items-center rounded-[2px] border border-ink bg-paper px-7 py-3.5 font-mono text-sm tracking-wide text-ink transition-colors hover:bg-paper-sink disabled:opacity-60"
-              >
-                {status === "submitting"
-                  ? "Sending…"
-                  : `${STARTER_FORM.submitButton} →`}
-              </button>
-              {status === "error" && (
-                <p className="font-mono text-xs text-ink-muted">
-                  {error}{" "}
-                  <a
-                    href={`mailto:${SITE.email}`}
-                    className="underline decoration-marker underline-offset-2 hover:text-ink"
-                  >
-                    Or email me.
-                  </a>
-                </p>
-              )}
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="mx-auto max-w-3xl border border-line bg-paper p-6 md:p-10">
-      <div className="flex items-center justify-between gap-4">
+      {step === 0 && <PrivacyNote variant="wizard" />}
+      <div className={`flex items-center justify-between gap-4 ${step === 0 ? "mt-8" : ""}`}>
         <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
           Part {step + 1} of {partCount}
         </p>
@@ -744,28 +809,59 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
               className={`${inputClass} mt-2 resize-y`}
             />
           </div>
+
+          <div className="border-t border-line pt-10">
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={goBack}
+                className="min-h-[44px] font-mono text-sm text-ink-muted underline decoration-line underline-offset-4 hover:text-ink"
+              >
+                {STARTER_FORM.back}
+              </button>
+              <button
+                type="button"
+                disabled={downloading}
+                onClick={handleDownload}
+                className="inline-flex min-h-[44px] items-center rounded-[2px] bg-ink px-7 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep disabled:opacity-60"
+              >
+                {downloading
+                  ? "Building PDF…"
+                  : `${STARTER_FORM.downloadButton} →`}
+              </button>
+            </div>
+            <PrivacyNote variant="inline" className="mt-6" />
+          </div>
+
+          <ReviewGatewayForm
+            map={map}
+            persist={persist}
+            onSubmit={handleSubmit}
+            status={status}
+            error={error}
+          />
         </div>
       )}
 
-      <div className="mt-8 flex flex-wrap items-center gap-4">
-        <button
-          type="button"
-          onClick={goBack}
-          className="min-h-[44px] font-mono text-sm text-ink-muted underline decoration-line underline-offset-4 hover:text-ink"
-        >
-          {STARTER_FORM.back}
-        </button>
-        <button
-          type="button"
-          onClick={goNext}
-          disabled={!canAdvance()}
-          className="inline-flex min-h-[44px] items-center rounded-[2px] bg-ink px-7 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {step < partCount - 1
-            ? `${STARTER_FORM.next} →`
-            : `${STARTER_FORM.downloadHeading} →`}
-        </button>
-      </div>
+      {step < partCount - 1 && (
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={goBack}
+            className="min-h-[44px] font-mono text-sm text-ink-muted underline decoration-line underline-offset-4 hover:text-ink"
+          >
+            {STARTER_FORM.back}
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            disabled={!canAdvance()}
+            className="inline-flex min-h-[44px] items-center rounded-[2px] bg-ink px-7 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {`${STARTER_FORM.next} →`}
+          </button>
+        </div>
+      )}
       {!canAdvance() && (step === 0 || step === 1) && (
         <p className="mt-3 font-mono text-xs text-ink-muted">
           Add at least one {step === 0 ? "offer with a name" : "person"} to
