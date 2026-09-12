@@ -32,7 +32,7 @@ export const MAP_CTA = "Complete the GTM Clarity Map";
 /** @deprecated Use MAP_CTA */
 export const STARTER_CTA = MAP_CTA;
 
-/** Three-beat motion — homepage hero, offers page hero, arc strip. */
+/** Three-beat motion — homepage hero and arc strip. */
 export const MOTION = {
   beats: [
     "Gain clarity.",
@@ -54,7 +54,7 @@ export const MOTION = {
     "get-clear": "Map your business and decide what you sell and to whom.",
     "make-contact": "Put your positioning in front of real buyers and get honest counts.",
     "keep-moving":
-      "Senior judgment while you execute, or scoped follow-on when the market has answered. Graduate when you own the motion.",
+      "Senior judgment while you execute — first paid step after the map, or the seat you return to.",
   },
 } as const;
 

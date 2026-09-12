@@ -4,7 +4,7 @@
  * Groundswell: Groundswell Offering Kit + GTM Clarity Map
  */
 
-import { BOOKING_CTA, MAP_CTA, MOTION, SITE } from "./content";
+import { BOOKING_CTA, MAP_CTA, SITE } from "./content";
 
 export type Tier = {
   name: string;
@@ -31,6 +31,21 @@ export type Tier = {
   /** Override default tier CTA target and label. */
   href?: string;
   ctaLabel?: string;
+  /** Span every column of the offer grid, at every breakpoint. */
+  fullWidth?: boolean;
+  /** Offer-page band — groups cards under a path heading. */
+  band?: string;
+  /** How the card CTA renders. Defaults to a text link. */
+  ctaVariant?: "button" | "link" | "none";
+  /** Shown instead of a CTA (e.g. follow-on: "Opens at the gate."). */
+  ctaNote?: string;
+};
+
+export type OfferBand = {
+  id: string;
+  key: string;
+  label: string;
+  sub?: string;
 };
 
 export type LineDetail = {
@@ -42,6 +57,8 @@ export type LineDetail = {
   /** When set, replaces product name + promise in the hero H1. */
   heroBeats?: readonly string[];
   heroHighlightBeat?: number;
+  /** Dark ink hero — used on the GTM Clarity offers page. */
+  heroDark?: boolean;
   heroSub: string;
   /** Optional Phase-2 / prerequisite banner rendered in the hero. */
   prerequisite?: {
@@ -74,6 +91,8 @@ export type LineDetail = {
     systemNote?: string;
     /** Motion callouts + funnel-order grid (not sequential section groups). */
     motionCallouts?: boolean;
+    /** Path bands for the offer grid. When set, cards group under these headings. */
+    bands?: OfferBand[];
     items: Tier[];
   };
   /** One full card per offer with an outcome line only (no deliverable bullets). */
@@ -116,23 +135,49 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
   "gtm-clarity": {
     slug: "gtm-clarity",
     name: "GTM Clarity",
-    eyebrow: "Go-to-market for founders and lean teams",
+    eyebrow: "Offers for founders and lean teams",
     arcLabel: "Gain clarity",
     promise: "Build momentum.",
-    heroBeats: MOTION.beats,
-    heroHighlightBeat: MOTION.highlightBeat,
+    heroDark: true,
+    heroBeats: [
+      "Fixed-scope GTM.",
+      "You own the motion.",
+    ],
+    heroHighlightBeat: 1,
     heroSub:
-      "Decide what to sell and to whom, get it in front of real buyers, and walk away with a go-to-market motion you own. Fixed-scope containers for judgment, decisions, and hands-on market contact.",
+      "Every path is a named container — fixed scope, fixed price, a clear exit. Free map and review first. Then one container at a time for a positioning decision, market contact, or senior judgment while you execute.",
     outcomeCards: true,
     tiers: {
-      heading: "Start free. Step up when you're ready.",
-      sub: "Begin with the free map, then step into whichever container fits where you are now.",
-      motionCallouts: true,
+      heading: "Pick the container that fits where you are.",
+      bands: [
+        {
+          id: "get-clear",
+          key: "start",
+          label: "Start here",
+          sub: "The map is the door. The review is the read. Every path starts free.",
+        },
+        {
+          id: "keep-moving",
+          key: "first-paid",
+          label: "First paid container",
+          sub: "A monthly read on what you're already running so you gain clarity and keep moving.",
+        },
+        {
+          id: "make-contact",
+          key: "scoped",
+          label: "When you need more than a read",
+          sub: "A positioning decision, market contact, or scoped follow-on — when that's the job.",
+        },
+      ],
       items: [
         {
           name: "GTM Clarity Map",
           price: "Free",
           meta: "20 min · self-serve",
+          band: "start",
+          fullWidth: true,
+          ctaVariant: "button",
+          fitNote: "Every path starts here.",
           tagline: "See your whole business on one page and spot exactly where the lines break.",
           points: [
             "Four parts: offers, people, how you reach them, connect the dots",
@@ -145,6 +190,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "Map Review",
           price: "Free",
           meta: "20 min · after map",
+          band: "start",
+          fullWidth: true,
+          ctaVariant: "button",
+          ctaLabel: "Complete the map to book",
+          fitNote: "After you submit the map.",
           tagline: "An honest read on your map and a straight answer on which container fits you next.",
           points: [
             "Complete the GTM Clarity Map first. I'll read your answers before we talk",
@@ -157,9 +207,14 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "GTM Review Container",
           price: "$500/mo",
           meta: "3-mo min · 2 hr/mo cap",
-          fitNote: "After the map, or anytime you're executing and need a read.",
+          band: "first-paid",
+          featured: true,
+          ctaVariant: "link",
+          ctaLabel: "Start with the map",
+          fitNote:
+            "Start here after the map if you're moving and determining where to focus your efforts. Return here after a sprint when you need the next read.",
           tagline:
-            "Senior judgment on what to run next while you execute. Not another builder to manage.",
+            "Clarity on what you're already running, what's missing, and senior judgment on what to do next.",
           points: [
             "Monthly Execution Brief: what to run next, based on what you're shipping",
             "45-minute review call each month",
@@ -171,6 +226,9 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "GTM Intensive",
           price: "$2,500",
           meta: "3 days · 1 hr/day together",
+          band: "scoped",
+          ctaVariant: "link",
+          ctaLabel: "Start with the map",
           fitNote: "When the wedge still needs deciding.",
           tagline: "Your wedge and first test decided in three days, so you walk out with both locked.",
           points: [
@@ -185,6 +243,9 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "GTM Sprint",
           price: "$7,500",
           meta: "2 weeks · 30 hr cap",
+          band: "scoped",
+          ctaVariant: "link",
+          ctaLabel: "Start with the map",
           fitNote: "When you're ready for real market contact.",
           tagline: "Two weeks of hands-on market contact: positioning tested, first channel live, honest numbers.",
           points: [
@@ -199,7 +260,11 @@ export const LINES_DETAIL: Record<string, LineDetail> = {
           name: "Scoped GTM follow-on",
           price: "Custom",
           meta: "@ $250/hr · at the gate",
-          fitNote: "After a sprint or intensive opens the next move.",
+          band: "scoped",
+          ctaVariant: "none",
+          ctaNote: "Opens at the gate.",
+          fitNote:
+            "After a sprint or intensive opens the next move. Graduate when you own the motion.",
           tagline: "Your next move scoped from real data: named work, named price, no open-ended retainer.",
           points: [
             "Custom scope after Intensive or Sprint",

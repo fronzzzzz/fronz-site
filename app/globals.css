@@ -12,9 +12,9 @@
   --ink: #1c1e17; /* warm near-black, olive undertone */
   --ink-muted: #5a5c50; /* secondary text */
   --line: #d9d3c4; /* hairline rules */
-  --chartreuse: #a8b560; /* sage-pear accent + highlighter */
-  --chartreuse-deep: #6f7d33; /* AA links / interactive on paper */
-  --marker: #b9c766; /* highlighter swipe fill */
+  --chartreuse: #a8b560; /* sage-pear accent + marker-button hover; highlighter swipe on ink */
+  --chartreuse-deep: #6f7d33; /* AA links / ink-button hover */
+  --marker: #b9c766; /* highlighter swipe fill on paper */
 }
 
 @theme inline {

@@ -13,11 +13,15 @@ import type { CaseStudy } from "@/lib/case-studies";
  * Renders {tokens} in headlines as <Highlight> swipes.
  * Use sparingly in copy — the marker is the reserved emphasis device.
  */
-function withHighlights(text: string) {
+function withHighlights(text: string, onDark = false) {
   const parts = text.split(/(\{[^}]+\})/g);
   return parts.map((part, i) => {
     if (part.startsWith("{") && part.endsWith("}")) {
-      return <Highlight key={i}>{part.slice(1, -1)}</Highlight>;
+      return (
+        <Highlight key={i} onDark={onDark}>
+          {part.slice(1, -1)}
+        </Highlight>
+      );
     }
     return <Fragment key={i}>{part}</Fragment>;
   });
@@ -334,7 +338,7 @@ export function CaseStudyDetail({
               as="h2"
               className="max-w-[28ch] text-[length:var(--text-h2)] leading-tight text-paper"
             >
-              {withHighlights(study.fork.recommendation.headline)}
+              {withHighlights(study.fork.recommendation.headline, true)}
             </Reveal>
             <div className="mt-14 grid gap-8 md:grid-cols-3">
               {study.fork.recommendation.reasons.map((r, i) => (

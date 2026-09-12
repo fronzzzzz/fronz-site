@@ -9,7 +9,6 @@ export function Footer() {
           <div className="max-w-sm">
             <p className="font-serif text-3xl font-semibold tracking-tight">
               {SITE.name}
-              <span className="text-chartreuse-deep">.</span>
             </p>
             <p className="mt-3 text-ink-muted">{SITE.descriptor}</p>
           </div>

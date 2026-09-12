@@ -30,19 +30,73 @@ function lineLinks(line: LineDetailData) {
 }
 
 function tierCardClass(tier: Tier) {
-  if (tier.featured) return "border-ink bg-ink text-paper";
+  const span = tier.fullWidth
+    ? "col-span-full"
+    : tier.variant === "phase2"
+      ? "md:col-span-2 xl:col-span-3"
+      : "";
+  if (tier.featured) return `${span} border-ink bg-ink text-paper`.trim();
   if (tier.variant === "phase2")
-    return "border-dashed border-line bg-paper-sink md:col-span-2 xl:col-span-3";
-  return "border-line bg-paper";
+    return `${span} border-dashed border-line bg-paper-sink`.trim();
+  return `${span} border-line bg-paper`.trim();
 }
 
 export function LineDetail({ line }: { line: LineDetailData }) {
   const { tierCta, heroSecondary, footerCta } = lineLinks(line);
 
   const useMotionCallouts = line.tiers.motionCallouts;
+  const offerBands = line.tiers.bands ?? [];
+  const useBands = offerBands.length > 0;
+  const bandedKeys = new Set(offerBands.map((b) => b.key));
+  const unbandedTiers = line.tiers.items.filter(
+    (t) => !t.band || !bandedKeys.has(t.band),
+  );
   const hasTierSections =
-    !useMotionCallouts && line.tiers.items.some((t) => t.section);
+    !useMotionCallouts && !useBands && line.tiers.items.some((t) => t.section);
   const unsectionedTiers = line.tiers.items.filter((t) => !t.section);
+
+  function renderTierCta(tier: Tier) {
+    const ctaVariant = tier.ctaVariant ?? "link";
+    const ctaHref = tier.href ?? tierCta.href;
+    const ctaLabel = tier.ctaLabel ?? tierCta.label;
+    if (ctaVariant === "none") {
+      return tier.ctaNote ? (
+        <p
+          className={`mt-8 font-mono text-sm ${
+            tier.featured ? "text-paper/70" : "text-ink-muted"
+          }`}
+        >
+          {tier.ctaNote}
+        </p>
+      ) : null;
+    }
+    if (ctaVariant === "button") {
+      return (
+        <Link
+          href={ctaHref}
+          className={`mt-8 inline-flex min-h-[44px] items-center justify-center rounded-[2px] px-6 py-3.5 font-mono text-sm tracking-wide transition-colors ${
+            tier.featured
+              ? "bg-marker text-ink hover:bg-chartreuse"
+              : "bg-ink text-paper hover:bg-chartreuse-deep"
+          }`}
+        >
+          {ctaLabel} →
+        </Link>
+      );
+    }
+    return (
+      <Link
+        href={ctaHref}
+        className={`mt-8 inline-block min-h-[44px] font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] ${
+          tier.featured
+            ? "text-paper hover:text-marker"
+            : "hover:text-chartreuse-deep"
+        }`}
+      >
+        {ctaLabel} →
+      </Link>
+    );
+  }
 
   function renderTierCard(tier: Tier, i: number) {
     return (
@@ -129,17 +183,26 @@ export function LineDetail({ line }: { line: LineDetailData }) {
           </div>
         )}
         {tier.fitNote && (
-          <p
-            className={`mt-4 font-mono text-xs uppercase tracking-widest ${
-              tier.featured ? "text-marker" : "text-chartreuse-deep"
-            }`}
-          >
-            {tier.fitNote}
+          <p className="mt-5">
+            <span
+              className={`font-mono text-xs uppercase tracking-widest ${
+                tier.featured ? "text-marker" : "text-chartreuse-deep"
+              }`}
+            >
+              When
+            </span>
+            <span
+              className={`mt-1 block text-sm leading-snug ${
+                tier.featured ? "text-paper/85" : "text-ink"
+              }`}
+            >
+              {tier.fitNote}
+            </span>
           </p>
         )}
         {tier.tagline && (
           <p
-            className={`${tier.fitNote ? "mt-2" : "mt-4"} font-serif text-lg ${tier.featured ? "text-paper/85" : "text-ink"}`}
+            className={`${tier.fitNote ? "mt-3" : "mt-4"} font-serif text-lg ${tier.featured ? "text-paper/85" : "text-ink"}`}
           >
             {tier.tagline}
           </p>
@@ -166,21 +229,15 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             ))}
           </ul>
         )}
-        <Link
-          href={tier.href ?? tierCta.href}
-          className={`mt-8 inline-block font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] ${
-            tier.featured ? "hover:text-marker" : "hover:text-chartreuse-deep"
-          }`}
-        >
-          {tier.ctaLabel ?? tierCta.label} →
-        </Link>
+        {renderTierCta(tier)}
       </Reveal>
     );
   }
 
   // Alternate section backgrounds in render order so no two adjacent
   // sections ever share a bg (which would read as a doubled empty gap).
-  // Hero is paper, so the first content section starts sunk.
+  // Light hero → first content section starts sunk. Dark hero is ink,
+  // so the first content section stays paper.
   const order: string[] = [
     ...(line.problem ? ["problem"] : []),
     ...(line.domains ? ["domains"] : []),
@@ -192,35 +249,58 @@ export function LineDetail({ line }: { line: LineDetailData }) {
     "faq",
   ];
   const sink: Record<string, boolean> = {};
-  order.forEach((key, i) => (sink[key] = i % 2 === 0));
+  order.forEach((key, i) => (sink[key] = line.heroDark ? i % 2 === 1 : i % 2 === 0));
 
   return (
     <>
       <Header />
       <main>
         {/* HERO */}
-        <section className="relative overflow-hidden border-b border-line">
+        <section
+          className={`relative overflow-hidden ${
+            line.heroDark
+              ? "bg-ink text-paper"
+              : "border-b border-line"
+          }`}
+        >
           <div className="mx-auto w-full max-w-[1180px] px-6 py-20 md:px-10 md:py-28">
-            <nav className="mb-10 font-mono text-xs uppercase tracking-widest text-ink-muted">
-              <Link href="/" className="hover:text-ink">
+            <nav
+              className={`mb-10 font-mono text-xs uppercase tracking-widest ${
+                line.heroDark ? "text-paper/55" : "text-ink-muted"
+              }`}
+            >
+              <Link
+                href="/"
+                className={line.heroDark ? "hover:text-paper" : "hover:text-ink"}
+              >
                 Fronz
               </Link>
               <span className="mx-2">/</span>
-              <span className="text-ink">{line.name}</span>
+              <span className={line.heroDark ? "text-paper" : "text-ink"}>
+                {line.name}
+              </span>
             </nav>
-            <p className="kicker mb-6">{line.eyebrow}</p>
+            <p className={`kicker mb-6 ${line.heroDark ? "text-paper/60" : ""}`}>
+              {line.eyebrow}
+            </p>
             {line.heroBeats ? (
               <MotionHeadline
                 beats={line.heroBeats}
                 highlightIndex={line.heroHighlightBeat ?? 1}
+                onDark={line.heroDark}
+                className="max-w-[36ch] text-[length:var(--text-display)] leading-[0.98]"
               />
             ) : (
               <h1 className="max-w-[16ch] text-[length:var(--text-display)] leading-[0.98]">
                 {line.name}.{" "}
-                <Highlight>{line.promise}</Highlight>
+                <Highlight onDark={line.heroDark}>{line.promise}</Highlight>
               </h1>
             )}
-            <p className="mt-8 text-[length:var(--text-lead)] text-ink-muted">
+            <p
+              className={`mt-8 text-[length:var(--text-lead)] ${
+                line.heroDark ? "text-paper/75" : "text-ink-muted"
+              }`}
+            >
               {line.heroSub}
             </p>
             {line.prerequisite && (
@@ -242,13 +322,21 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <a
                 href="#pricing"
-                className="inline-flex items-center justify-center rounded-[2px] bg-ink px-6 py-3.5 font-mono text-sm tracking-wide text-paper transition-colors hover:bg-chartreuse-deep"
+                className={`inline-flex items-center justify-center rounded-[2px] px-6 py-3.5 font-mono text-sm tracking-wide transition-colors ${
+                  line.heroDark
+                    ? "bg-marker text-ink hover:bg-chartreuse"
+                    : "bg-ink text-paper hover:bg-chartreuse-deep"
+                }`}
               >
                 See pricing →
               </a>
               <Link
                 href={heroSecondary.href}
-                className="font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] transition-colors hover:decoration-chartreuse-deep"
+                className={`font-mono text-sm underline decoration-marker decoration-2 underline-offset-[6px] transition-colors ${
+                  line.heroDark
+                    ? "hover:decoration-chartreuse"
+                    : "hover:decoration-chartreuse-deep"
+                }`}
               >
                 {heroSecondary.label}
               </Link>
@@ -487,7 +575,7 @@ export function LineDetail({ line }: { line: LineDetailData }) {
               <p className="text-ink-muted">{line.tiers.systemNote}</p>
             </Reveal>
           )}
-          {useMotionCallouts && (
+          {useMotionCallouts && !useBands && (
             <Reveal className="mt-10 grid gap-6 md:grid-cols-3">
               {MOTION.sections.map(({ id, label }) => (
                 <div key={id} id={id} className="scroll-mt-28 border-t-2 border-ink pt-4">
@@ -518,7 +606,44 @@ export function LineDetail({ line }: { line: LineDetailData }) {
             </Reveal>
           )}
 
-          {useMotionCallouts ? (
+          {useBands ? (
+            <div className="mt-14 space-y-16">
+              {offerBands.map((band) => {
+                const items = line.tiers.items.filter((t) => t.band === band.key);
+                if (items.length === 0) return null;
+                const grid =
+                  items.length === 1
+                    ? "grid gap-6"
+                    : items.some((t) => t.fullWidth)
+                      ? "grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                      : items.length === 2
+                        ? "grid gap-6 md:grid-cols-2"
+                        : "grid gap-6 md:grid-cols-2 xl:grid-cols-3";
+                return (
+                  <div key={band.key} id={band.id} className="scroll-mt-28">
+                    <p className="font-mono text-xs font-bold uppercase tracking-widest text-chartreuse-deep">
+                      {band.label}
+                    </p>
+                    {band.sub && (
+                      <p className="mt-2 max-w-2xl text-ink-muted">{band.sub}</p>
+                    )}
+                    <div className={`mt-8 ${grid}`}>
+                      {items.map((tier) =>
+                        renderTierCard(tier, line.tiers.items.indexOf(tier)),
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+              {unbandedTiers.length > 0 && (
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {unbandedTiers.map((tier) =>
+                    renderTierCard(tier, line.tiers.items.indexOf(tier)),
+                  )}
+                </div>
+              )}
+            </div>
+          ) : useMotionCallouts ? (
             <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {line.tiers.items.map((tier, i) => renderTierCard(tier, i))}
             </div>

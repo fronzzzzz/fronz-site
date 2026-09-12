@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048" fill="none">
+  <rect width="2048" height="2048" fill="#f3efe4"/>
+  <text
+    x="1024"
+    y="1048"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="#1c1e17"
+    font-family="Fraunces"
+    font-size="420"
+    font-weight="600"
+    letter-spacing="-10.5"
+  >Fronz</text>
+</svg>

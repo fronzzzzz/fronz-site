@@ -1,7 +1,7 @@
 ---
 title: Fronz Brand Language Guidelines
 version: 1.2
-last_updated: 2026-09-02
+last_updated: 2026-09-12
 owners: Stacey Fronek
 applies_to: fronzz.com, public/llms.txt, JSON-LD, client deliverables, case studies, workshop artifacts, sales copy
 ---
@@ -200,6 +200,8 @@ Logos (PopSockets, Hotels.com, Xfinity, Ethereum Foundation, Protocol Labs, Moxa
 - **Quotes**: curly quotes in prose (`"`, `'`), straight quotes fine in code strings.
 - **Headings**: sentence case ("Where you sit in the market"), not title case.
 - **Highlight markers**: reserved for the payoff word or phrase, one per section. Not decoration.
+  - On paper: `--marker` (`#b9c766`).
+  - On ink / dark bands: `--chartreuse` (`#a8b560`) — the same mid green as marker-button hover (`hover:bg-chartreuse`). Marker is too bright against white type; chartreuse-deep disappears into ink. Pass `onDark` to `<Highlight>` / `<MotionHeadline>`.
 
 ---
 

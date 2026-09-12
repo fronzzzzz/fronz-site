@@ -16,7 +16,6 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           {SITE.name}
-          <span className="text-chartreuse-deep">.</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
