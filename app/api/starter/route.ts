@@ -101,9 +101,7 @@ export async function POST(request: Request) {
     };
   }
 
-  let saved = false;
-
-  saved = (await writeToCustomerIo(map)) || saved;
+  const customerIoSaved = await writeToCustomerIo(map);
 
   const notion = await writeStarterSubmissionToNotion({
     name: map.name,
@@ -128,8 +126,16 @@ export async function POST(request: Request) {
       map.submissionId,
     ),
   });
-  saved = notion.ok || saved;
+  const notionSaved = notion.ok;
+  const saved = customerIoSaved || notionSaved;
 
+  if (!notionSaved) {
+    console.warn(
+      "starter_map_submitted: Notion write failed for",
+      email,
+      notion.pageId ? "" : "(check NOTION_* env vars and integration access)",
+    );
+  }
   if (!saved) {
     console.warn(
       "starter_map_submitted: no backend configured — map not persisted for",
@@ -137,7 +143,13 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true, saved, submissionId: map.submissionId });
+  return NextResponse.json({
+    ok: true,
+    saved,
+    notionSaved,
+    customerIoSaved,
+    submissionId: map.submissionId,
+  });
 }
 
 function clip(value: unknown): string {

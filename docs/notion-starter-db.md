@@ -58,3 +58,30 @@ When `NOTION_STARTER_DATABASE_ID` is set, submissions create **database rows**. 
 Duplicate link for Option A on `/map`:
 
 `https://www.notion.so/3d6ebef38005806da346d8810eb980f5?source=copy_link`
+
+## Troubleshooting
+
+### Submissions succeed in the UI but no Notion rows
+
+1. **Production (Vercel)** — add all three server env vars and redeploy:
+   - `NOTION_TOKEN`
+   - `NOTION_STARTER_DATABASE_ID`
+   - `NOTION_STARTER_PARENT_ID`
+   
+   The API can return `saved: true` when only Customer.io is configured. Check the response fields `notionSaved` and `customerIoSaved`.
+
+2. **Local dev** — if `.env.local` is correct but writes 401:
+   - A stale `NOTION_TOKEN` in your shell overrides `.env.local` in Next.js.
+   - Run `unset NOTION_TOKEN && pnpm dev`, or open a fresh terminal.
+
+3. **Run diagnostics** (uses `.env.local`):
+
+   ```bash
+   node scripts/diagnose-notion-starter.mjs
+   ```
+
+4. **Look in the right place** — rows land in the **Map Submissions** database (`NOTION_STARTER_DATABASE_ID`), not the blank parent page.
+
+5. **Integration access** — the Submissions page and database must be shared with the same Notion integration as `NOTION_TOKEN`.
+
+6. **Source select** — if the database was created before the `/map` rename, add a `fronz-site/map` option on the **Source** property (or rerun the bootstrap script on a fresh parent page).

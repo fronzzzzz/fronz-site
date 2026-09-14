@@ -321,6 +321,13 @@ export function StarterWizard({ calendlyUrl, onExit }: StarterWizardProps) {
       });
 
       if (res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data?.notionSaved === false) {
+          console.warn(
+            "Map submitted but Notion capture failed — check NOTION_* env on the server.",
+            data?.submissionId,
+          );
+        }
         setBookedContact({ name, email, company });
         clearMap();
         setPhase("success");
