@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CalendlyEmbed } from "@/components/ui/CalendlyEmbed";
-import { BOOK, calendlyUrl } from "@/lib/content";
+import { BOOK, SITE, calendlyUrl } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Book a Map Review",
@@ -49,13 +49,14 @@ export default function BookPage() {
           <div className="mx-auto w-full max-w-[1180px] px-6 py-10 md:px-10 md:py-14">
             <CalendlyEmbed url={calendlyUrl()} />
             <p className="mt-6 text-center font-mono text-xs text-ink-muted">
-              Prefer email?{" "}
+              Have a different inquiry? Email{" "}
               <a
-                href="mailto:stacey@shesthefronz.com"
+                href={`mailto:${SITE.email}`}
                 className="underline decoration-marker underline-offset-2 hover:text-ink"
               >
-                stacey@shesthefronz.com
-              </a>
+                {SITE.email}
+              </a>{" "}
+              and we&apos;ll set up a time to discuss!
             </p>
           </div>
         </section>
