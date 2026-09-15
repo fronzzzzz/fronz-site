@@ -287,7 +287,7 @@ export const STARTER_FORM = {
 export const BOOK = {
   kicker: "Free · Map Review",
   heading: "Book a Map Review.",
-  sub: "Twenty minutes to reflect your map back. Complete the GTM Clarity Map first — online or in Notion. We'll talk about which container fits. Not a strategy session, not a product audit, not a pitch deck review.",
+  sub: "Complete the GTM Clarity Map first — online or using the Notion template. We'll review it together to discuss next steps.",
   attachNote: `Submitted online? I already have your map. Used the Notion template instead? Email it to ${SITE.email} before your call.`,
   prerequisite: "Haven't completed your map yet?",
   prerequisiteLink: "Complete the GTM Clarity Map →",

@@ -19,4 +19,4 @@ Fronz is a go-to-market practice for founders and lean teams (roughly 1–30 sta
 ## Key pages
 
 - [GTM Clarity Map](https://www.fronzzz.com/map): Free 20-minute exercise to map offers, customers, and channels on one page.
-- [Book a Map Review](https://www.fronzzz.com/book): Twenty minutes to reflect your map back after you complete the GTM Clarity Map.
+- [Book a Map Review](https://www.fronzzz.com/book): Complete the GTM Clarity Map first, then book a review to discuss next steps.
