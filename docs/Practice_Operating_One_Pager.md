@@ -184,7 +184,7 @@ The homepage lead form (`/api/lead`) and the “send your map” form (`/api/sta
 
 **Must migrate before the waitlist is real.** Either:
 
-- A **dedicated Fronz Customer.io workspace** (not the current account), with a verified sending domain on fronzz.com or a Fronz subdomain, **or**
+- A **dedicated Fronz Customer.io workspace** (not the current account), with a verified sending domain on fronzzz.com or a Fronz subdomain, **or**
 - A **separate system** (list + transactional send) whose only job is map delivery, waitlist, and intro reminders.
 
 Until that ships: the map still lives as a public page at `/map`. Intros still book on Calendly. Waitlist is a dated note plus people who booked, not an email campaign. Do not build the campaign on the current CIO account.
@@ -232,7 +232,7 @@ Check items off in order where dependencies exist.
 
 ### A · Email & waitlist (blocks real funnel)
 
-- [ ] **Migrate lead capture off mixed Customer.io** — dedicated Fronz workspace *or* separate list + transactional send (`/api/lead`, `/api/starter`). Verified sending domain on fronzz.com.
+- [ ] **Migrate lead capture off mixed Customer.io** — dedicated Fronz workspace *or* separate list + transactional send (`/api/lead`, `/api/starter`). Verified sending domain on fronzzz.com.
 - [ ] **Waitlist that is not theater** — next sprint start date (real), GTM Clarity Map required, intro books into **held weekly Calendly slot** (§4).
 - [ ] **Waitlist email** — intro reminders + “next sprint starts {date}” (only after A is done).
 - [ ] **Do not** build drip campaigns on the current CIO account.

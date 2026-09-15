@@ -114,7 +114,7 @@ export default function Home() {
             <Reveal className="relative aspect-[4/5] w-full max-w-[11rem] shrink-0 overflow-hidden border border-line bg-paper sm:max-w-[13rem] md:max-w-[15rem]">
               <Image
                 src="/stacey-fronek.jpg"
-                alt="Portrait of Stacey Fronek sitting at an outdoor cafe holding a coffee cup, smiling at the camera"
+                alt="Portrait of Stacey Fronek smiling outdoors in a denim shirt, with soft green foliage in the background"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 640px) 176px, 240px"

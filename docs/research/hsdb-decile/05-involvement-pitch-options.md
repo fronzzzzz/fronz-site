@@ -35,7 +35,7 @@ follow-up deliverable. Decide the positioning (audit layer, not database),
 the wedge (Decile bridge), the ICP, the one sentence, and the 90-day plan.
 
 **Price:** $1,500–3,000 (standard Fronz Jam pricing; founder rate honest and
-public on fronzz.com — no special-friend discount needed, the price *is* the
+public on fronzzz.com — no special-friend discount needed, the price *is* the
 accessible tier).
 
 **Why Kyle says yes:** cheapest possible way to convert a 7-year invention

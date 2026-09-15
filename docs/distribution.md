@@ -1,4 +1,4 @@
-# Distribution playbook — fronzz.com
+# Distribution playbook — www.fronzzz.com
 
 How to send the site out so you can tell what's working. Written Aug 2026. Updated 31 Aug 2026: client conversations only. `/resume` is unpublished (noindex, not in nav or sitemap). Do not send it as a hiring offer.
 
@@ -9,7 +9,7 @@ Append UTM parameters to every link you distribute. Vercel Analytics picks these
 Format:
 
 ```
-https://fronzz.com?utm_source=<where>&utm_medium=<how>&utm_campaign=<track>
+https://www.fronzzz.com?utm_source=<where>&utm_medium=<how>&utm_campaign=<track>
 ```
 
 | Parameter | Use | Examples |
@@ -21,11 +21,11 @@ https://fronzz.com?utm_source=<where>&utm_medium=<how>&utm_campaign=<track>
 Ready-to-copy examples:
 
 - LinkedIn DM to a founder:
-  `https://fronzz.com?utm_source=linkedin&utm_medium=dm&utm_campaign=client-outreach`
+  `https://www.fronzzz.com?utm_source=linkedin&utm_medium=dm&utm_campaign=client-outreach`
 - Warm intro forwarded by a contact:
-  `https://fronzz.com?utm_source=warm-intro&utm_medium=referral&utm_campaign=gtm-clarity`
+  `https://www.fronzzz.com?utm_source=warm-intro&utm_medium=referral&utm_campaign=gtm-clarity`
 - GTM Clarity Map as the front door:
-  `https://fronzz.com/map?utm_source=email&utm_medium=cold-email&utm_campaign=gtm-clarity`
+  `https://www.fronzzz.com/map?utm_source=email&utm_medium=cold-email&utm_campaign=gtm-clarity`
 
 Rule of thumb: link `/` or `/map` for client conversations. Do not link `/resume`.
 

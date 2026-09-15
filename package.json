@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "wordmark": "node scripts/generate-wordmark.mjs"
+    "wordmark": "node scripts/generate-wordmark.mjs",
+    "notion:template-domain": "node scripts/update-notion-template-domain.mjs"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.9.0",

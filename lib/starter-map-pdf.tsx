@@ -332,7 +332,7 @@ export function StarterMapPdfDocument({ map }: { map: StarterMapData }) {
         </View>
 
         <View style={s.footer} fixed>
-          <Text style={s.footerText}>fronzz.com · GTM Clarity Map</Text>
+          <Text style={s.footerText}>fronzzz.com · GTM Clarity Map</Text>
           <Text style={s.footerText}>{SITE.tagline}</Text>
         </View>
       </Page>

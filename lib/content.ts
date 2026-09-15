@@ -8,7 +8,7 @@
 
 export const SITE = {
   name: "Fronz",
-  url: "https://fronzz.com",
+  url: "https://www.fronzzz.com",
   tagline: "Gain clarity. Build momentum. Own the growth.",
   descriptor:
     "Go-to-market in bounded containers for founders and lean teams.",
@@ -20,7 +20,7 @@ export const SITE = {
 } as const;
 
 const CALENDLY_EMBED_URL =
-  "https://calendly.com/fronzz/map-review?background_color=f3efe4&text_color=1c1e17&primary_color=1c1e17";
+  "https://calendly.com/fronzzz/map-review?background_color=f3efe4&text_color=1c1e17&primary_color=1c1e17";
 
 export function calendlyUrl(): string {
   return process.env.NEXT_PUBLIC_CALENDLY_URL ?? CALENDLY_EMBED_URL;

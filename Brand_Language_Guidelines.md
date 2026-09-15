@@ -3,7 +3,7 @@ title: Fronz Brand Language Guidelines
 version: 1.2
 last_updated: 2026-09-13
 owners: Stacey Fronek
-applies_to: fronzz.com, public/llms.txt, JSON-LD, client deliverables, case studies, workshop artifacts, sales copy
+applies_to: fronzzz.com, public/llms.txt, JSON-LD, client deliverables, case studies, workshop artifacts, sales copy
 ---
 
 # Fronz Brand Language Guidelines
@@ -33,7 +33,7 @@ If someone wants CMO-shaped help, the answer is a sprint, then a scoped engageme
 
 **Edgy is allowed.** "Become the incumbent's worst nightmare" is on brand as a subhead. Do not bury the heat. Put the payoff in the header ("lean + clear beats big") and let the nightmare line sit under it.
 
-**Public brand is Fronz at fronzz.com.** Mail still lands at stacey@shesthefronz.com until DNS moves. Don't change the address in copy until then. shesthefronz.com is the prior portfolio, linked quietly from Proof, not a second offer.
+**Public brand is Fronz at fronzzz.com** (legacy `fronzz.com` redirects). Mail still lands at stacey@shesthefronz.com until DNS moves. Don't change the address in copy until then. shesthefronz.com is the prior portfolio, linked quietly from Proof, not a second offer.
 
 ---
 
